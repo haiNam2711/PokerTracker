@@ -28,13 +28,16 @@
 		B314118D2BC4E80900CAE99B /* HistoryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B314116F2BC4E80900CAE99B /* HistoryViewController.xib */; };
 		B314118E2BC4E80900CAE99B /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411722BC4E80900CAE99B /* Game.swift */; };
 		B314118F2BC4E80900CAE99B /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411742BC4E80900CAE99B /* HomeViewModel.swift */; };
-		B31411902BC4E80900CAE99B /* HomeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411762BC4E80900CAE99B /* HomeCollectionViewCell.swift */; };
-		B31411912BC4E80900CAE99B /* HomeCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31411772BC4E80900CAE99B /* HomeCollectionViewCell.xib */; };
+		B31411902BC4E80900CAE99B /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411762BC4E80900CAE99B /* HomeCell.swift */; };
+		B31411912BC4E80900CAE99B /* HomeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31411772BC4E80900CAE99B /* HomeCell.xib */; };
 		B31411922BC4E80900CAE99B /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411792BC4E80900CAE99B /* HomeViewController.swift */; };
 		B31411932BC4E80900CAE99B /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B314117A2BC4E80900CAE99B /* HomeViewController.xib */; };
 		B31411942BC4E80900CAE99B /* GPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B314117D2BC4E80900CAE99B /* GPlayerStatus.swift */; };
 		B31411952BC4E80900CAE99B /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411802BC4E80900CAE99B /* PlayerViewController.swift */; };
 		B31411962BC4E80900CAE99B /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31411812BC4E80900CAE99B /* PlayerViewController.xib */; };
+		B35152942BC5271000F4F82B /* Date + String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35152932BC5271000F4F82B /* Date + String Extension.swift */; };
+		B351529A2BC52DFE00F4F82B /* CreateaGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35152992BC52DFE00F4F82B /* CreateaGameViewController.xib */; };
+		B351529B2BC52DFE00F4F82B /* CreateaGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35152982BC52DFE00F4F82B /* CreateaGameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,13 +66,16 @@
 		B314116F2BC4E80900CAE99B /* HistoryViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HistoryViewController.xib; sourceTree = "<group>"; };
 		B31411722BC4E80900CAE99B /* Game.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		B31411742BC4E80900CAE99B /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
-		B31411762BC4E80900CAE99B /* HomeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCollectionViewCell.swift; sourceTree = "<group>"; };
-		B31411772BC4E80900CAE99B /* HomeCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCollectionViewCell.xib; sourceTree = "<group>"; };
+		B31411762BC4E80900CAE99B /* HomeCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
+		B31411772BC4E80900CAE99B /* HomeCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeCell.xib; sourceTree = "<group>"; };
 		B31411792BC4E80900CAE99B /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B314117A2BC4E80900CAE99B /* HomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		B314117D2BC4E80900CAE99B /* GPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPlayerStatus.swift; sourceTree = "<group>"; };
 		B31411802BC4E80900CAE99B /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		B31411812BC4E80900CAE99B /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		B35152932BC5271000F4F82B /* Date + String Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + String Extension.swift"; sourceTree = "<group>"; };
+		B35152982BC52DFE00F4F82B /* CreateaGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateaGameViewController.swift; sourceTree = "<group>"; };
+		B35152992BC52DFE00F4F82B /* CreateaGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateaGameViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +122,7 @@
 				B314115F2BC4E7DE00CAE99B /* Application */,
 				B314115E2BC4E7C800CAE99B /* Rescurces */,
 				26BAFFC22BC4EB41009241A9 /* Helper */,
+				B35152922BC526E900F4F82B /* Extension */,
 				B31411842BC4E80900CAE99B /* Screens */,
 				26BAFFB92BC4E44C009241A9 /* Info.plist */,
 			);
@@ -258,8 +265,8 @@
 		B31411782BC4E80900CAE99B /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				B31411762BC4E80900CAE99B /* HomeCollectionViewCell.swift */,
-				B31411772BC4E80900CAE99B /* HomeCollectionViewCell.xib */,
+				B31411762BC4E80900CAE99B /* HomeCell.swift */,
+				B31411772BC4E80900CAE99B /* HomeCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -267,6 +274,7 @@
 		B314117B2BC4E80900CAE99B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B35152972BC52DD300F4F82B /* CreateaGame */,
 				B31411782BC4E80900CAE99B /* Cells */,
 				B31411792BC4E80900CAE99B /* HomeViewController.swift */,
 				B314117A2BC4E80900CAE99B /* HomeViewController.xib */,
@@ -327,6 +335,23 @@
 				B31411832BC4E80900CAE99B /* Player */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		B35152922BC526E900F4F82B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				B35152932BC5271000F4F82B /* Date + String Extension.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		B35152972BC52DD300F4F82B /* CreateaGame */ = {
+			isa = PBXGroup;
+			children = (
+				B35152982BC52DFE00F4F82B /* CreateaGameViewController.swift */,
+				B35152992BC52DFE00F4F82B /* CreateaGameViewController.xib */,
+			);
+			path = CreateaGame;
 			sourceTree = "<group>";
 		};
 		E43ED687AB5014B76E4C9567 /* Pods */ = {
@@ -399,9 +424,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B314118A2BC4E80900CAE99B /* GameViewController.xib in Resources */,
-				B31411912BC4E80900CAE99B /* HomeCollectionViewCell.xib in Resources */,
+				B31411912BC4E80900CAE99B /* HomeCell.xib in Resources */,
 				26BAFFB52BC4E44C009241A9 /* Assets.xcassets in Resources */,
 				B31411882BC4E80900CAE99B /* MemberCollectionViewCell.xib in Resources */,
+				B351529A2BC52DFE00F4F82B /* CreateaGameViewController.xib in Resources */,
 				B314118D2BC4E80900CAE99B /* HistoryViewController.xib in Resources */,
 				B31411962BC4E80900CAE99B /* PlayerViewController.xib in Resources */,
 				B31411932BC4E80900CAE99B /* HomeViewController.xib in Resources */,
@@ -463,12 +489,13 @@
 				26BAFFCD2BC4EBF1009241A9 /* PlayerTable.swift in Sources */,
 				B31411862BC4E80900CAE99B /* GameViewModel.swift in Sources */,
 				B31411952BC4E80900CAE99B /* PlayerViewController.swift in Sources */,
+				B35152942BC5271000F4F82B /* Date + String Extension.swift in Sources */,
 				B314118F2BC4E80900CAE99B /* HomeViewModel.swift in Sources */,
 				26BAFFCB2BC4EBD8009241A9 /* GPlayerStatusTable.swift in Sources */,
 				26BAFFC92BC4EBC2009241A9 /* LocalDB.swift in Sources */,
 				B31411872BC4E80900CAE99B /* MemberCollectionViewCell.swift in Sources */,
 				26BAFFAC2BC4E44B009241A9 /* AppDelegate.swift in Sources */,
-				B31411902BC4E80900CAE99B /* HomeCollectionViewCell.swift in Sources */,
+				B31411902BC4E80900CAE99B /* HomeCell.swift in Sources */,
 				B31411852BC4E80900CAE99B /* Player.swift in Sources */,
 				B31411892BC4E80900CAE99B /* GameViewController.swift in Sources */,
 				B31411942BC4E80900CAE99B /* GPlayerStatus.swift in Sources */,
@@ -476,6 +503,7 @@
 				26BAFFC72BC4EBA7009241A9 /* GameTable.swift in Sources */,
 				B314118C2BC4E80900CAE99B /* HistoryViewController.swift in Sources */,
 				26BAFFC52BC4EB6F009241A9 /* GeneralService.swift in Sources */,
+				B351529B2BC52DFE00F4F82B /* CreateaGameViewController.swift in Sources */,
 				B31411922BC4E80900CAE99B /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

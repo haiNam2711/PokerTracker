@@ -12,7 +12,7 @@ class GeneralService {
 //MARK: - Home Screen
 extension GeneralService {
  
-    static func createAGame(game: Game) throws -> Game{
+    static func createAGame(game: Game) throws -> Game? {
         return try GameTable.insert(item: game)
     }
     
