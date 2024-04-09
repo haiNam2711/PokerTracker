@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController" customModule="PlayerGame" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController" customModule="PokerTracker" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="8Cz-et-lhj" id="koh-cL-OyI"/>
                 <outlet property="nameGameLabel" destination="JfS-Nq-Sjb" id="oLt-mh-bAn"/>
@@ -22,10 +22,10 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLI-TH-uvi">
-                    <rect key="frame" x="0.0" y="0.0" width="393" height="818"/>
+                    <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2O3-eq-8f2">
-                            <rect key="frame" x="16" y="48" width="36" height="36"/>
+                            <rect key="frame" x="16" y="0.0" width="36" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="9uh-0a-Kab"/>
                                 <constraint firstAttribute="width" constant="36" id="r2r-fS-tcw"/>
@@ -55,13 +55,13 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JfS-Nq-Sjb">
-                            <rect key="frame" x="60" y="48" width="273" height="36"/>
+                            <rect key="frame" x="60" y="0.0" width="273" height="36"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                             <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8Cz-et-lhj">
-                            <rect key="frame" x="0.0" y="100" width="393" height="702"/>
+                            <rect key="frame" x="0.0" y="52" width="393" height="691"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r3D-7a-yb4">
                                 <size key="itemSize" width="128" height="128"/>
@@ -82,7 +82,7 @@
                         <constraint firstItem="JfS-Nq-Sjb" firstAttribute="leading" secondItem="2O3-eq-8f2" secondAttribute="trailing" constant="8" id="XoV-mn-2f1"/>
                         <constraint firstItem="7SH-Ec-Sji" firstAttribute="leading" secondItem="JfS-Nq-Sjb" secondAttribute="trailing" constant="8" id="a4B-dA-n2z"/>
                         <constraint firstItem="JfS-Nq-Sjb" firstAttribute="centerY" secondItem="2O3-eq-8f2" secondAttribute="centerY" id="gsA-IW-chJ"/>
-                        <constraint firstItem="2O3-eq-8f2" firstAttribute="top" secondItem="OLI-TH-uvi" secondAttribute="top" constant="48" id="lDE-Qy-xLQ"/>
+                        <constraint firstItem="2O3-eq-8f2" firstAttribute="top" secondItem="OLI-TH-uvi" secondAttribute="top" id="lDE-Qy-xLQ"/>
                         <constraint firstItem="8Cz-et-lhj" firstAttribute="leading" secondItem="OLI-TH-uvi" secondAttribute="leading" id="mus-xe-6y9"/>
                         <constraint firstAttribute="bottom" secondItem="8Cz-et-lhj" secondAttribute="bottom" constant="16" id="o8j-eg-trC"/>
                     </constraints>
@@ -91,12 +91,12 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="OLI-TH-uvi" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="3rD-bi-t3c"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="OLI-TH-uvi" secondAttribute="bottom" id="8Uv-Xi-tJz"/>
                 <constraint firstItem="OLI-TH-uvi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="A5e-G5-hsi"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="OLI-TH-uvi" secondAttribute="trailing" id="rzm-ij-8dI"/>
+                <constraint firstItem="OLI-TH-uvi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="z0c-2W-rV0"/>
             </constraints>
-            <point key="canvasLocation" x="59" y="-11"/>
+            <point key="canvasLocation" x="58.778625954198468" y="-11.267605633802818"/>
         </view>
     </objects>
     <resources>
