@@ -16,7 +16,6 @@
 		26BAFFC92BC4EBC2009241A9 /* LocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFC82BC4EBC2009241A9 /* LocalDB.swift */; };
 		26BAFFCB2BC4EBD8009241A9 /* GPlayerStatusTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFCA2BC4EBD8009241A9 /* GPlayerStatusTable.swift */; };
 		26BAFFCD2BC4EBF1009241A9 /* PlayerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */; };
-		26BAFFD02BC4F3B4009241A9 /* Helper in Resources */ = {isa = PBXBuildFile; fileRef = 26BAFFCF2BC4F3B4009241A9 /* Helper */; };
 		359245E7BE50D6CC0C2E2944 /* Pods_PokerTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */; };
 		B31411852BC4E80900CAE99B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411602BC4E80900CAE99B /* Player.swift */; };
 		B31411862BC4E80900CAE99B /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411622BC4E80900CAE99B /* GameViewModel.swift */; };
@@ -50,7 +49,6 @@
 		26BAFFC82BC4EBC2009241A9 /* LocalDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDB.swift; sourceTree = "<group>"; };
 		26BAFFCA2BC4EBD8009241A9 /* GPlayerStatusTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPlayerStatusTable.swift; sourceTree = "<group>"; };
 		26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTable.swift; sourceTree = "<group>"; };
-		26BAFFCF2BC4F3B4009241A9 /* Helper */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Helper; path = ../../Player/PlayerGame/Helper; sourceTree = "<group>"; };
 		455601E72079F477011C0B34 /* Pods-PokerTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokerTracker.release.xcconfig"; path = "Target Support Files/Pods-PokerTracker/Pods-PokerTracker.release.xcconfig"; sourceTree = "<group>"; };
 		713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokerTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9852524EF93548091731D962 /* Pods-PokerTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokerTracker.debug.xcconfig"; path = "Target Support Files/Pods-PokerTracker/Pods-PokerTracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 		26BAFFAA2BC4E44B009241A9 /* PokerTracker */ = {
 			isa = PBXGroup;
 			children = (
-				26BAFFCF2BC4F3B4009241A9 /* Helper */,
 				B314115F2BC4E7DE00CAE99B /* Application */,
 				B314115E2BC4E7C800CAE99B /* Rescurces */,
 				26BAFFC22BC4EB41009241A9 /* Helper */,
@@ -406,7 +403,6 @@
 				26BAFFB52BC4E44C009241A9 /* Assets.xcassets in Resources */,
 				B31411882BC4E80900CAE99B /* MemberCollectionViewCell.xib in Resources */,
 				B314118D2BC4E80900CAE99B /* HistoryViewController.xib in Resources */,
-				26BAFFD02BC4F3B4009241A9 /* Helper in Resources */,
 				B31411962BC4E80900CAE99B /* PlayerViewController.xib in Resources */,
 				B31411932BC4E80900CAE99B /* HomeViewController.xib in Resources */,
 				26BAFFB82BC4E44C009241A9 /* Base in Resources */,
