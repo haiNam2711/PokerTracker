@@ -19,7 +19,7 @@ class LocalDB {
         
         do {
             db = try Connection("\(path)/db.sqlite3")
-            print(db)
+            print(db!)
             createPlayerTable()
             createGameTable()
             createGameRecordTable()
@@ -39,17 +39,19 @@ class LocalDB {
         let time = Expression<Date>("Time")
         let cashIn = Expression<Int>("CashIn")
         let chipOut = Expression<Int>("ChipOut")
+        let feeTypeInValue = Expression<Bool>("FeeTypeInValue")
         let fee = Expression<Int>("Fee")
         
         do {
-            try db.run(games.create { table in
+            try db.run(games.create(ifNotExists: true) { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(time)
                 table.column(cashIn)
                 table.column(chipOut)
+                table.column(feeTypeInValue)
                 table.column(fee)
+                print("Bảng Game được tạo mới.")
             })
-            print("Bảng Game được tạo mới.")
         } catch {
             print("Lỗi khi tạo bảng Game: \(error)")
         }
@@ -61,11 +63,11 @@ class LocalDB {
         let name = Expression<String>("Name")
 
         do {
-            try db.run(players.create { table in
+            try db.run(players.create(ifNotExists: true) { table in
                 table.column(id, primaryKey: .autoincrement)
                 table.column(name)
+                print("Bảng Player đã được tạo thành công.")
             })
-            print("Bảng Player đã được tạo thành công.")
         } catch {
             print("Lỗi khi tạo bảng Player: \(error)")
         }
@@ -82,7 +84,7 @@ class LocalDB {
         do {
             let gameTable = Table("Game")
             let playerTable = Table("Player")
-            try db.run(gameRecords.create { table in
+            try db.run(gameRecords.create(ifNotExists: true) { table in
                 table.column(gameID)
                 table.column(playerID)
                 table.column(time)
@@ -91,8 +93,8 @@ class LocalDB {
                 
                 table.foreignKey(gameID, references: gameTable, gameID)
                 table.foreignKey(playerID, references: playerTable, playerID)
+                print("Bảng GameRecord đã được tạo thành công.")
             })
-            print("Bảng GameRecord đã được tạo thành công.")
         } catch {
             print("Lỗi khi tạo bảng GameRecord: \(error)")
         }
@@ -102,22 +104,24 @@ class LocalDB {
         let playerInGame = Table("PlayerInGame")
         let gameID = Expression<Int>("GameID")
         let playerID = Expression<Int>("PlayerID")
+        let playerActive = Expression<Bool>("PlayerActive")
         let sumCashIn = Expression<Int>("SumCashIn")
         let sumCashOut = Expression<Int>("SumCashOut")
         
         do {
             let gameTable = Table("Game")
             let playerTable = Table("Player")
-            try db.run(playerInGame.create { table in
+            try db.run(playerInGame.create(ifNotExists: true) { table in
                 table.column(gameID)
                 table.column(playerID)
+                table.column(playerActive)
                 table.column(sumCashIn)
                 table.column(sumCashOut)
                 table.primaryKey(gameID, playerID)
                 table.foreignKey(gameID, references: gameTable, gameID)
                 table.foreignKey(playerID, references: playerTable, playerID)
+                print("Bảng PlayerInGame đã được tạo thành công.")
             })
-            print("Bảng PlayerInGame đã được tạo thành công.")
         } catch {
             print("Lỗi khi tạo bảng PlayerInGame: \(error)")
         }

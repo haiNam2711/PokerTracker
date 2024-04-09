@@ -16,6 +16,8 @@
 		26BAFFC92BC4EBC2009241A9 /* LocalDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFC82BC4EBC2009241A9 /* LocalDB.swift */; };
 		26BAFFCB2BC4EBD8009241A9 /* GPlayerStatusTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFCA2BC4EBD8009241A9 /* GPlayerStatusTable.swift */; };
 		26BAFFCD2BC4EBF1009241A9 /* PlayerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */; };
+		26BAFFD42BC522BB009241A9 /* GameRecordTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFD32BC522BB009241A9 /* GameRecordTable.swift */; };
+		26BAFFD62BC52BEC009241A9 /* GetActivePlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */; };
 		359245E7BE50D6CC0C2E2944 /* Pods_PokerTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */; };
 		B31411852BC4E80900CAE99B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411602BC4E80900CAE99B /* Player.swift */; };
 		B31411862BC4E80900CAE99B /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411622BC4E80900CAE99B /* GameViewModel.swift */; };
@@ -49,6 +51,8 @@
 		26BAFFC82BC4EBC2009241A9 /* LocalDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDB.swift; sourceTree = "<group>"; };
 		26BAFFCA2BC4EBD8009241A9 /* GPlayerStatusTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPlayerStatusTable.swift; sourceTree = "<group>"; };
 		26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTable.swift; sourceTree = "<group>"; };
+		26BAFFD32BC522BB009241A9 /* GameRecordTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordTable.swift; sourceTree = "<group>"; };
+		26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActivePlayerResult.swift; sourceTree = "<group>"; };
 		455601E72079F477011C0B34 /* Pods-PokerTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokerTracker.release.xcconfig"; path = "Target Support Files/Pods-PokerTracker/Pods-PokerTracker.release.xcconfig"; sourceTree = "<group>"; };
 		713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokerTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9852524EF93548091731D962 /* Pods-PokerTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokerTracker.debug.xcconfig"; path = "Target Support Files/Pods-PokerTracker/Pods-PokerTracker.debug.xcconfig"; sourceTree = "<group>"; };
@@ -125,6 +129,7 @@
 		26BAFFC22BC4EB41009241A9 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
+				26BAFFD72BC52FC2009241A9 /* Model */,
 				26BAFFC32BC4EB5E009241A9 /* LocalDB */,
 				26BAFFC42BC4EB6F009241A9 /* GeneralService.swift */,
 			);
@@ -134,12 +139,21 @@
 		26BAFFC32BC4EB5E009241A9 /* LocalDB */ = {
 			isa = PBXGroup;
 			children = (
-				26BAFFC62BC4EBA7009241A9 /* GameTable.swift */,
 				26BAFFC82BC4EBC2009241A9 /* LocalDB.swift */,
-				26BAFFCA2BC4EBD8009241A9 /* GPlayerStatusTable.swift */,
+				26BAFFC62BC4EBA7009241A9 /* GameTable.swift */,
 				26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */,
+				26BAFFCA2BC4EBD8009241A9 /* GPlayerStatusTable.swift */,
+				26BAFFD32BC522BB009241A9 /* GameRecordTable.swift */,
 			);
 			path = LocalDB;
+			sourceTree = "<group>";
+		};
+		26BAFFD72BC52FC2009241A9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		B314115E2BC4E7C800CAE99B /* Rescurces */ = {
@@ -213,13 +227,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B314116D2BC4E80900CAE99B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		B31411702BC4E80900CAE99B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,7 +240,6 @@
 			isa = PBXGroup;
 			children = (
 				B314116C2BC4E80900CAE99B /* Model */,
-				B314116D2BC4E80900CAE99B /* ViewModel */,
 				B31411702BC4E80900CAE99B /* Views */,
 			);
 			path = History;
@@ -292,13 +298,6 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
-		B314117F2BC4E80900CAE99B /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
 		B31411822BC4E80900CAE99B /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -312,7 +311,6 @@
 			isa = PBXGroup;
 			children = (
 				B314117E2BC4E80900CAE99B /* Model */,
-				B314117F2BC4E80900CAE99B /* ViewModel */,
 				B31411822BC4E80900CAE99B /* Views */,
 			);
 			path = Player;
@@ -458,6 +456,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26BAFFD42BC522BB009241A9 /* GameRecordTable.swift in Sources */,
 				B314118B2BC4E80900CAE99B /* GameRecord.swift in Sources */,
 				B314118E2BC4E80900CAE99B /* Game.swift in Sources */,
 				26BAFFCD2BC4EBF1009241A9 /* PlayerTable.swift in Sources */,
@@ -470,6 +469,7 @@
 				26BAFFAC2BC4E44B009241A9 /* AppDelegate.swift in Sources */,
 				B31411902BC4E80900CAE99B /* HomeCollectionViewCell.swift in Sources */,
 				B31411852BC4E80900CAE99B /* Player.swift in Sources */,
+				26BAFFD62BC52BEC009241A9 /* GetActivePlayerResult.swift in Sources */,
 				B31411892BC4E80900CAE99B /* GameViewController.swift in Sources */,
 				B31411942BC4E80900CAE99B /* GPlayerStatus.swift in Sources */,
 				26BAFFAE2BC4E44B009241A9 /* SceneDelegate.swift in Sources */,
