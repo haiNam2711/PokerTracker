@@ -23,7 +23,7 @@ class CreateaGameViewController: UIViewController {
     
     @IBAction func startGameOnClick(_ sender: Any) {
         guard let cashIn = cashInTF.text, let cashOut = cashOutTF.text, let fee = feeTF.text else { return }
-        let newGame = Game(time: Date(), standardCashIn: cashIn, standardChipOut: cashOut, fee: fee)
+        let newGame = Game(time: Date(), standardCashIn: Int(cashIn) ?? 0, standardChipOut: Int(cashOut) ?? 0, feeTypeInValue: true, fee: Int(fee) ?? 0)
         do {
             if let createGame = try viewModel.createAGame(game: newGame) {
                 print("Thanh cong")
