@@ -40,7 +40,7 @@
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7SH-Ec-Sji">
-                            <rect key="frame" x="341" y="48" width="36" height="36"/>
+                            <rect key="frame" x="341" y="0.0" width="36" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="36" id="7du-fm-1O5"/>
                                 <constraint firstAttribute="height" constant="36" id="imG-ZA-7Wb"/>
@@ -75,12 +75,12 @@
                     <constraints>
                         <constraint firstItem="8Cz-et-lhj" firstAttribute="top" secondItem="JfS-Nq-Sjb" secondAttribute="bottom" constant="16" id="3t7-0h-1Nu"/>
                         <constraint firstAttribute="trailing" secondItem="7SH-Ec-Sji" secondAttribute="trailing" constant="16" id="57j-nc-P3v"/>
-                        <constraint firstItem="7SH-Ec-Sji" firstAttribute="top" secondItem="OLI-TH-uvi" secondAttribute="top" constant="48" id="DpM-Xt-799"/>
                         <constraint firstAttribute="trailing" secondItem="8Cz-et-lhj" secondAttribute="trailing" id="W05-cg-kf9"/>
                         <constraint firstItem="2O3-eq-8f2" firstAttribute="leading" secondItem="OLI-TH-uvi" secondAttribute="leading" constant="16" id="WgA-sM-Ce2"/>
                         <constraint firstItem="JfS-Nq-Sjb" firstAttribute="height" secondItem="2O3-eq-8f2" secondAttribute="height" id="X9M-xK-T2R"/>
                         <constraint firstItem="JfS-Nq-Sjb" firstAttribute="leading" secondItem="2O3-eq-8f2" secondAttribute="trailing" constant="8" id="XoV-mn-2f1"/>
                         <constraint firstItem="7SH-Ec-Sji" firstAttribute="leading" secondItem="JfS-Nq-Sjb" secondAttribute="trailing" constant="8" id="a4B-dA-n2z"/>
+                        <constraint firstItem="7SH-Ec-Sji" firstAttribute="centerY" secondItem="JfS-Nq-Sjb" secondAttribute="centerY" id="f8e-hH-cEx"/>
                         <constraint firstItem="JfS-Nq-Sjb" firstAttribute="centerY" secondItem="2O3-eq-8f2" secondAttribute="centerY" id="gsA-IW-chJ"/>
                         <constraint firstItem="2O3-eq-8f2" firstAttribute="top" secondItem="OLI-TH-uvi" secondAttribute="top" id="lDE-Qy-xLQ"/>
                         <constraint firstItem="8Cz-et-lhj" firstAttribute="leading" secondItem="OLI-TH-uvi" secondAttribute="leading" id="mus-xe-6y9"/>
