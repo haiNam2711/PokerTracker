@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="HomeCollectionViewCell" customModule="PlayerGame" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="473" height="100"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="473" height="100"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lws-66-vaC">
+                        <rect key="frame" x="0.0" y="0.0" width="473" height="100"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="k4K-al-iQ9">
+                                <rect key="frame" x="16" y="39.666666666666664" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qw4-kj-YbS">
+                                <rect key="frame" x="421" y="32" width="36" height="36"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="JkF-v1-MTV"/>
+                                    <constraint firstAttribute="height" constant="36" id="cP8-Y1-Xen"/>
+                                </constraints>
+                                <color key="tintColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="play.circle" catalog="system">
+                                    <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qw4-kj-YbS" secondAttribute="trailing" constant="16" id="38S-mI-2LL"/>
+                            <constraint firstItem="k4K-al-iQ9" firstAttribute="centerY" secondItem="Lws-66-vaC" secondAttribute="centerY" id="ERI-PK-3jC"/>
+                            <constraint firstItem="qw4-kj-YbS" firstAttribute="centerY" secondItem="k4K-al-iQ9" secondAttribute="centerY" id="Qds-Tl-wpT"/>
+                            <constraint firstItem="k4K-al-iQ9" firstAttribute="leading" secondItem="Lws-66-vaC" secondAttribute="leading" constant="16" id="hXS-W3-kIr"/>
+                            <constraint firstItem="k4K-al-iQ9" firstAttribute="height" secondItem="qw4-kj-YbS" secondAttribute="height" multiplier="0.583333" id="wSb-Pr-eWa"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="Lws-66-vaC" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="4wU-LH-Rvs"/>
+                <constraint firstAttribute="trailing" secondItem="Lws-66-vaC" secondAttribute="trailing" id="L0f-2o-unv"/>
+                <constraint firstItem="Lws-66-vaC" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="eQf-LF-s5w"/>
+                <constraint firstAttribute="bottom" secondItem="Lws-66-vaC" secondAttribute="bottom" id="ymV-jh-MUf"/>
+            </constraints>
+            <size key="customSize" width="473" height="156"/>
+            <connections>
+                <outlet property="nameGameLabel" destination="k4K-al-iQ9" id="HY8-9Y-jj3"/>
+                <outlet property="playGameButton" destination="qw4-kj-YbS" id="xWI-s5-NgP"/>
+            </connections>
+            <point key="canvasLocation" x="461.83206106870227" y="57.74647887323944"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="play.circle" catalog="system" width="128" height="123"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
