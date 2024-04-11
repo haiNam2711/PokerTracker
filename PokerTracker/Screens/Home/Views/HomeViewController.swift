@@ -29,7 +29,8 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func searchOnClick(_ sender: Any) {
-        
+        let searchVC = FilterViewController()
+        navigationController?.pushViewController(searchVC, animated: true)
     }
     @IBAction func newGameOnClick(_ sender: Any) {
         let createGameVC = CreateaGameViewController()
