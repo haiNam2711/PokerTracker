@@ -9,21 +9,42 @@ import UIKit
 
 class HistoryViewController: UIViewController {
 
+    var records: [GetGameRecordResult]!
+    var game: Game!
+    @IBOutlet weak var historyTableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            records = try GeneralService.getRecordHistory(byGameID: game.id!)
+        } catch {
+            print(error.localizedDescription)
+        }
+        historyTableView.register(UITableViewCell.self, forCellReuseIdentifier: "HistoryCell")
+        historyTableView.delegate = self
+        historyTableView.dataSource = self
+    }
 
-        // Do any additional setup after loading the view.
+}
+
+//MARK: - Table view delegate + datasource
+
+extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return records.count
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = historyTableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath)
+        let record = records[indexPath.row]
+        let text = record.cashIn > 0 ? "đã nạp \(record.cashIn)" : "đã rút \(record.cashOut)"
+        cell.textLabel?.text = "\(record.time.toString()):  \(record.playerName) \(text)"
+        cell.textLabel?.numberOfLines = 0
+        return cell
     }
-    */
-
+    
 }

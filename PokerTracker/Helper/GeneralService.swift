@@ -47,7 +47,7 @@ extension GeneralService {
         try GPlayerStatusTable.update(withNewMoneyRecord: gameRecord)
     }
     
-    static func getPlayers(byGameID gameID: Int) throws -> [GetActivePlayerResult]? {
+    static func getPlayers(byGameID gameID: Int) throws -> [GetActivePlayerResult] {
         return try GPlayerStatusTable.getAllPlayer(gameID: gameID)
     }
     
@@ -56,7 +56,7 @@ extension GeneralService {
 //MARK: - History Screen
 extension GeneralService {
     
-    static func getRecordHistory(byGameID gameID: Int) throws -> [GameRecord]? {
+    static func getRecordHistory(byGameID gameID: Int) throws -> [GetGameRecordResult] {
         return try GameRecordTable.findAll(byGameID: gameID)
     }
     

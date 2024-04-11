@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260503BB2BC82E06003DDA61 /* GetGameRecordResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260503BA2BC82E06003DDA61 /* GetGameRecordResult.swift */; };
 		26BAFFAC2BC4E44B009241A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFAB2BC4E44B009241A9 /* AppDelegate.swift */; };
 		26BAFFAE2BC4E44B009241A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFAD2BC4E44B009241A9 /* SceneDelegate.swift */; };
 		26BAFFB52BC4E44C009241A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BAFFB42BC4E44C009241A9 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		260503BA2BC82E06003DDA61 /* GetGameRecordResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGameRecordResult.swift; sourceTree = "<group>"; };
 		26BAFFA82BC4E44B009241A9 /* PokerTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BAFFAB2BC4E44B009241A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26BAFFAD2BC4E44B009241A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */,
+				260503BA2BC82E06003DDA61 /* GetGameRecordResult.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				B314118B2BC4E80900CAE99B /* GameRecord.swift in Sources */,
 				B314118E2BC4E80900CAE99B /* Game.swift in Sources */,
 				26BAFFCD2BC4EBF1009241A9 /* PlayerTable.swift in Sources */,
+				260503BB2BC82E06003DDA61 /* GetGameRecordResult.swift in Sources */,
 				B31411862BC4E80900CAE99B /* GameViewModel.swift in Sources */,
 				B31411952BC4E80900CAE99B /* PlayerViewController.swift in Sources */,
 				B35152942BC5271000F4F82B /* Date + String Extension.swift in Sources */,

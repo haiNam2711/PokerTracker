@@ -26,14 +26,20 @@ class GameRecordTable {
         }
     }
     
-    static func findAll(byGameID gameID: Int) throws -> [GameRecord] {
+    static func findAll(byGameID gameID: Int) throws -> [GetGameRecordResult] {
         let DB = LocalDB.shared.getDB()
-        let query = gameRecord.filter(self.gameID == gameID)
+        let players = Table("Player")
+        let name = Expression<String>("Name")
+        let query = gameRecord
+            .filter(self.gameID == gameID)
+            .join(players, on: gameRecord[playerID] == players[playerID])
+            .select([gameRecord[*], players[name]])
+        
         let rows = try DB.prepare(query)
         
-        var res: [GameRecord] = []
+        var res: [GetGameRecordResult] = []
         for row in rows {
-            res.append(GameRecord(gameID: row[self.gameID], time: row[time], playerID: row[playerID], cashIn: row[cashIn], cashOut: row[cashOut]))
+            res.append(GetGameRecordResult(playerName: row[name], gameID: row[self.gameID], time: row[time], playerID: row[playerID], cashIn: row[cashIn], cashOut: row[cashOut]))
         }
         return res
     }
