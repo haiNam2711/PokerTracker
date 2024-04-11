@@ -40,7 +40,9 @@ class GameViewController: UIViewController {
     }
     
     @IBAction func historyGameOnClick(_ sender: Any) {
-        
+        let historyVC = HistoryViewController()
+        historyVC.gameID = gameID
+        navigationController?.pushViewController(historyVC, animated: true)
     }
 }
 

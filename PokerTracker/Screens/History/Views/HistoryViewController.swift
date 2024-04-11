@@ -10,13 +10,13 @@ import UIKit
 class HistoryViewController: UIViewController {
 
     var records: [GetGameRecordResult]!
-    var game: Game!
+    var gameID: Int!
     @IBOutlet weak var historyTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            records = try GeneralService.getRecordHistory(byGameID: game.id!)
+            records = try GeneralService.getRecordHistory(byGameID: gameID!)
         } catch {
             print(error.localizedDescription)
         }
@@ -25,6 +25,10 @@ class HistoryViewController: UIViewController {
         historyTableView.dataSource = self
     }
 
+    @IBAction func backButtonTapped(_ sender: UIButton) {
+        navigationController?.popViewController(animated: true)
+    }
+    
 }
 
 //MARK: - Table view delegate + datasource
