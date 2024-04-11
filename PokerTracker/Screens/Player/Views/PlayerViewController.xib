@@ -11,6 +11,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PlayerViewController" customModule="PokerTracker" customModuleProvider="target">
             <connections>
+                <outlet property="cashInLabel" destination="OMM-4J-IZQ" id="dx5-iw-zRv"/>
+                <outlet property="cashOutLabel" destination="Rq9-hF-Pe9" id="ijl-Zv-vgf"/>
+                <outlet property="deleteBT" destination="X3E-Sr-7lC" id="ycJ-kO-0oR"/>
+                <outlet property="moreBT" destination="PnO-bA-IPx" id="sw2-4d-0nD"/>
+                <outlet property="nameLabel" destination="0wg-RN-oII" id="nFf-gj-V4c"/>
                 <outlet property="okButton" destination="XLk-3h-7l5" id="720-6m-owH"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -34,6 +39,9 @@
                             <state key="normal" image="chevron.backward.circle" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                             </state>
+                            <connections>
+                                <action selector="backAction:" destination="-1" eventType="touchUpInside" id="3ZD-ob-mOo"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0wg-RN-oII">
                             <rect key="frame" x="60" y="0.0" width="317" height="36"/>
@@ -76,19 +84,37 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X3E-Sr-7lC">
                                     <rect key="frame" x="0.0" y="0.0" width="176.66666666666666" height="56"/>
+                                    <color key="backgroundColor" red="0.6711090207" green="0.75705975290000005" blue="0.68438172340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="-">
                                         <color key="titleColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="deleteAction:" destination="-1" eventType="touchUpInside" id="BhH-u0-ZUY"/>
+                                    </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PnO-bA-IPx">
                                     <rect key="frame" x="184.66666666666663" y="0.0" width="176.33333333333337" height="56"/>
+                                    <color key="backgroundColor" red="0.6711090207" green="0.75705975290000005" blue="0.68438172340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="36"/>
                                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                     <state key="normal" title="+">
                                         <color key="titleColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </state>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                            <integer key="value" value="4"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                    <connections>
+                                        <action selector="moreAction:" destination="-1" eventType="touchUpInside" id="uKG-RN-Lg8"/>
+                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -107,6 +133,7 @@
                         </view>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XLk-3h-7l5">
                             <rect key="frame" x="16" y="679" width="361" height="48"/>
+                            <color key="backgroundColor" red="0.6711090207" green="0.75705975290000005" blue="0.68438172340000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="Vth-l9-svT"/>
                             </constraints>

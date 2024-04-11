@@ -17,6 +17,17 @@ class HomeViewController: UIViewController {
         configuration()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        do {
+            viewModel.fetchGames()
+            self.collectionView.reloadData()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     @IBAction func searchOnClick(_ sender: Any) {
         
     }
@@ -33,9 +44,6 @@ extension HomeViewController {
         initViewModel()
         collectionView.delegate = self
         collectionView.dataSource = self
-        DispatchQueue.main.async {
-            self.collectionView.reloadData()
-        }
     }
     
     func initViewModel() {
@@ -58,6 +66,7 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let gameVC = GameViewController()
+        gameVC.gameID = viewModel.games[indexPath.row].id ?? 0
         gameVC.titleGame = "Poker: " + viewModel.games[indexPath.row].time.toString()
         gameVC.cashin = "\(viewModel.games[indexPath.row].standardCashIn) k"
         gameVC.cashOut = "\(viewModel.games[indexPath.row].standardChipOut) chip"

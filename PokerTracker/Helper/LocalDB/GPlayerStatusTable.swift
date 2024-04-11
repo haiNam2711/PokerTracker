@@ -57,4 +57,13 @@ class GPlayerStatusTable {
         }
     }
     
+    static func getPlayerStatus(gameID: Int, playerID: Int) throws -> GPlayerStatus? {
+        let DB = LocalDB.shared.getDB()
+        let query = playerInGame.filter(self.gameID == gameID && self.playerID == playerID)
+        if let row = try DB.pluck(query) {
+            return GPlayerStatus(playerID: row[self.playerID], gameID: row[self.gameID], playerActive: row[playerActive], sumCashIn: row[sumCashIn], sumCashOut: row[sumCashOut])
+        }else {
+            return nil
+        }
+    }
 }
