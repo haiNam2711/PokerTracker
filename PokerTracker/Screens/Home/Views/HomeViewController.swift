@@ -22,9 +22,7 @@ class HomeViewController: UIViewController {
     }
     @IBAction func newGameOnClick(_ sender: Any) {
         let createGameVC = CreateaGameViewController()
-        let nav = UINavigationController(rootViewController: createGameVC)
-        nav.modalPresentationStyle = .popover
-        present(nav, animated: true)
+        navigationController?.pushViewController(createGameVC, animated: true)
     }
 }
 
@@ -35,13 +33,8 @@ extension HomeViewController {
         initViewModel()
         collectionView.delegate = self
         collectionView.dataSource = self
-        viewModel.eventHandler = { [weak self] event in
-            DispatchQueue.main.async {
-                switch event {
-                case .dataUpdate:
-                    self?.collectionView.reloadData()
-                }
-            }
+        DispatchQueue.main.async {
+            self.collectionView.reloadData()
         }
     }
     
@@ -65,6 +58,15 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
         let gameVC = GameViewController()
+        gameVC.titleGame = "Poker: " + viewModel.games[indexPath.row].time.toString()
+        gameVC.cashin = "\(viewModel.games[indexPath.row].standardCashIn) k"
+        gameVC.cashOut = "\(viewModel.games[indexPath.row].standardChipOut) chip"
+        if viewModel.games[indexPath.row].feeTypeInValue {
+            gameVC.fee = "\(viewModel.games[indexPath.row].fee) %"
+        }else {
+            gameVC.fee = "\(viewModel.games[indexPath.row].fee) k"
+        }
+        
         navigationController?.pushViewController(gameVC, animated: true)
     }
     

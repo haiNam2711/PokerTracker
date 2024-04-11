@@ -9,12 +9,7 @@ import SQLite
 
 final class HomeViewModel {
     
-    var games: [Game] = [] {
-        didSet {
-            eventHandler?(.dataUpdate)
-        }
-    }
-    var eventHandler: ((_ event: Event) -> Void)?
+    var games: [Game] = []
      
     func createAGame(game: Game) throws -> Game? {
         return try GameTable.insert(item: game)
@@ -39,12 +34,5 @@ final class HomeViewModel {
             self.games = []
             print("Error Fetch Games: \(error)")
         }
-    }
-}
-
-extension HomeViewModel {
-    
-    enum Event {
-        case dataUpdate
     }
 }

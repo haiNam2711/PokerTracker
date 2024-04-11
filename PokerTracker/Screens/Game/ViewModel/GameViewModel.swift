@@ -9,24 +9,10 @@ import Foundation
 
 final class GameViewModel {
     
-    var eventHandler: ((_ event: Event) -> Void)?
+    var player: [Player] = []
     
-    func fetchProducts() {
-        self.eventHandler?(.loading)
+    func fetchPlayer() {
 
-    }
-    
-    func addGame() {
-        
     }
 }
 
-extension GameViewModel {
-    
-    enum Event {
-        case loading
-        case stopLoading
-        case dataLoader
-        case error(Error?)
-    }
-}

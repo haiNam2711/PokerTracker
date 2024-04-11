@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController" customModule="PokerTracker" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="8Cz-et-lhj" id="koh-cL-OyI"/>
+                <outlet property="infoTV" destination="DIx-IA-sUX" id="qBG-uZ-OIQ"/>
                 <outlet property="nameGameLabel" destination="JfS-Nq-Sjb" id="oLt-mh-bAn"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -61,7 +62,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="8Cz-et-lhj">
-                            <rect key="frame" x="0.0" y="52" width="393" height="691"/>
+                            <rect key="frame" x="0.0" y="140" width="393" height="603"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="r3D-7a-yb4">
                                 <size key="itemSize" width="128" height="128"/>
@@ -70,11 +71,56 @@
                                 <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                             </collectionViewFlowLayout>
                         </collectionView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qUV-CN-tuX">
+                            <rect key="frame" x="16" y="40" width="297" height="96"/>
+                            <subviews>
+                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="DIx-IA-sUX">
+                                    <rect key="frame" x="0.0" y="0.0" width="297" height="96"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                    <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                </textView>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQH-SG-Tro">
+                                    <rect key="frame" x="0.0" y="0.0" width="297" height="96"/>
+                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                    <state key="normal" title="Button"/>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="DIx-IA-sUX" secondAttribute="trailing" id="9lN-ov-KmR"/>
+                                <constraint firstAttribute="height" constant="96" id="Bfv-Z6-tjb"/>
+                                <constraint firstAttribute="bottom" secondItem="rQH-SG-Tro" secondAttribute="bottom" id="Cvh-7C-gtK"/>
+                                <constraint firstItem="DIx-IA-sUX" firstAttribute="top" secondItem="qUV-CN-tuX" secondAttribute="top" id="Edd-sY-Uva"/>
+                                <constraint firstItem="rQH-SG-Tro" firstAttribute="top" secondItem="qUV-CN-tuX" secondAttribute="top" id="G4t-ZR-Rxy"/>
+                                <constraint firstAttribute="trailing" secondItem="rQH-SG-Tro" secondAttribute="trailing" id="NNs-J9-IvM"/>
+                                <constraint firstAttribute="bottom" secondItem="DIx-IA-sUX" secondAttribute="bottom" id="WMC-zk-8Mb"/>
+                                <constraint firstItem="rQH-SG-Tro" firstAttribute="leading" secondItem="qUV-CN-tuX" secondAttribute="leading" id="ZGX-Cb-6Ud"/>
+                                <constraint firstItem="DIx-IA-sUX" firstAttribute="leading" secondItem="qUV-CN-tuX" secondAttribute="leading" id="uzb-ZO-FrC"/>
+                            </constraints>
+                        </view>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="khl-W7-JW8">
+                            <rect key="frame" x="329" y="64" width="48" height="48"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="48" id="7NR-Fc-hNJ"/>
+                                <constraint firstAttribute="width" constant="48" id="laN-9r-sRX"/>
+                            </constraints>
+                            <color key="tintColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                            <state key="normal" image="plus.circle" catalog="system">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
+                            </state>
+                        </button>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
-                        <constraint firstItem="8Cz-et-lhj" firstAttribute="top" secondItem="JfS-Nq-Sjb" secondAttribute="bottom" constant="16" id="3t7-0h-1Nu"/>
+                        <constraint firstItem="qUV-CN-tuX" firstAttribute="leading" secondItem="OLI-TH-uvi" secondAttribute="leading" constant="16" id="1en-dQ-zgV"/>
                         <constraint firstAttribute="trailing" secondItem="7SH-Ec-Sji" secondAttribute="trailing" constant="16" id="57j-nc-P3v"/>
+                        <constraint firstAttribute="trailing" secondItem="khl-W7-JW8" secondAttribute="trailing" constant="16" id="EEL-wP-4wA"/>
+                        <constraint firstItem="8Cz-et-lhj" firstAttribute="top" secondItem="qUV-CN-tuX" secondAttribute="bottom" constant="4" id="Gib-7m-ciK"/>
+                        <constraint firstItem="khl-W7-JW8" firstAttribute="centerY" secondItem="qUV-CN-tuX" secondAttribute="centerY" id="NJi-K3-7p9"/>
+                        <constraint firstItem="qUV-CN-tuX" firstAttribute="top" secondItem="2O3-eq-8f2" secondAttribute="bottom" constant="4" id="OhB-3T-8O3"/>
                         <constraint firstAttribute="trailing" secondItem="8Cz-et-lhj" secondAttribute="trailing" id="W05-cg-kf9"/>
                         <constraint firstItem="2O3-eq-8f2" firstAttribute="leading" secondItem="OLI-TH-uvi" secondAttribute="leading" constant="16" id="WgA-sM-Ce2"/>
                         <constraint firstItem="JfS-Nq-Sjb" firstAttribute="height" secondItem="2O3-eq-8f2" secondAttribute="height" id="X9M-xK-T2R"/>
@@ -85,6 +131,7 @@
                         <constraint firstItem="2O3-eq-8f2" firstAttribute="top" secondItem="OLI-TH-uvi" secondAttribute="top" id="lDE-Qy-xLQ"/>
                         <constraint firstItem="8Cz-et-lhj" firstAttribute="leading" secondItem="OLI-TH-uvi" secondAttribute="leading" id="mus-xe-6y9"/>
                         <constraint firstAttribute="bottom" secondItem="8Cz-et-lhj" secondAttribute="bottom" constant="16" id="o8j-eg-trC"/>
+                        <constraint firstItem="khl-W7-JW8" firstAttribute="leading" secondItem="qUV-CN-tuX" secondAttribute="trailing" constant="16" id="xZ0-Rq-gVR"/>
                     </constraints>
                 </view>
             </subviews>
@@ -102,6 +149,7 @@
     <resources>
         <image name="chevron.backward.circle" catalog="system" width="128" height="123"/>
         <image name="clock" catalog="system" width="128" height="123"/>
+        <image name="plus.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
