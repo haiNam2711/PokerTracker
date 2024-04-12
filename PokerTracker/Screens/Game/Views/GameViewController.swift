@@ -11,8 +11,8 @@ import Toast
 class GameViewController: UIViewController {
 
     var titleGame: String = ""
-    var cashin: String = ""
-    var cashOut: String = ""
+    var cashin: Int = 0
+    var cashOut: Int = 0
     var fee: String = ""
     var playerID = 0
     var gameID = 0
@@ -49,8 +49,8 @@ extension GameViewController {
     func configuration() {
         nameGameLabel.text = titleGame
         infoTV.text = """
-            Cashin: \(cashin)
-            Chipout: \(cashOut)
+            Cashin: \(cashin) k
+            Chipout: \(cashOut) chip
             Fee: \(fee)
         """
         collectionView.register(UINib(nibName: "PlayerCell", bundle: nil), forCellWithReuseIdentifier: "PlayerCell")

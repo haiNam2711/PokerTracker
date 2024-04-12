@@ -42,8 +42,8 @@ class CreateaGameViewController: UIViewController {
                 let vc = GameViewController()
                 vc.gameID = createGame.id ?? 0
                 vc.titleGame = "Poker: " + Date().toString()
-                vc.cashin = cashIn + "k"
-                vc.cashOut = cashOut + " chip"
+                vc.cashin = Int(cashIn) ?? 0
+                vc.cashOut = Int(cashOut) ?? 0
                 vc.fee = fee + (feeLabel.text ?? "")
                 navigationController?.pushViewController(vc, animated: true)
             }else {
