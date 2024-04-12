@@ -51,7 +51,7 @@
                                 <color key="tintColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal">
-                                    <imageReference key="image" image="play.circle" catalog="system" symbolScale="default"/>
+                                    <imageReference key="image" image="chevron.right" catalog="system" symbolScale="default"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
@@ -135,7 +135,7 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="play.circle" catalog="system" width="128" height="123"/>
+        <image name="chevron.right" catalog="system" width="97" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

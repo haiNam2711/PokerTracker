@@ -30,7 +30,7 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func okOnclick(_ sender: Any) {
-        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: amount, cashOut: 0))
+        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: 0, cashOut: 0))
     }
     
     @IBAction func deleteAction(_ sender: Any) {
@@ -57,7 +57,6 @@ extension PlayerViewController {
     
     func configuration() {
         nameLabel.text = name
-        viewModel.fetchPlayerStatus(gameID: idGame, playerID: idPlayer)
         cashInLabel.text = "\(viewModel.player.sumCashIn)"
         amount = viewModel.player.sumCashIn
         print(viewModel.player.sumCashIn)

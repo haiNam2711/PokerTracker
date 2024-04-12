@@ -27,7 +27,6 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         configuration()
-        print(gameID)
     }
 
     @IBAction func backOnClick(_ sender: Any) {
@@ -41,7 +40,6 @@ class GameViewController: UIViewController {
     
     @IBAction func historyGameOnClick(_ sender: Any) {
         let historyVC = HistoryViewController()
-        historyVC.gameID = gameID
         navigationController?.pushViewController(historyVC, animated: true)
     }
 }
@@ -59,9 +57,6 @@ extension GameViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         initViewModel()
-        if let newPlayer = UserDefaults.standard.value(forKey: "playerID") as? Int {
-            playerID = newPlayer
-        }
     }
     
     func initViewModel() {
@@ -78,11 +73,9 @@ extension GameViewController {
         let cancelAction = UIAlertAction(title: "Hủy bỏ", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
             if let name = alertController.textFields?.first?.text {
-                let player = Player(id: self?.playerID, name: name)
+                let player = Player(name: name)
                 self?.viewModel.createNewPlayer(player: player)
                 if self?.viewModel.success == true {
-                    self?.playerID += 1
-                    UserDefaults.standard.setValue(self?.playerID, forKey: "playerID")
                     self?.view.makeToast("Thêm người chơi thành công")
                 }else {
                     self?.view.makeToast("Người chơi đã tồn tại hoặc có lỗi đã xảy ra")

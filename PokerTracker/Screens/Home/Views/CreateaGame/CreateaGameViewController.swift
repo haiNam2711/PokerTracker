@@ -23,7 +23,6 @@ class CreateaGameViewController: UIViewController {
     private var viewModel = HomeViewModel()
     var groupContainer = RadioButtonContainer()
     var selectFee = true
-    var idGame = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,7 +32,7 @@ class CreateaGameViewController: UIViewController {
     @IBAction func startGameOnClick(_ sender: Any) {
         
         guard let cashIn = cashInTF.text, let cashOut = cashOutTF.text, let fee = feeTF.text, !cashIn.isEmpty, !cashOut.isEmpty, !fee.isEmpty else { return }
-        let newGame = Game(id: idGame, time: Date(), standardCashIn: Int(cashIn) ?? 0, standardChipOut: Int(cashOut) ?? 0, feeTypeInValue: selectFee, fee: Int(fee) ?? 0)
+        let newGame = Game(time: Date(), standardCashIn: Int(cashIn) ?? 0, standardChipOut: Int(cashOut) ?? 0, feeTypeInValue: selectFee, fee: Int(fee) ?? 0)
         UserDefaults.standard.setValue(cashIn, forKey: "cashin")
         UserDefaults.standard.setValue(cashOut, forKey: "cashout")
         UserDefaults.standard.setValue(fee, forKey: "fee")
@@ -41,13 +40,11 @@ class CreateaGameViewController: UIViewController {
             if let createGame = try viewModel.createAGame(game: newGame) {
                 self.view.makeToast("Tạo phòng thành công")
                 let vc = GameViewController()
-                vc.gameID = idGame
+                vc.gameID = newGame.id ?? 0
                 vc.titleGame = "Poker: " + Date().toString()
                 vc.cashin = cashIn + "k"
                 vc.cashOut = cashOut + " chip"
                 vc.fee = fee + (feeLabel.text ?? "")
-                idGame += 1
-                UserDefaults.standard.setValue(idGame, forKey: "idGame")
                 navigationController?.pushViewController(vc, animated: true)
             }else {
                 self.view.makeToast("Tạo phòng thất bại")
@@ -88,10 +85,6 @@ extension CreateaGameViewController {
             groupContainer.selectedButton = kBT
             feeLabel.text = "K"
         }
-        if let saveidGame = UserDefaults.standard.value(forKey: "idGame") as? Int {
-            idGame = saveidGame
-            print("aaaa: \(idGame)")
-        }
     }
 }
 
@@ -116,10 +109,10 @@ extension CreateaGameViewController: UITextFieldDelegate {
 extension CreateaGameViewController: RadioButtonDelegate {
     func radioButtonDidSelect(_ button: MBRadioButton.RadioButton) {
         if button == ptBT {
-            selectFee = true
+            selectFee = false
             feeLabel.text = "%"
         }else {
-            selectFee = false
+            selectFee = true
             feeLabel.text = "K"
         }
         UserDefaults.standard.setValue(selectFee, forKey: "feetype")
