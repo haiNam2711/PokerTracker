@@ -13,6 +13,7 @@ class PlayerViewController: UIViewController {
     var idGame = 0
     var idPlayer = 0
     var amount = 0
+    var cashIn = 0
     
     private let viewModel = PlayerViewModel()
     
@@ -30,7 +31,9 @@ class PlayerViewController: UIViewController {
     }
 
     @IBAction func okOnclick(_ sender: Any) {
-        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: 0, cashOut: 0))
+        let sum = cashIn * amount
+        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum, cashOut: 0))
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func deleteAction(_ sender: Any) {
@@ -56,7 +59,7 @@ class PlayerViewController: UIViewController {
 extension PlayerViewController {
     
     func configuration() {
-        nameLabel.text = name
+        nameLabel.text = name + "\(idPlayer)"
         cashInLabel.text = "\(viewModel.player.sumCashIn)"
         amount = viewModel.player.sumCashIn
         print(viewModel.player.sumCashIn)

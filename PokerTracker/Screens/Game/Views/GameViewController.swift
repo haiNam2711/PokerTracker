@@ -112,6 +112,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         vc.name = namePlayer
         vc.idGame = gameID
         vc.idPlayer = idPlayer ?? 0
+        vc.cashIn = Int(cashin) ?? 0
         print("debug \(vc.idPlayer)")
     }
     
