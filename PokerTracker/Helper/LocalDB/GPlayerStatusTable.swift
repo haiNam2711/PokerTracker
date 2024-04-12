@@ -16,10 +16,12 @@ class GPlayerStatusTable {
     static let playerActive = Expression<Bool>("PlayerActive")
     static let sumCashIn = Expression<Int>("SumCashIn")
     static let sumCashOut = Expression<Int>("SumCashOut")
+    static let sumCashAfterFee = Expression<Int>("SumCashAfterFee")
+    static let sumChip = Expression<Int>("SumChip")
     
     static func insert(item: GPlayerStatus) throws {
         let DB = LocalDB.shared.getDB()
-        let insert = playerInGame.insert(gameID <- item.gameID, playerID <- item.playerID, playerActive <- false, sumCashIn <- 0, sumCashOut <- 0)
+        let insert = playerInGame.insert(gameID <- item.gameID, playerID <- item.playerID, playerActive <- false, sumCashIn <- 0, sumCashOut <- 0, sumChip <- 0, sumCashAfterFee <- 0)
         let rowId = try DB.run(insert)
         if rowId <= 0 {
             throw DBError(message: "error insert player status item")
@@ -33,7 +35,7 @@ class GPlayerStatusTable {
         let query = playerInGame
             .filter(self.gameID == gameID)
             .join(players, on: playerInGame[playerID] == players[playerID])
-            .select([playerInGame[playerID], playerInGame[playerActive], playerInGame[sumCashIn], playerInGame[sumCashOut], players[name]])
+            .select([playerInGame[*], players[name]])
         let rows = try DB.prepare(query)
         
         var res: [GetActivePlayerResult] = []
@@ -49,8 +51,17 @@ class GPlayerStatusTable {
         }
         let DB = LocalDB.shared.getDB()
         let active = record.cashIn > 0 ? true : false
+        guard let game = try GameTable.find(gameID: record.gameID) else {return}
+        var addSumCashAfterFee: Int = 0
+        if record.cashIn > 0 {
+            if game.feeTypeInValue == true {
+                addSumCashAfterFee = record.cashIn - game.fee
+            } else {
+                addSumCashAfterFee = record.cashIn * (1 - game.fee)
+            }
+        }
         
-        let update = playerInGame.filter(gameID == record.gameID && playerID == record.playerID).update(playerActive <- active, sumCashIn += record.cashIn, sumCashOut += record.cashOut)
+        let update = playerInGame.filter(gameID == record.gameID && playerID == record.playerID).update(playerActive <- active, sumCashIn += record.cashIn, sumCashOut += record.cashOut, sumCashAfterFee += addSumCashAfterFee)
         let rowId = try DB.run(update)
         if rowId <= 0 {
             throw DBError(message: "error update player status item")
@@ -61,9 +72,10 @@ class GPlayerStatusTable {
         let DB = LocalDB.shared.getDB()
         let query = playerInGame.filter(self.gameID == gameID && self.playerID == playerID)
         if let row = try DB.pluck(query) {
-            return GPlayerStatus(playerID: row[self.playerID], gameID: row[self.gameID], playerActive: row[playerActive], sumCashIn: row[sumCashIn], sumCashOut: row[sumCashOut])
-        }else {
+            return GPlayerStatus(playerID: row[self.playerID], gameID: row[self.gameID], playerActive: row[playerActive], sumCashIn: row[sumCashIn], sumCashOut: row[sumCashOut], sumChip: row[sumChip], sumCashAfterFee: row[sumCashAfterFee])
+        } else {
             return nil
         }
     }
+    
 }

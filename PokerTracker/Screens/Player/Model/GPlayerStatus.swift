@@ -13,12 +13,16 @@ class GPlayerStatus {
     let playerActive: Bool
     let sumCashIn: Int
     let sumCashOut: Int
+    let sumCashAfterFee: Int
+    let sumChip: Int
     
-    init(playerID: Int, gameID: Int, playerActive: Bool, sumCashIn: Int, sumCashOut: Int) {
+    init(playerID: Int, gameID: Int, playerActive: Bool, sumCashIn: Int, sumCashOut: Int, sumChip: Int, sumCashAfterFee: Int) {
         self.playerID = playerID
         self.gameID = gameID
         self.playerActive = playerActive
         self.sumCashIn = sumCashIn
         self.sumCashOut = sumCashOut
+        self.sumChip = sumChip
+        self.sumCashAfterFee = sumCashAfterFee
     }
 }

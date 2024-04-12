@@ -39,7 +39,7 @@ final class GameViewModel {
     
     func addPlayerToGame(playerID: Int, gameID: Int) {
         do {
-            try GPlayerStatusTable.insert(item: GPlayerStatus(playerID: playerID, gameID: gameID, playerActive: false, sumCashIn: 0, sumCashOut: 0))
+            try GPlayerStatusTable.insert(item: GPlayerStatus(playerID: playerID, gameID: gameID, playerActive: false, sumCashIn: 0, sumCashOut: 0, sumChip: 0, sumCashAfterFee: 0))
         }catch {
             print(error.localizedDescription)
         }

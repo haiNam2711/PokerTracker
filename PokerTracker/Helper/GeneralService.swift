@@ -34,7 +34,7 @@ extension GeneralService {
     }
     
     static func addPlayerToAGame(playerID: Int, gameID: Int) throws {
-        try GPlayerStatusTable.insert(item: GPlayerStatus(playerID: playerID, gameID: gameID, playerActive: false, sumCashIn: 0, sumCashOut: 0))
+        try GPlayerStatusTable.insert(item: GPlayerStatus(playerID: playerID, gameID: gameID, playerActive: false, sumCashIn: 0, sumCashOut: 0, sumChip: 0, sumCashAfterFee: 0))
     }
     
 }
@@ -59,5 +59,10 @@ extension GeneralService {
     static func getRecordHistory(byGameID gameID: Int) throws -> [GetGameRecordResult] {
         return try GameRecordTable.findAll(byGameID: gameID)
     }
+    
+}
+
+//MARK: - Filter Screen
+extension GeneralService {
     
 }
