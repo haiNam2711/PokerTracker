@@ -14,10 +14,10 @@ class GPlayerStatusTable {
     static let gameID = Expression<Int>("GameID")
     static let playerID = Expression<Int>("PlayerID")
     static let playerActive = Expression<Bool>("PlayerActive")
-    static let sumCashIn = Expression<Int>("SumCashIn")
-    static let sumCashOut = Expression<Int>("SumCashOut")
-    static let sumCashAfterFee = Expression<Int>("SumCashAfterFee")
-    static let sumChip = Expression<Int>("SumChip")
+    static let sumCashIn = Expression<Int>("SumCashIn") //k
+    static let sumCashOut = Expression<Int>("SumCashOut") //k
+    static let sumCashAfterFee = Expression<Int>("SumCashAfterFee") //k + fee
+    static let sumChip = Expression<Int>("SumChip") //chip
     
     static func insert(item: GPlayerStatus) throws {
         let DB = LocalDB.shared.getDB()
@@ -76,6 +76,14 @@ class GPlayerStatusTable {
         } else {
             return nil
         }
+    }
+    
+    static func updatePlayer(idGame: Int, idPlayer: Int, cashIn: Int, cashOut: Int, cashFee: Int, chipOut: Int, active: Bool) throws -> GPlayerStatus {
+        let DB = LocalDB.shared.getDB()
+        let update = playerInGame.update(playerActive <- active, sumCashIn <- cashIn, sumCashOut <- cashOut, sumCashAfterFee <- cashFee, sumChip <- chipOut, gameID <- idGame, playerID <- idPlayer)
+        let afterRow = try DB.run(update)
+
+        return GPlayerStatus(playerID: idPlayer, gameID: idGame, playerActive: active, sumCashIn: cashIn, sumCashOut: cashOut, sumChip: chipOut, sumCashAfterFee: cashFee)
     }
     
 }

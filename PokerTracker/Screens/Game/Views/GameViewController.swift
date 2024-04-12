@@ -52,7 +52,7 @@ extension GameViewController {
         nameGameLabel.text = titleGame
         infoTV.text = """
             Cashin: \(cashin)
-            Cashout: \(cashOut)
+            Chipout: \(cashOut)
             Fee: \(fee)
         """
         collectionView.register(UINib(nibName: "PlayerCell", bundle: nil), forCellWithReuseIdentifier: "PlayerCell")

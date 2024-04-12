@@ -12,8 +12,8 @@ class GameTable {
     static let games = Table("Game")
     static let id = Expression<Int>("GameID")
     static let time = Expression<Date>("Time")
-    static let cashIn = Expression<Int>("CashIn")
-    static let chipOut = Expression<Int>("ChipOut")
+    static let cashIn = Expression<Int>("CashIn") //k
+    static let chipOut = Expression<Int>("ChipOut") // chip
     static let feeTypeInValue = Expression<Bool>("FeeTypeInValue")
     static let fee = Expression<Int>("Fee")
     
