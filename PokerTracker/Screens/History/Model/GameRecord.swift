@@ -8,13 +8,15 @@
 import Foundation
 
 class GameRecord {
+    let id: Int?
     let gameID: Int
     let time: Date
     let playerID: Int
-    let cashIn: Int
-    let cashOut: Int
+    var cashIn: Int
+    var cashOut: Int
     
-    init(gameID: Int, time: Date, playerID: Int, cashIn: Int, cashOut: Int) {
+    init(id: Int? = nil, gameID: Int, time: Date, playerID: Int, cashIn: Int, cashOut: Int) {
+        self.id = id
         self.gameID = gameID
         self.time = time
         self.playerID = playerID

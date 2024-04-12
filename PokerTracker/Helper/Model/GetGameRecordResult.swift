@@ -8,8 +8,8 @@
 import Foundation
 class GetGameRecordResult: GameRecord {
     var playerName: String
-    init(playerName: String, gameID: Int, time: Date, playerID: Int, cashIn: Int, cashOut: Int) {
+    init(id: Int, playerName: String, gameID: Int, time: Date, playerID: Int, cashIn: Int, cashOut: Int) {
         self.playerName = playerName
-        super.init(gameID: gameID, time: time, playerID: playerID, cashIn: cashIn, cashOut: cashOut)
+        super.init(id: id, gameID: gameID, time: time, playerID: playerID, cashIn: cashIn, cashOut: cashOut)
     }
 }

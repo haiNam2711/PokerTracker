@@ -110,6 +110,7 @@ class GPlayerStatusTable {
         }
         // delete record
         let update = playerInGame.filter(gameID == gameRecord.gameID && playerID == gameRecord.playerID).update(playerActive <- active, sumCashIn -= gameRecord.cashIn, sumCashOut -= gameRecord.cashOut, sumCashAfterFee -= addSumCashAfterFee)
+        let rowId = try DB.run(update)
     }
     
     static func getPlayerStatus(gameID: Int, playerID: Int) throws -> GPlayerStatus? {

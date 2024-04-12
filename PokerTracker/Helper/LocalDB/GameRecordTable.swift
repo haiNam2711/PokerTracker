@@ -12,6 +12,7 @@ class GameRecordTable {
     
     static let gameRecord = Table("GameRecord")
     static let gameID = Expression<Int>("GameID")
+    static let id = Expression<Int>("GameRecordID")
     static let playerID = Expression<Int>("PlayerID")
     static let time = Expression<Date>("Time")
     static let cashIn = Expression<Int>("CashIn")
@@ -30,8 +31,9 @@ class GameRecordTable {
     #warning("Can bug")
     static func update(item: GameRecord) throws {
         let DB = LocalDB.shared.getDB()
-        let getGameRecordQuery = gameRecord.filter(self.gameID == item.gameID && self.playerID == item.playerID)
-        let update = gameRecord.filter(gameID == item.gameID && playerID == item.playerID).update(time <- item.time, cashIn <- item.cashIn, cashOut <- item.cashOut)
+        let id = item.id ?? 0
+        let getGameRecordQuery = gameRecord.filter(self.id == id)
+        let update = getGameRecordQuery.update(time <- item.time, cashIn <- item.cashIn, cashOut <- item.cashOut)
         let rowId = try DB.run(update)
         if rowId <= 0 {
             throw DBError(message: "error update gamerecord item")
@@ -51,7 +53,7 @@ class GameRecordTable {
         
         var res: [GetGameRecordResult] = []
         for row in rows {
-            res.append(GetGameRecordResult(playerName: row[name], gameID: row[self.gameID], time: row[time], playerID: row[playerID], cashIn: row[cashIn], cashOut: row[cashOut]))
+            res.append(GetGameRecordResult(id: row[id], playerName: row[name], gameID: row[self.gameID], time: row[time], playerID: row[playerID], cashIn: row[cashIn], cashOut: row[cashOut]))
         }
         return res
     }
