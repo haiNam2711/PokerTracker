@@ -30,6 +30,7 @@ class PlayerCell: UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        sumLabel.isHidden = true
     }
     
     func playerConfiguration() {
@@ -39,14 +40,26 @@ class PlayerCell: UICollectionViewCell {
     func playerStatusConfiguration() {
         buyInLabel.text = "\(playerStatus?.sumCashIn ?? 0) k"
         cashOutLabel.text = "\(playerStatus?.sumCashOut ?? 0) chip"
-        sumLabel.text = "1000 k"
+        if let sumCashOut = playerStatus?.sumCashOut, sumCashOut != 0 {
+            cashOutLabel.text = "\(sumCashOut) chip"
+            sumLabel.text = "1000 k"
+            sumLabel.isHidden = false
+        } else {
+            sumLabel.isHidden = true
+        }
         updatePlayButton()
     }
     
     
     func updatePlayButton() {
         if let isActive = playerStatus?.playerActive {
-            playerButton.backgroundColor = isActive ? .green : .lightGray
+            if isActive {
+                playerButton.backgroundColor = .yellow
+            } else {
+                playerButton.backgroundColor = .lightGray
+            }
+        } else {
+            playerButton.backgroundColor = .lightGray
         }
     }
 }

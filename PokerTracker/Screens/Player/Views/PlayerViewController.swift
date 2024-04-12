@@ -8,38 +8,56 @@
 import UIKit
 
 class PlayerViewController: UIViewController {
-
+    
     var name: String = ""
     var idGame = 0
     var idPlayer = 0
     var amount = 0
     var cashIn = 0
     var sum = 0
-    var newAmonut = 0
+    var amonutOld = 0
     
     private let viewModel = PlayerViewModel()
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cashInLabel: UILabel!
-    @IBOutlet weak var cashOutLabel: UITextField!
+    @IBOutlet weak var cashOutTF: UITextField!
     @IBOutlet weak var deleteBT: UIButton!
     @IBOutlet weak var moreBT: UIButton!
     @IBOutlet weak var okButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         configuration()
     }
-
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    
     @IBAction func okOnclick(_ sender: Any) {
+        var sumOut = 0
+        guard let cashOut = cashOutTF.text, !cashOut.isEmpty else {
+            sum = cashIn * amount
+            viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum, cashOut: 0))
+            navigationController?.popViewController(animated: true)
+            return
+        }
+        
+        guard let cashOut = Int(cashOut) else {
+            return
+        }
         sum = cashIn * amount
-        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum, cashOut: 0))
+        
+        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum, cashOut: cashOut))
         navigationController?.popViewController(animated: true)
     }
     
     @IBAction func deleteAction(_ sender: Any) {
-        if amount < viewModel.player.sumCashIn {
+        if amount <= amonutOld {
             
         }else {
             amount -= 1
@@ -50,9 +68,7 @@ class PlayerViewController: UIViewController {
     
     @IBAction func moreAction(_ sender: Any) {
         amount += 1
-        newAmonut = amount
-        cashInLabel.text = "\(newAmonut)"
-        print(newAmonut)
+        cashInLabel.text = "\(amount)"
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -69,7 +85,36 @@ extension PlayerViewController {
         nameLabel.text = name
         viewModel.fetchPlayerStatus(gameID: idGame, playerID: idPlayer)
         amount = viewModel.player.sumCashIn / cashIn
-        cashInLabel.text = "\(amount - newAmonut)"
+        amonutOld = viewModel.player.sumCashIn / cashIn
+        cashInLabel.text = "\(amount)"
+        registerObserver()
+    }
+    
+    private func registerObserver() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        
+        let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
+        let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double) ?? 0
+        
+        UIView.animate(withDuration: duration) {[weak self] in
+            guard let self = self else { return}
+            
+            self.okButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + self.safeAreaInsets.bottom)
+        }
+    }
+    
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double) ?? 0
+        
+        UIView.animate(withDuration: duration) {[weak self] in
+            guard let self = self else { return}
+            
+            self.okButton.transform = .identity
+        }
     }
     
     func renamePlayer() {
@@ -82,20 +127,15 @@ extension PlayerViewController {
         let cancelAction = UIAlertAction(title: "Hủy bỏ", style: .cancel, handler: nil)
         let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
             if let name = alertController.textFields?.first?.text {
-                print("id: \(self?.idPlayer)")
                 self?.viewModel.updateName(playerID: self?.idPlayer ?? 0, name: name)
-//                if self?.viewModel.success == true {
                 self?.nameLabel.text = name
-                    self?.view.makeToast("Thay đổi tên thành công")
-//                }else {
-//                    self?.view.makeToast("Người chơi đã tồn tại hoặc có lỗi đã xảy ra")
-//                }
+                self?.view.makeToast("Thay đổi tên thành công")
             }
         }
         
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         present(alertController, animated: true)
-
+        
     }
 }

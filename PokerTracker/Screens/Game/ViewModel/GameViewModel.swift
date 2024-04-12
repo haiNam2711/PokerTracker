@@ -49,13 +49,26 @@ final class GameViewModel {
     
     func fetchPlayerStatus(gameID: Int, playerID: Int) -> GPlayerStatus? {
         do {
-            guard let player = try GPlayerStatusTable.getPlayerStatus(gameID: gameID, playerID: playerID) else { return nil }
-            return player
+            return try GPlayerStatusTable.getPlayerStatus(gameID: gameID, playerID: playerID)
         }catch {
             print(error.localizedDescription)
             return nil
         }
     }
     
+    func sortPlayersByCashIn(gameID: Int) {
+        players.sort { (player1, player2) -> Bool in
+            guard let status1 = fetchPlayerStatus(gameID: gameID, playerID: player1.id ?? 0),
+                  let status2 = fetchPlayerStatus(gameID: gameID, playerID: player2.id ?? 0) else {
+                if fetchPlayerStatus(gameID: gameID, playerID: player1.id ?? 0) == nil {
+                    return false
+                } else {
+                    return true
+                }
+            }
+            let cashIn1 = status1.sumCashIn
+            let cashIn2 = status2.sumCashIn
+            return cashIn1 > cashIn2
+        }
+    }
 }
-

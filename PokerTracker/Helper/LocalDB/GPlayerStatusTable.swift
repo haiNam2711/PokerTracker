@@ -46,13 +46,12 @@ class GPlayerStatusTable {
     }
     
     static func update(withNewMoneyRecord record: GameRecord) throws {
-        if record.cashIn > 0 && record.cashOut > 0 {
-            throw DBError(message: "Cash in and cash out in the same time!!!!")
-        }
+//        if record.cashIn > 0 && record.cashOut > 0 {
+//            throw DBError(message: "Cash in and cash out in the same time!!!!")
+//        }
         let DB = LocalDB.shared.getDB()
         let query = playerInGame.filter(self.gameID == record.gameID && self.playerID == record.playerID)
         if try DB.pluck(query) == nil {
-            print(1)
             try insert(item: GPlayerStatus(playerID: record.playerID, gameID: record.gameID, playerActive: false, sumCashIn: 0, sumCashOut: 0, sumChip: 0, sumCashAfterFee: 0))
         }
         let active = record.cashIn > 0 ? true : false
@@ -60,13 +59,14 @@ class GPlayerStatusTable {
         var addSumCashAfterFee: Int = 0
         if record.cashIn > 0 {
             if game.feeTypeInValue == true {
-                addSumCashAfterFee = record.cashIn - game.fee
+                addSumCashAfterFee = record.cashIn + ((record.cashIn)/game.standardCashIn)*game.fee
             } else {
-                addSumCashAfterFee = record.cashIn * (1 - game.fee)
+                addSumCashAfterFee = Int(Float(record.cashIn)*(Float(1) + Float(game.fee)/Float(100)))
+
             }
         }
         
-        let update = playerInGame.filter(gameID == record.gameID && playerID == record.playerID).update(playerActive <- active, sumCashIn += record.cashIn, sumCashOut += record.cashOut, sumCashAfterFee += addSumCashAfterFee)
+        let update = playerInGame.filter(gameID == record.gameID && playerID == record.playerID).update(playerActive <- active, sumCashIn <- record.cashIn, sumCashOut <- record.cashOut, sumCashAfterFee <- addSumCashAfterFee)
         let rowId = try DB.run(update)
         if rowId <= 0 {
             print("error here2")

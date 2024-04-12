@@ -15,14 +15,6 @@ final class HomeViewModel {
         return try GameTable.insert(item: game)
     }
     
-//    func getAllGames() throws {
-//        guard let games = try GameTable.findAll() else {
-//            throw NSError(domain: "HomeViewModel", code: 500, userInfo: [NSLocalizedDescriptionKey: "Faild to fetch games"])
-//        }
-//        self.games = games
-//        eventHandler?(.dataLoader)
-//    }
-    
     func fetchGames() {
         do {
             if let fetchGames = try GameTable.findAll() {

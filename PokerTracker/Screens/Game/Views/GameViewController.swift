@@ -36,6 +36,7 @@ class GameViewController: UIViewController {
         
         do {
             viewModel.fetchPlayer()
+            viewModel.sortPlayersByCashIn(gameID: gameID)
             self.collectionView.reloadData()
         } catch {
             print(error.localizedDescription)
@@ -121,10 +122,17 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
         let player = viewModel.players[indexPath.row]
-        let playerStatus = viewModel.fetchPlayerStatus(gameID: gameID, playerID: player.id ?? 0)
-        cell.player = player
-        cell.playerStatus = playerStatus
+        
+        if let playerStatus = viewModel.fetchPlayerStatus(gameID: gameID, playerID: player.id ?? 0) {
+            cell.player = player
+            cell.playerStatus = playerStatus
+        } else {
+            cell.player = player
+            cell.playerStatus = nil
+        }
+        
         return cell
+
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -136,7 +144,7 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         vc.name = namePlayer
         vc.idGame = gameID
         vc.idPlayer = idPlayer ?? 0
-        vc.cashIn = Int(cashin) ?? 0
+        vc.cashIn = Int(cashin) 
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

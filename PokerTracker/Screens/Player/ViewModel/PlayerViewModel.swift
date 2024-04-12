@@ -38,20 +38,4 @@ class PlayerViewModel {
             print(error.localizedDescription)
         }
     }
-    
-//    func addPlayerToGame(playerID: Int, gameID: Int, sumCashin: Int, sumCashOut: Int, active: Bool) {
-//        do {
-//            try GPlayerStatusTable.insert(item: GPlayerStatus(playerID: playerID, gameID: gameID, playerActive: active, sumCashIn: sumCashin, sumCashOut: sumCashOut, sumChip: 0, sumCashAfterFee: 0))
-//        } catch {
-//            print(error.localizedDescription)
-//        }
-//    }
-    
-//    func updatePlayer(idGame: Int, idPlayer: Int, cashIn: Int, cashOut: Int, cashFee: Int, chipOut: Int, active: Bool) {
-//        do {
-//            let player = try GPlayerStatusTable.updatePlayer(idGame: idGame, idPlayer: idPlayer, cashIn: cashIn, cashOut: cashOut, cashFee: cashFee, chipOut: chipOut, active: active)
-//        }catch {
-//            print(error.localizedDescription)
-//        }
-//    }
 }

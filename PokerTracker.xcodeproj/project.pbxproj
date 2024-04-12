@@ -22,6 +22,7 @@
 		26BAFFD42BC522BB009241A9 /* GameRecordTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFD32BC522BB009241A9 /* GameRecordTable.swift */; };
 		26BAFFD62BC52BEC009241A9 /* GetActivePlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */; };
 		359245E7BE50D6CC0C2E2944 /* Pods_PokerTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */; };
+		903964892BC9A1E000C9DB4E /* ViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */; };
 		B31411852BC4E80900CAE99B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411602BC4E80900CAE99B /* Player.swift */; };
 		B31411862BC4E80900CAE99B /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411622BC4E80900CAE99B /* GameViewModel.swift */; };
 		B31411872BC4E80900CAE99B /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411642BC4E80900CAE99B /* PlayerCell.swift */; };
@@ -66,6 +67,7 @@
 		26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActivePlayerResult.swift; sourceTree = "<group>"; };
 		455601E72079F477011C0B34 /* Pods-PokerTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokerTracker.release.xcconfig"; path = "Target Support Files/Pods-PokerTracker/Pods-PokerTracker.release.xcconfig"; sourceTree = "<group>"; };
 		713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokerTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + Extension.swift"; sourceTree = "<group>"; };
 		9852524EF93548091731D962 /* Pods-PokerTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokerTracker.debug.xcconfig"; path = "Target Support Files/Pods-PokerTracker/Pods-PokerTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		B31411602BC4E80900CAE99B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B31411622BC4E80900CAE99B /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 			isa = PBXGroup;
 			children = (
 				B35152932BC5271000F4F82B /* Date + String Extension.swift */,
+				903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				26BAFFAC2BC4E44B009241A9 /* AppDelegate.swift in Sources */,
 				B31411902BC4E80900CAE99B /* HomeCell.swift in Sources */,
 				B31411852BC4E80900CAE99B /* Player.swift in Sources */,
+				903964892BC9A1E000C9DB4E /* ViewController + Extension.swift in Sources */,
 				26BAFFD62BC52BEC009241A9 /* GetActivePlayerResult.swift in Sources */,
 				B31411892BC4E80900CAE99B /* GameViewController.swift in Sources */,
 				B31411942BC4E80900CAE99B /* GPlayerStatus.swift in Sources */,
