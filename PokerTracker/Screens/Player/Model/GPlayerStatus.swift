@@ -11,7 +11,7 @@ class GPlayerStatus {
     let playerID: Int
     let gameID: Int
     var playerActive: Bool
-    var sumCashIn: Int
+    var sumCashIn: Int //K
     var sumCashOut: Int
     var sumCashAfterFee: Int
     var sumChip: Int

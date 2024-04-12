@@ -44,7 +44,8 @@ class CreateaGameViewController: UIViewController {
                 vc.titleGame = "Poker: " + Date().toString()
                 vc.cashin = Int(cashIn) ?? 0
                 vc.cashOut = Int(cashOut) ?? 0
-                vc.fee = fee + (feeLabel.text ?? "")
+                vc.fee = Int(fee) ?? 0
+                vc.feeBool = selectFee
                 navigationController?.pushViewController(vc, animated: true)
             }else {
                 self.view.makeToast("Tạo phòng thất bại")

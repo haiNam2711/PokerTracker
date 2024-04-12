@@ -12,6 +12,7 @@ class HistoryViewController: UIViewController {
     var records: [GetGameRecordResult]!
     var gameID: Int!
     var game: Game!
+
     @IBOutlet weak var historyTableView: UITableView!
     
     override func viewDidLoad() {

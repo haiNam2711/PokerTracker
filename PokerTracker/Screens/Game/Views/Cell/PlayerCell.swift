@@ -13,6 +13,7 @@ class PlayerCell: UICollectionViewCell {
     @IBOutlet weak var buyInLabel: UILabel!
     @IBOutlet weak var cashOutLabel: UILabel!
     @IBOutlet weak var playerButton: UIButton!
+    @IBOutlet weak var sumLabel: UILabel!
     
     var player: Player? {
         didSet {
@@ -38,6 +39,7 @@ class PlayerCell: UICollectionViewCell {
     func playerStatusConfiguration() {
         buyInLabel.text = "\(playerStatus?.sumCashIn ?? 0) k"
         cashOutLabel.text = "\(playerStatus?.sumCashOut ?? 0) chip"
+        sumLabel.text = "1000 k"
         updatePlayButton()
     }
     

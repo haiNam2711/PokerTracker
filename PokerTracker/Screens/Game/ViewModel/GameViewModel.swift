@@ -12,6 +12,8 @@ final class GameViewModel {
     var players: [Player] = []
     var success = false
     
+    var player: GPlayerStatus = GPlayerStatus(playerID: 0, gameID: 0, playerActive: true, sumCashIn: 0, sumCashOut: 0, sumChip: 0, sumCashAfterFee: 0)
+    
     func createNewPlayer(player: Player) {
         do {
             if players.contains(where: { $0.name == player.name }) {
@@ -44,5 +46,16 @@ final class GameViewModel {
             print(error.localizedDescription)
         }
     }
+    
+    func fetchPlayerStatus(gameID: Int, playerID: Int) -> GPlayerStatus? {
+        do {
+            guard let player = try GPlayerStatusTable.getPlayerStatus(gameID: gameID, playerID: playerID) else { return nil }
+            return player
+        }catch {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
 }
 

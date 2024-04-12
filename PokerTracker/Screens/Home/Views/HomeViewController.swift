@@ -71,11 +71,8 @@ extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelega
         gameVC.titleGame = "Poker: " + viewModel.games[indexPath.row].time.toString()
         gameVC.cashin = viewModel.games[indexPath.row].standardCashIn
         gameVC.cashOut = viewModel.games[indexPath.row].standardChipOut
-        if viewModel.games[indexPath.row].feeTypeInValue {
-            gameVC.fee = "\(viewModel.games[indexPath.row].fee) %"
-        }else {
-            gameVC.fee = "\(viewModel.games[indexPath.row].fee) k"
-        }
+        gameVC.feeBool = viewModel.games[indexPath.row].feeTypeInValue
+        gameVC.fee = viewModel.games[indexPath.row].fee
         
         navigationController?.pushViewController(gameVC, animated: true)
     }

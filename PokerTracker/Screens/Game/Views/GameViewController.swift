@@ -13,10 +13,11 @@ class GameViewController: UIViewController {
     var titleGame: String = ""
     var cashin: Int = 0
     var cashOut: Int = 0
-    var fee: String = ""
+    var fee: Int = 0
+    var feeBool = true
     var playerID = 0
     var gameID = 0
-    
+        
     @IBOutlet weak var nameGameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var infoTV: UITextView!
@@ -27,6 +28,18 @@ class GameViewController: UIViewController {
         super.viewDidLoad()
         
         configuration()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        do {
+            viewModel.fetchPlayer()
+            self.collectionView.reloadData()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 
     @IBAction func backOnClick(_ sender: Any) {
@@ -40,7 +53,7 @@ class GameViewController: UIViewController {
     
     @IBAction func historyGameOnClick(_ sender: Any) {
         let historyVC = HistoryViewController()
-        historyVC.gameID = self.gameID
+        historyVC.gameID = gameID
         navigationController?.pushViewController(historyVC, animated: true)
     }
 }
@@ -49,11 +62,19 @@ extension GameViewController {
     
     func configuration() {
         nameGameLabel.text = titleGame
-        infoTV.text = """
-            Cashin: \(cashin) k
-            Chipout: \(cashOut) chip
-            Fee: \(fee)
-        """
+        if feeBool {
+            infoTV.text = """
+                Cashin: \(cashin) k
+                Chipout: \(cashOut) chip
+                Fee: \(fee) k
+            """
+        } else {
+            infoTV.text = """
+                Cashin: \(cashin) k
+                Chipout: \(cashOut) chip
+                Fee: \(fee) %
+            """
+        }
         collectionView.register(UINib(nibName: "PlayerCell", bundle: nil), forCellWithReuseIdentifier: "PlayerCell")
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -63,7 +84,7 @@ extension GameViewController {
     func initViewModel() {
         viewModel.fetchPlayer()
     }
-    
+        
     func showNameAlert() {
         let alertController = UIAlertController(title: "Thêm người chơi mới", message: nil, preferredStyle: .alert)
         
@@ -100,7 +121,9 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
         let player = viewModel.players[indexPath.row]
+        let playerStatus = viewModel.fetchPlayerStatus(gameID: gameID, playerID: player.id ?? 0)
         cell.player = player
+        cell.playerStatus = playerStatus
         return cell
     }
     
@@ -114,7 +137,6 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         vc.idGame = gameID
         vc.idPlayer = idPlayer ?? 0
         vc.cashIn = Int(cashin) ?? 0
-        print("debug \(vc.idPlayer)")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
