@@ -13,13 +13,14 @@ class PlayerTable {
     static let id = Expression<Int>("PlayerID")
     static let name = Expression<String>("Name")
     
-    static func insert(item: Player) throws {
+    static func insert(item: Player) throws -> Player {
         let DB = LocalDB.shared.getDB()
         let insert = players.insert(name <- item.name)
         let rowId = try DB.run(insert)
         if rowId <= 0 {
             throw DBError(message: "error insert game item")
         }
+        return Player(id: Int(rowId), name: item.name)
     }
     
     static func findAll() throws -> [Player]? {

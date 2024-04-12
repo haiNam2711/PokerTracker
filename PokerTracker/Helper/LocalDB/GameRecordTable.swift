@@ -22,6 +22,7 @@ class GameRecordTable {
         let insert = gameRecord.insert(gameID <- item.gameID, playerID <- item.playerID, time <- item.time, cashIn <- item.cashIn, cashOut <- item.cashOut)
         let rowId = try DB.run(insert)
         if rowId <= 0 {
+            print("error here")
             throw DBError(message: "error insert game record item")
         }
     }

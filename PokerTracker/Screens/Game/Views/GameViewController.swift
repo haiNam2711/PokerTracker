@@ -108,10 +108,11 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         let namePlayer = viewModel.players[indexPath.row].name
         let idPlayer = viewModel.players[indexPath.row].id
         let vc = PlayerViewController()
+        navigationController?.pushViewController(vc, animated: true)
         vc.name = namePlayer
         vc.idGame = gameID
         vc.idPlayer = idPlayer ?? 0
-        navigationController?.pushViewController(vc, animated: true)
+        print("debug \(vc.idPlayer)")
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

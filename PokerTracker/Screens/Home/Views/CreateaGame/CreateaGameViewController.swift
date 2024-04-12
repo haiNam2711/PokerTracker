@@ -40,7 +40,7 @@ class CreateaGameViewController: UIViewController {
             if let createGame = try viewModel.createAGame(game: newGame) {
                 self.view.makeToast("Tạo phòng thành công")
                 let vc = GameViewController()
-                vc.gameID = newGame.id ?? 0
+                vc.gameID = createGame.id ?? 0
                 vc.titleGame = "Poker: " + Date().toString()
                 vc.cashin = cashIn + "k"
                 vc.cashOut = cashOut + " chip"

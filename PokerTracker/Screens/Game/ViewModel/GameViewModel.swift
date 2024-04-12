@@ -17,8 +17,8 @@ final class GameViewModel {
             if players.contains(where: { $0.name == player.name }) {
                 success = false
             }else {
-                try PlayerTable.insert(item: player)
-                players.append(player)
+                var newPlayer = try PlayerTable.insert(item: player)
+                players.append(newPlayer)
                 success = true
             }
         }catch {

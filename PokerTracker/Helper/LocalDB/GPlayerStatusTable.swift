@@ -50,8 +50,9 @@ class GPlayerStatusTable {
             throw DBError(message: "Cash in and cash out in the same time!!!!")
         }
         let DB = LocalDB.shared.getDB()
-        let query = playerInGame.filter(self.gameID == gameID && self.playerID == playerID)
+        let query = playerInGame.filter(self.gameID == record.gameID && self.playerID == record.playerID)
         if try DB.pluck(query) == nil {
+            print(1)
             try insert(item: GPlayerStatus(playerID: record.playerID, gameID: record.gameID, playerActive: false, sumCashIn: 0, sumCashOut: 0, sumChip: 0, sumCashAfterFee: 0))
         }
         let active = record.cashIn > 0 ? true : false
@@ -68,6 +69,7 @@ class GPlayerStatusTable {
         let update = playerInGame.filter(gameID == record.gameID && playerID == record.playerID).update(playerActive <- active, sumCashIn += record.cashIn, sumCashOut += record.cashOut, sumCashAfterFee += addSumCashAfterFee)
         let rowId = try DB.run(update)
         if rowId <= 0 {
+            print("error here2")
             throw DBError(message: "error update player status item")
         }
     }
