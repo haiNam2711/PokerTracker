@@ -169,8 +169,8 @@
 				26BAFFC82BC4EBC2009241A9 /* LocalDB.swift */,
 				26BAFFC62BC4EBA7009241A9 /* GameTable.swift */,
 				26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */,
-				26BAFFCA2BC4EBD8009241A9 /* GPlayerStatusTable.swift */,
 				26BAFFD32BC522BB009241A9 /* GameRecordTable.swift */,
+				26BAFFCA2BC4EBD8009241A9 /* GPlayerStatusTable.swift */,
 			);
 			path = LocalDB;
 			sourceTree = "<group>";

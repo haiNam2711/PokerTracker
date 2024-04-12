@@ -50,6 +50,10 @@ class GPlayerStatusTable {
             throw DBError(message: "Cash in and cash out in the same time!!!!")
         }
         let DB = LocalDB.shared.getDB()
+        let query = playerInGame.filter(self.gameID == gameID && self.playerID == playerID)
+        if try DB.pluck(query) == nil {
+            try insert(item: GPlayerStatus(playerID: record.playerID, gameID: record.gameID, playerActive: false, sumCashIn: 0, sumCashOut: 0, sumChip: 0, sumCashAfterFee: 0))
+        }
         let active = record.cashIn > 0 ? true : false
         guard let game = try GameTable.find(gameID: record.gameID) else {return}
         var addSumCashAfterFee: Int = 0
@@ -66,6 +70,44 @@ class GPlayerStatusTable {
         if rowId <= 0 {
             throw DBError(message: "error update player status item")
         }
+    }
+    
+    static func deleteARecord(gameRecord: GameRecord) throws {
+        let DB = LocalDB.shared.getDB()
+        // GET old status
+        let object = try DB.pluck(playerInGame.filter(gameID == gameRecord.gameID && playerID == gameRecord.playerID))
+        let gameID = Expression<Int>("GameID")
+        let playerID = Expression<Int>("PlayerID")
+        let playerActive = Expression<Bool>("PlayerActive")
+        let sumCashIn = Expression<Int>("SumCashIn")
+        let sumCashOut = Expression<Int>("SumCashOut")
+        let sumCashAfterFee = Expression<Int>("SumCashAfterFee")
+        let sumChip = Expression<Int>("SumChip")
+        let oldGameStatus = GPlayerStatus(playerID: object![playerID], gameID: object![gameID], playerActive: object![playerActive], sumCashIn: object![sumCashIn], sumCashOut: object![sumCashOut], sumChip: object![sumChip], sumCashAfterFee: object![sumCashAfterFee])
+        
+        // Create new active
+        var active: Bool = true
+        if gameRecord.cashIn > 0 {
+            if oldGameStatus.sumCashIn - gameRecord.cashIn > 0 {
+                active = true
+            } else {
+                active = false
+            }
+        } else {
+            active = true
+        }
+        // Create new sumcash
+        guard let game = try GameTable.find(gameID: gameRecord.gameID) else {return}
+        var addSumCashAfterFee = 0
+        if gameRecord.cashIn > 0 {
+            if game.feeTypeInValue == true {
+                addSumCashAfterFee = gameRecord.cashIn - game.fee
+            } else {
+                addSumCashAfterFee = gameRecord.cashIn * (1 - game.fee)
+            }
+        }
+        // delete record
+        let update = playerInGame.filter(gameID == gameRecord.gameID && playerID == gameRecord.playerID).update(playerActive <- active, sumCashIn -= gameRecord.cashIn, sumCashOut -= gameRecord.cashOut, sumCashAfterFee -= addSumCashAfterFee)
     }
     
     static func getPlayerStatus(gameID: Int, playerID: Int) throws -> GPlayerStatus? {
