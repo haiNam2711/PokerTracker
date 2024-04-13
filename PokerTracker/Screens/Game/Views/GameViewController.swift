@@ -144,7 +144,8 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         vc.name = namePlayer
         vc.idGame = gameID
         vc.idPlayer = idPlayer ?? 0
-        vc.cashIn = Int(cashin) 
+        vc.cashIn = Int(cashin)
+        vc.cashOut1 = cashOut
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

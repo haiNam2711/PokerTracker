@@ -14,6 +14,7 @@ class PlayerViewController: UIViewController {
     var idPlayer = 0
     var amount = 0
     var cashIn = 0
+    var cashOut1 = 0
     var sum = 0
     var amonutOld = 0
     
@@ -52,9 +53,10 @@ class PlayerViewController: UIViewController {
         guard let cashOut = Int(cashOut) else {
             return
         }
+        let price = Int((Float(cashOut) / Float(cashOut1))*Float(cashIn))
         sum = cashIn * amount
         
-        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum-viewModel.player.sumCashIn, cashOut: cashOut))
+        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum-viewModel.player.sumCashIn, cashOut: price))
         navigationController?.popViewController(animated: true)
     }
     
@@ -86,7 +88,6 @@ extension PlayerViewController {
     func configuration() {
         nameLabel.text = name
         viewModel.fetchPlayerStatus(gameID: idGame, playerID: idPlayer)
-        print(viewModel.player.sumChip)
         amount = viewModel.player.sumCashIn / cashIn
         amonutOld = viewModel.player.sumCashIn / cashIn
         cashInLabel.text = "\(amount)"

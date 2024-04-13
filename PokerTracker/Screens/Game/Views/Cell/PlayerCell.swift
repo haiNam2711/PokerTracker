@@ -39,10 +39,17 @@ class PlayerCell: UICollectionViewCell {
     
     func playerStatusConfiguration() {
         buyInLabel.text = "\(playerStatus?.sumCashIn ?? 0) k"
-        cashOutLabel.text = "\(playerStatus?.sumCashOut ?? 0) chip"
+        cashOutLabel.text = "\(playerStatus?.sumCashOut ?? 0) k"
         if let sumCashOut = playerStatus?.sumCashOut, sumCashOut != 0 {
+            let sum = sumCashOut - (playerStatus?.sumCashAfterFee ?? 0)
+            if sum < 0 {
+                sumLabel.text = "Ban da lo \(sum) k"
+
+            }else {
+                sumLabel.text = "Ban da lai \(sum) k"
+
+            }
             cashOutLabel.text = "\(sumCashOut) chip"
-            sumLabel.text = "1000 k"
             sumLabel.isHidden = false
         } else {
             sumLabel.isHidden = true
