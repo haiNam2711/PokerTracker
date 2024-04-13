@@ -40,21 +40,23 @@ class PlayerCell: UICollectionViewCell {
     func playerStatusConfiguration() {
         buyInLabel.text = "\(playerStatus?.sumCashIn ?? 0) k"
         cashOutLabel.text = "\(playerStatus?.sumCashOut ?? 0) k"
+        updatePlayButton()
         if let sumCashOut = playerStatus?.sumCashOut, sumCashOut != 0 {
             let sum = sumCashOut - (playerStatus?.sumCashAfterFee ?? 0)
             if sum < 0 {
-                sumLabel.text = "Ban da lo \(sum) k"
+                sumLabel.text = "Bạn đã lỗ \(sum) k"
+                playerButton.backgroundColor = .red
 
             }else {
-                sumLabel.text = "Ban da lai \(sum) k"
+                sumLabel.text = "Bạn đã lãi \(sum) k"
+                playerButton.backgroundColor = .green
 
             }
-            cashOutLabel.text = "\(sumCashOut) chip"
+            cashOutLabel.text = "\(sumCashOut) k"
             sumLabel.isHidden = false
         } else {
             sumLabel.isHidden = true
         }
-        updatePlayButton()
     }
     
     
