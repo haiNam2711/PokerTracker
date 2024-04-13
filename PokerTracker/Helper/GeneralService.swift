@@ -44,6 +44,7 @@ extension GeneralService {
     
     static func cashInOrCashOut(gameRecord: GameRecord) throws {
         try GameRecordTable.insert(item: gameRecord)
+        try GPlayerStatusTable.update(withNewMoneyRecord: gameRecord)
     }
     
     static func getPlayers(byGameID gameID: Int) throws -> [GetActivePlayerResult] {

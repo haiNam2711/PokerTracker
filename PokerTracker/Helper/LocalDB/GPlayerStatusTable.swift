@@ -59,10 +59,10 @@ class GPlayerStatusTable {
         var addSumCashAfterFee: Int = 0
         if record.cashIn > 0 {
             if game.feeTypeInValue == true {
-                addSumCashAfterFee = record.cashIn - game.fee
+                addSumCashAfterFee = record.cashIn + game.fee
 //                addSumCashAfterFee = record.cashIn + ((record.cashIn)/game.standardCashIn)*game.fee
             } else {
-                addSumCashAfterFee = record.cashIn * (1 - game.fee)
+                addSumCashAfterFee = record.cashIn * (1 + game.fee)
 //                addSumCashAfterFee = Int(Float(record.cashIn)*(Float(1) + Float(game.fee)/Float(100)))
 
             }
@@ -105,9 +105,9 @@ class GPlayerStatusTable {
         var addSumCashAfterFee = 0
         if gameRecord.cashIn > 0 {
             if game.feeTypeInValue == true {
-                addSumCashAfterFee = gameRecord.cashIn - game.fee
+                addSumCashAfterFee = gameRecord.cashIn + game.fee
             } else {
-                addSumCashAfterFee = gameRecord.cashIn * (1 - game.fee)
+                addSumCashAfterFee = gameRecord.cashIn * (1 + game.fee)
             }
         }
         // delete record

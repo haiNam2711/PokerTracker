@@ -54,7 +54,7 @@ class PlayerViewController: UIViewController {
         }
         sum = cashIn * amount
         
-        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum, cashOut: cashOut))
+        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum-viewModel.player.sumCashIn, cashOut: cashOut))
         navigationController?.popViewController(animated: true)
     }
     
