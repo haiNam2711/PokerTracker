@@ -42,8 +42,10 @@ class PlayerViewController: UIViewController {
         var sumOut = 0
         guard let cashOut = cashOutTF.text, !cashOut.isEmpty else {
             sum = cashIn * amount
-            viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum, cashOut: 0))
-            navigationController?.popViewController(animated: true)
+            if sum != 0 {
+                viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum-viewModel.player.sumCashIn, cashOut: 0))
+                navigationController?.popViewController(animated: true)
+            }
             return
         }
         
