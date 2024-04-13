@@ -38,12 +38,12 @@ class GameTable {
     static func find(gameID: Int) throws -> Game? {
         let DB = LocalDB.shared.getDB()
         let query = games.filter(id == gameID)
-        let items = try DB.prepare(games)
-        for item in items {
-            return Game(id:item[id], time: item[time], standardCashIn: item[cashIn], standardChipOut: item[chipOut], feeTypeInValue: item[feeTypeInValue], fee: item[fee])
+//        let items = try DB.prepare(games)
+//        for item in items {
+//            return Game(id:item[id], time: item[time], standardCashIn: item[cashIn], standardChipOut: item[chipOut], feeTypeInValue: item[feeTypeInValue], fee: item[fee])
 
-//        if let game = try DB.pluck(query) {
-//            return Game(id: game[id], time: game[time], standardCashIn: game[cashIn], standardChipOut: game[chipOut], feeTypeInValue: game[feeTypeInValue], fee: game[fee])
+        if let game = try DB.pluck(query) {
+            return Game(id: game[id], time: game[time], standardCashIn: game[cashIn], standardChipOut: game[chipOut], feeTypeInValue: game[feeTypeInValue], fee: game[fee])
         }
         return nil
     }
