@@ -84,6 +84,7 @@ extension PlayerViewController {
     func configuration() {
         nameLabel.text = name
         viewModel.fetchPlayerStatus(gameID: idGame, playerID: idPlayer)
+        print(viewModel.player.sumChip)
         amount = viewModel.player.sumCashIn / cashIn
         amonutOld = viewModel.player.sumCashIn / cashIn
         cashInLabel.text = "\(amount)"
