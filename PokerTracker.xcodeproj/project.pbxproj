@@ -21,6 +21,8 @@
 		26BAFFCD2BC4EBF1009241A9 /* PlayerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */; };
 		26BAFFD42BC522BB009241A9 /* GameRecordTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFD32BC522BB009241A9 /* GameRecordTable.swift */; };
 		26BAFFD62BC52BEC009241A9 /* GetActivePlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */; };
+		26C8CF082BCC0EFB00ACB5BB /* PlayerProfitOrLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CF072BCC0EFB00ACB5BB /* PlayerProfitOrLoss.swift */; };
+		26C8CF0A2BCC13DB00ACB5BB /* GPlayerStatusDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CF092BCC13DB00ACB5BB /* GPlayerStatusDate.swift */; };
 		359245E7BE50D6CC0C2E2944 /* Pods_PokerTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */; };
 		903964892BC9A1E000C9DB4E /* ViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */; };
 		B31411852BC4E80900CAE99B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411602BC4E80900CAE99B /* Player.swift */; };
@@ -65,6 +67,8 @@
 		26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTable.swift; sourceTree = "<group>"; };
 		26BAFFD32BC522BB009241A9 /* GameRecordTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordTable.swift; sourceTree = "<group>"; };
 		26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActivePlayerResult.swift; sourceTree = "<group>"; };
+		26C8CF072BCC0EFB00ACB5BB /* PlayerProfitOrLoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProfitOrLoss.swift; sourceTree = "<group>"; };
+		26C8CF092BCC13DB00ACB5BB /* GPlayerStatusDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPlayerStatusDate.swift; sourceTree = "<group>"; };
 		455601E72079F477011C0B34 /* Pods-PokerTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokerTracker.release.xcconfig"; path = "Target Support Files/Pods-PokerTracker/Pods-PokerTracker.release.xcconfig"; sourceTree = "<group>"; };
 		713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokerTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + Extension.swift"; sourceTree = "<group>"; };
@@ -182,6 +186,8 @@
 			children = (
 				26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */,
 				260503BA2BC82E06003DDA61 /* GetGameRecordResult.swift */,
+				26C8CF072BCC0EFB00ACB5BB /* PlayerProfitOrLoss.swift */,
+				26C8CF092BCC13DB00ACB5BB /* GPlayerStatusDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -353,8 +359,8 @@
 			children = (
 				B314117C2BC4E80900CAE99B /* Home */,
 				B314116A2BC4E80900CAE99B /* Game */,
-				B31411712BC4E80900CAE99B /* History */,
 				B31411832BC4E80900CAE99B /* Player */,
+				B31411712BC4E80900CAE99B /* History */,
 				260503BC2BC84841003DDA61 /* Filter */,
 			);
 			path = Screens;
@@ -525,6 +531,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C8CF0A2BCC13DB00ACB5BB /* GPlayerStatusDate.swift in Sources */,
 				26BAFFD42BC522BB009241A9 /* GameRecordTable.swift in Sources */,
 				B338EAD82BC7E84B005F917E /* PlayerViewModel.swift in Sources */,
 				B314118B2BC4E80900CAE99B /* GameRecord.swift in Sources */,
@@ -549,6 +556,7 @@
 				26BAFFC72BC4EBA7009241A9 /* GameTable.swift in Sources */,
 				260503C02BC848DE003DDA61 /* FilterViewController.swift in Sources */,
 				B314118C2BC4E80900CAE99B /* HistoryViewController.swift in Sources */,
+				26C8CF082BCC0EFB00ACB5BB /* PlayerProfitOrLoss.swift in Sources */,
 				26BAFFC52BC4EB6F009241A9 /* GeneralService.swift in Sources */,
 				B351529B2BC52DFE00F4F82B /* CreateaGameViewController.swift in Sources */,
 				B31411922BC4E80900CAE99B /* HomeViewController.swift in Sources */,

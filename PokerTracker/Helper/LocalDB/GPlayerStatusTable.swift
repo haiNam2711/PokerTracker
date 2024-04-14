@@ -28,6 +28,21 @@ class GPlayerStatusTable {
         }
     }
     
+    static func findAllWithDate() throws -> [GPlayerStatusDate] {
+        let DB = LocalDB.shared.getDB()
+        let games = Table("Game")
+        let time = Expression<Date>("Time")
+        let itemsWithDateQuery = playerInGame
+            .join(games, on: playerInGame[gameID] == games[gameID])
+            .select([playerInGame[*],games[time]])
+        var res = [GPlayerStatusDate]()
+        let items = try DB.prepare(itemsWithDateQuery)
+        for item in items {
+            res.append(GPlayerStatusDate(playerID: item[playerID], gameID: item[gameID], playerActive: item[playerActive], sumCashIn: item[sumCashIn], sumCashOut: item[sumCashOut], sumChip: item[sumChip], sumCashAfterFee: item[sumCashAfterFee], date: item[time]))
+        }
+        return res
+    }
+    
     static func getAllPlayer(gameID: Int) throws -> [GetActivePlayerResult] {
         let DB = LocalDB.shared.getDB()
         let players = Table("Player")

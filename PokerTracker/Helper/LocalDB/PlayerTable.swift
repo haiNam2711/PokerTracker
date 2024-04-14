@@ -44,4 +44,22 @@ class PlayerTable {
         return Player(id: idPlayer, name: newName)
         
     }
+    
+    static func getPlayersProfitOrLoss(from start: Date, to end: Date) throws -> [PlayerProfitOrLoss] {
+        let DB = LocalDB.shared.getDB()
+        var retArray = [PlayerProfitOrLoss]()
+        let items = try DB.prepare(players)
+        let allGameStatus = try GPlayerStatusTable.findAllWithDate()
+        for item in items {
+            let resItem = PlayerProfitOrLoss(ID: item[id], name: item[name], money: 0)
+            for gameStatus in allGameStatus {
+                if gameStatus.playerID == resItem.ID && gameStatus.date >= start && gameStatus.date <= end {
+                    print("haha \(resItem.ID)")
+                    resItem.money += gameStatus.sumCashOut - gameStatus.sumCashAfterFee
+                }
+            }
+            retArray.append(resItem)
+        }
+        return retArray
+    }
 }

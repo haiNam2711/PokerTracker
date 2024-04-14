@@ -40,6 +40,15 @@ class GameRecordTable {
         }
     }
     
+    static func delete(byID id: Int) throws {
+        let DB = LocalDB.shared.getDB()
+        let query = gameRecord.filter(self.id == id)
+        let rowId = try DB.run(query.delete())
+        if rowId <= 0 {
+            throw DBError(message: "error delete gamerecord item")
+        }
+    }
+    
     static func findAll(byGameID gameID: Int) throws -> [GetGameRecordResult] {
         let DB = LocalDB.shared.getDB()
         let players = Table("Player")
