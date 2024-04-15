@@ -127,7 +127,7 @@ class GPlayerStatusTable {
         }
         // delete record
         let update = playerInGame.filter(gameID == gameRecord.gameID && playerID == gameRecord.playerID).update(playerActive <- active, sumCashIn -= gameRecord.cashIn, sumCashOut -= gameRecord.cashOut, sumCashAfterFee -= addSumCashAfterFee)
-        let rowId = try DB.run(update)
+        _ = try DB.run(update)
     }
     
     static func getPlayerStatus(gameID: Int, playerID: Int) throws -> GPlayerStatus? {
@@ -143,7 +143,7 @@ class GPlayerStatusTable {
     static func updatePlayer(idGame: Int, idPlayer: Int, cashIn: Int, cashOut: Int, cashFee: Int, chipOut: Int, active: Bool) throws -> GPlayerStatus {
         let DB = LocalDB.shared.getDB()
         let update = playerInGame.update(playerActive <- active, sumCashIn <- cashIn, sumCashOut <- cashOut, sumCashAfterFee <- cashFee, sumChip <- chipOut, gameID <- idGame, playerID <- idPlayer)
-        let afterRow = try DB.run(update)
+        _ = try DB.run(update)
 
         return GPlayerStatus(playerID: idPlayer, gameID: idGame, playerActive: active, sumCashIn: cashIn, sumCashOut: cashOut, sumChip: chipOut, sumCashAfterFee: cashFee)
     }

@@ -44,6 +44,7 @@
 		B31411952BC4E80900CAE99B /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411802BC4E80900CAE99B /* PlayerViewController.swift */; };
 		B31411962BC4E80900CAE99B /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31411812BC4E80900CAE99B /* PlayerViewController.xib */; };
 		B338EAD82BC7E84B005F917E /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338EAD72BC7E84B005F917E /* PlayerViewModel.swift */; };
+		B338EADA2BCCB804005F917E /* CreateGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338EAD92BCCB804005F917E /* CreateGameViewModel.swift */; };
 		B35152942BC5271000F4F82B /* Date + String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35152932BC5271000F4F82B /* Date + String Extension.swift */; };
 		B351529A2BC52DFE00F4F82B /* CreateaGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35152992BC52DFE00F4F82B /* CreateaGameViewController.xib */; };
 		B351529B2BC52DFE00F4F82B /* CreateaGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35152982BC52DFE00F4F82B /* CreateaGameViewController.swift */; };
@@ -92,6 +93,7 @@
 		B31411802BC4E80900CAE99B /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		B31411812BC4E80900CAE99B /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
 		B338EAD72BC7E84B005F917E /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		B338EAD92BCCB804005F917E /* CreateGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewModel.swift; sourceTree = "<group>"; };
 		B35152932BC5271000F4F82B /* Date + String Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + String Extension.swift"; sourceTree = "<group>"; };
 		B35152982BC52DFE00F4F82B /* CreateaGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateaGameViewController.swift; sourceTree = "<group>"; };
 		B35152992BC52DFE00F4F82B /* CreateaGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateaGameViewController.xib; sourceTree = "<group>"; };
@@ -293,6 +295,7 @@
 			isa = PBXGroup;
 			children = (
 				B31411742BC4E80900CAE99B /* HomeViewModel.swift */,
+				B338EAD92BCCB804005F917E /* CreateGameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -545,6 +548,7 @@
 				26BAFFCB2BC4EBD8009241A9 /* GPlayerStatusTable.swift in Sources */,
 				26BAFFC92BC4EBC2009241A9 /* LocalDB.swift in Sources */,
 				B31411872BC4E80900CAE99B /* PlayerCell.swift in Sources */,
+				B338EADA2BCCB804005F917E /* CreateGameViewModel.swift in Sources */,
 				26BAFFAC2BC4E44B009241A9 /* AppDelegate.swift in Sources */,
 				B31411902BC4E80900CAE99B /* HomeCell.swift in Sources */,
 				B31411852BC4E80900CAE99B /* Player.swift in Sources */,
@@ -705,7 +709,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9G9YD8GX8D;
+				DEVELOPMENT_TEAM = L986574MQT;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokerTracker/Info.plist;
@@ -718,7 +722,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker.vn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -734,7 +738,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9G9YD8GX8D;
+				DEVELOPMENT_TEAM = L986574MQT;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokerTracker/Info.plist;
@@ -747,7 +751,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker.vn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

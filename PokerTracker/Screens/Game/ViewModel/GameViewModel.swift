@@ -5,27 +5,101 @@
 //  Created by VietChat on 8/4/24.
 //
 
-import Foundation
+import SQLite
 
 final class GameViewModel {
     
     var players: [Player] = []
+    var player: GPlayerStatus
+    
+    var titleGame: String = ""
+    var cashin: Int = 0
+    var cashOut: Int = 0
+    var fee: Int = 0
+    var feeBool = true
+    var playerID = 0
+    var gameID: Int = 0
     var success = false
     
-    var player: GPlayerStatus = GPlayerStatus(playerID: 0, gameID: 0, playerActive: true, sumCashIn: 0, sumCashOut: 0, sumChip: 0, sumCashAfterFee: 0)
+    var reloadDataHandler: (() -> Void)?
+    
+    init(gameID: Int, titleGame: String, cashin: Int, cashOut: Int, fee: Int, feeBool: Bool) {
+        self.gameID = gameID
+        self.titleGame = titleGame
+        self.cashin = cashin
+        self.cashOut = cashOut
+        self.fee = fee
+        self.feeBool = feeBool
+        self.player = GPlayerStatus(playerID: 0, gameID: 0, playerActive: true, sumCashIn: 0, sumCashOut: 0, sumChip: 0, sumCashAfterFee: 0)
+    }
+    
+    var numberOfPlayers: Int {
+        return players.count
+    }
+    
+    func player(at index: Int) -> Player {
+        return players[index]
+    }
     
     func createNewPlayer(player: Player) {
         do {
             if players.contains(where: { $0.name == player.name }) {
                 success = false
             }else {
-                var newPlayer = try PlayerTable.insert(item: player)
+                let newPlayer = try PlayerTable.insert(item: player)
                 players.append(newPlayer)
                 success = true
             }
         }catch {
             success = false
         }
+    }
+    
+    func goBackToHome(from viewController: UIViewController) {
+        if let homeVC = viewController.navigationController?.viewControllers.first(where: { $0 is HomeViewController }) {
+            viewController.navigationController?.popToViewController(homeVC, animated: true)
+        }
+    }
+    
+    func showHistoryScreen(from viewController: UIViewController) {
+        let historyVC = HistoryViewController()
+        historyVC.gameID = gameID
+        viewController.navigationController?.pushViewController(historyVC, animated: true)
+    }
+    
+    func showPlayerDetailsScreen(at index: Int, navigationController: UINavigationController?) {
+        guard let navigationController = navigationController else { return }
+        let player = players[index]
+        let playerVM = PlayerViewModel(name: player.name, gameID: gameID, playerID: player.id ?? 0, cashIn: Int(cashin), cashOut: cashOut)
+        let playerDetailsVC = PlayerViewController()
+        playerDetailsVC.viewModel = playerVM
+        navigationController.pushViewController(playerDetailsVC, animated: true)
+    }
+    
+    func showNameAlert(from viewController: UIViewController) {
+        let alertController = UIAlertController(title: "Thêm người chơi mới", message: nil, preferredStyle: .alert)
+        
+        alertController.addTextField { textField in
+            textField.placeholder = "Tên của bạn"
+        }
+        
+        let cancelAction = UIAlertAction(title: "Hủy bỏ", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
+            if let name = alertController.textFields?.first?.text {
+                let player = Player(name: name)
+                self?.createNewPlayer(player: player)
+                if self?.success == true {
+                    viewController.view.makeToast("Thêm người chơi thành công")
+                    self?.reloadDataHandler?()
+                }else {
+                    viewController.view.makeToast("Người chơi đã tồn tại hoặc có lỗi đã xảy ra")
+                }
+            }
+        }
+        
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        viewController.present(alertController, animated: true)
     }
     
     func fetchPlayer() {

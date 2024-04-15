@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     private var viewModel = HomeViewModel()
     
@@ -19,22 +19,15 @@ class HomeViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        do {
-            viewModel.fetchGames()
-            self.collectionView.reloadData()
-        } catch {
-            print(error.localizedDescription)
-        }
+        viewModel.fetchGames()
+        self.collectionView.reloadData()
     }
     
     @IBAction func searchOnClick(_ sender: Any) {
-        let searchVC = FilterViewController()
-        navigationController?.pushViewController(searchVC, animated: true)
+        viewModel.showFilterScreen(from: self)
     }
     @IBAction func newGameOnClick(_ sender: Any) {
-        let createGameVC = CreateaGameViewController()
-        navigationController?.pushViewController(createGameVC, animated: true)
+        viewModel.showCreateGameScreen(from: self)
     }
 }
 
@@ -54,27 +47,19 @@ extension HomeViewController {
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.games.count
+        return viewModel.numberOfGames
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
-        let games = viewModel.games[indexPath.row]
-        cell.games = games
+        let game = viewModel.game(at: indexPath.row)
+        cell.games = game
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let gameVC = GameViewController()
-        gameVC.gameID = viewModel.games[indexPath.row].id ?? 0
-        gameVC.titleGame = "Poker: " + viewModel.games[indexPath.row].time.toString()
-        gameVC.cashin = viewModel.games[indexPath.row].standardCashIn
-        gameVC.cashOut = viewModel.games[indexPath.row].standardChipOut
-        gameVC.feeBool = viewModel.games[indexPath.row].feeTypeInValue
-        gameVC.fee = viewModel.games[indexPath.row].fee
-        
-        navigationController?.pushViewController(gameVC, animated: true)
+        viewModel.showGameDetailsScreen(at: indexPath.row, navigationController: navigationController)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

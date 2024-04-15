@@ -33,16 +33,14 @@ class PlayerTable {
         return retArray
     }
     
-    static func updateName(idPlayer: Int, newName: String) throws -> Player {
+    static func updateName(idPlayer: Int, newName: String) throws{
         let DB = LocalDB.shared.getDB()
         let query = players.filter(id == idPlayer)
         let update = query.update(name <- newName)
         let afterRow = try DB.run(update)
         if afterRow == 0 {
             throw DBError(message: "Không tìm thấy người chơi với id: \(idPlayer) để cập nhật tên")
-        }
-        return Player(id: idPlayer, name: newName)
-        
+        }        
     }
     
     static func getPlayersProfitOrLoss(from start: Date, to end: Date) throws -> [PlayerProfitOrLoss] {

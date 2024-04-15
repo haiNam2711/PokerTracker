@@ -124,7 +124,7 @@
 		37E1F90E7D35D37098BE6AD21DF55B6F /* Toast-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Toast-prefix.pch"; sourceTree = "<group>"; };
 		39341DC8C0DCC2259E82DBBACE2593E0 /* Connection+Attach.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Connection+Attach.swift"; path = "Sources/SQLite/Core/Connection+Attach.swift"; sourceTree = "<group>"; };
 		3B18C50DFB3D9A1D7FAEAF7BE01CB5B0 /* UIView+Toast.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIView+Toast.m"; path = "Toast/UIView+Toast.m"; sourceTree = "<group>"; };
-		3B4AF4C501489AE5D5A4F93A8F11F674 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; name = PrivacyInfo.xcprivacy; path = Toast/Resources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
+		3B4AF4C501489AE5D5A4F93A8F11F674 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xml; name = PrivacyInfo.xcprivacy; path = Toast/Resources/PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
 		3D6785408B59ADF537685FE445160C88 /* Setter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Setter.swift; path = Sources/SQLite/Typed/Setter.swift; sourceTree = "<group>"; };
 		3F783E5AF65B052B50630B85738CE84C /* SQLite.swift-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SQLite.swift-Info.plist"; sourceTree = "<group>"; };
 		429DFD5BD9425A1CA2067D8DABB5E4CD /* MBRadioButton.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = MBRadioButton.modulemap; sourceTree = "<group>"; };
@@ -159,7 +159,7 @@
 		971537638383375EC081C11D7A7CC9D6 /* Connection+Schema.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Connection+Schema.swift"; path = "Sources/SQLite/Schema/Connection+Schema.swift"; sourceTree = "<group>"; };
 		97F47C4561A151B6F0A8E96EE2443D6D /* RadioButtonColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadioButtonColor.swift; path = Source/RadioButton/RadioButtonColor.swift; sourceTree = "<group>"; };
 		9974708DB2D64933BB1C15300EA341DF /* RTree.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RTree.swift; path = Sources/SQLite/Extensions/RTree.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		A1336B1677A673D2545DB5E8C544DA4B /* UIView+Toast.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+Toast.h"; path = "Toast/UIView+Toast.h"; sourceTree = "<group>"; };
 		A19CE7F9E04BD205C08322FF13C65D0E /* Errors.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Errors.swift; path = Sources/SQLite/Core/Errors.swift; sourceTree = "<group>"; };
 		A1AF18EFDE1D08EB58E6BE8B496F683C /* Pods-PokerTracker-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-PokerTracker-frameworks.sh"; sourceTree = "<group>"; };
@@ -173,14 +173,14 @@
 		B7BA9ADAE5DE8F69D35B49BCB433FD50 /* RadioCheckboxBaseContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RadioCheckboxBaseContainer.swift; path = Source/BaseButton/RadioCheckboxBaseContainer.swift; sourceTree = "<group>"; };
 		BBC3A2BAC799CF1D9DA9E343056BF54C /* URIQueryParameter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URIQueryParameter.swift; path = Sources/SQLite/Core/URIQueryParameter.swift; sourceTree = "<group>"; };
 		BF609DCB7B3B6479A8ACB95B6CE66585 /* SQLite.swift.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SQLite.swift.debug.xcconfig; sourceTree = "<group>"; };
-		C1D22196C2ECE17B91E0B45DECD1F7CE /* MBRadioButton */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = MBRadioButton; path = MBRadioButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C1D22196C2ECE17B91E0B45DECD1F7CE /* MBRadioButton.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MBRadioButton.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB91F96D61612E3DE7C5DDAE01957293 /* MBRadioButton-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "MBRadioButton-Info.plist"; sourceTree = "<group>"; };
 		DC4549324FB9C444321596473BF2A9BF /* SQLiteFeature.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SQLiteFeature.swift; path = Sources/SQLite/Core/SQLiteFeature.swift; sourceTree = "<group>"; };
 		E630CAD4F5B4011B2882360E31B06F19 /* Pods-PokerTracker-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-PokerTracker-acknowledgements.markdown"; sourceTree = "<group>"; };
 		EA58CF52ED6DEC1D97E2781D034FB49C /* Query+with.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "Query+with.swift"; path = "Sources/SQLite/Typed/Query+with.swift"; sourceTree = "<group>"; };
 		F3D50007F47E923B814488452277F24A /* Operators.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Operators.swift; path = Sources/SQLite/Typed/Operators.swift; sourceTree = "<group>"; };
 		F52B6E700D59A939AC8C25D3A604BFE4 /* Value.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Value.swift; path = Sources/SQLite/Core/Value.swift; sourceTree = "<group>"; };
-		F5FA45A44C42CC2CA3A324A3E914CE19 /* SQLite.swift */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SQLite.swift; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5FA45A44C42CC2CA3A324A3E914CE19 /* SQLite.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SQLite.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6A5F09CA59AF20B5A450FA1B72ECFB5 /* Toast-Toast */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = "Toast-Toast"; path = Toast.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		F95E1D660AF911A5A714B5A9AB0E710A /* Schema.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Schema.swift; path = Sources/SQLite/Typed/Schema.swift; sourceTree = "<group>"; };
 		FA54769CDDAF6DD25F1D402FDB4CE64A /* Helpers.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Helpers.swift; path = Sources/SQLite/Helpers.swift; sourceTree = "<group>"; };
@@ -235,9 +235,9 @@
 		10ABC7E65DD5FAAD4E01B2D7B32C81B0 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C1D22196C2ECE17B91E0B45DECD1F7CE /* MBRadioButton */,
+				C1D22196C2ECE17B91E0B45DECD1F7CE /* MBRadioButton.framework */,
 				0F3A9198E22913AE118BAA30B7054D3F /* Pods-PokerTracker */,
-				F5FA45A44C42CC2CA3A324A3E914CE19 /* SQLite.swift */,
+				F5FA45A44C42CC2CA3A324A3E914CE19 /* SQLite.framework */,
 				55E0AFD333353D71ACC2207149E879D6 /* Toast */,
 				F6A5F09CA59AF20B5A450FA1B72ECFB5 /* Toast-Toast */,
 			);
@@ -264,7 +264,6 @@
 				B7BA9ADAE5DE8F69D35B49BCB433FD50 /* RadioCheckboxBaseContainer.swift */,
 				854081D66B86A4C68BC48B230007564F /* Support Files */,
 			);
-			name = MBRadioButton;
 			path = MBRadioButton;
 			sourceTree = "<group>";
 		};
@@ -277,7 +276,6 @@
 				3D084E1321A7B5BA98D0C2BF76FFF6B8 /* Resources */,
 				EE45825C9262ABFBD622C97FFB729C00 /* Support Files */,
 			);
-			name = Toast;
 			path = Toast;
 			sourceTree = "<group>";
 		};
@@ -302,7 +300,6 @@
 				F9D8BE2E5BF865FB5B4DCEDD79001162 /* standard */,
 				2E28BFC9D5513EAF951C6C1093ADB63A /* Support Files */,
 			);
-			name = SQLite.swift;
 			path = SQLite.swift;
 			sourceTree = "<group>";
 		};
@@ -519,7 +516,7 @@
 			);
 			name = SQLite.swift;
 			productName = SQLite;
-			productReference = F5FA45A44C42CC2CA3A324A3E914CE19 /* SQLite.swift */;
+			productReference = F5FA45A44C42CC2CA3A324A3E914CE19 /* SQLite.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		9972C9CC43A34349C035FE6C913368BF /* Toast-Toast */ = {
@@ -573,7 +570,7 @@
 			);
 			name = MBRadioButton;
 			productName = MBRadioButton;
-			productReference = C1D22196C2ECE17B91E0B45DECD1F7CE /* MBRadioButton */;
+			productReference = C1D22196C2ECE17B91E0B45DECD1F7CE /* MBRadioButton.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -810,7 +807,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MBRadioButton/MBRadioButton-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MBRadioButton/MBRadioButton-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -861,7 +858,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SQLite.swift/SQLite.swift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SQLite.swift/SQLite.swift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1061,7 +1058,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/MBRadioButton/MBRadioButton-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/MBRadioButton/MBRadioButton-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1096,7 +1093,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SQLite.swift/SQLite.swift-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SQLite.swift/SQLite.swift-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -9,16 +9,7 @@ import UIKit
 
 class PlayerViewController: UIViewController {
     
-    var name: String = ""
-    var idGame = 0
-    var idPlayer = 0
-    var amount = 0
-    var cashIn = 0
-    var cashOut1 = 0
-    var sum = 0
-    var amonutOld = 0
-    
-    private let viewModel = PlayerViewModel()
+    var viewModel = PlayerViewModel(name: "", gameID: 0, playerID: 0, cashIn: 0, cashOut: 0)
     
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var cashInLabel: UILabel!
@@ -34,64 +25,68 @@ class PlayerViewController: UIViewController {
     }
     
     deinit {
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
+        unregisterObserver()
     }
     
     
     @IBAction func okOnclick(_ sender: Any) {
-        var sumOut = 0
-        guard let cashOut = cashOutTF.text, !cashOut.isEmpty else {
-            sum = cashIn * amount
-            if sum != 0 {
-                viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum-viewModel.player.sumCashIn, cashOut: 0))
-                navigationController?.popViewController(animated: true)
-            }
-            return
-        }
-        
-        guard let cashOut = Int(cashOut) else {
-            return
-        }
-        let price = Int((Float(cashOut) / Float(cashOut1))*Float(cashIn))
-        sum = cashIn * amount
-        
-        viewModel.cashInOrCashOut(gameRecord: GameRecord(gameID: idGame, time: Date(), playerID: idPlayer, cashIn: sum-viewModel.player.sumCashIn, cashOut: price))
-        navigationController?.popViewController(animated: true)
+        viewModel.handleOKButton(from: self, chipOutText: cashOutTF.text)
     }
     
     @IBAction func deleteAction(_ sender: Any) {
-        if amount <= amonutOld {
+        if viewModel.amount <= viewModel.amonutOld {
+            deleteBT.isEnabled = false
+            deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
+        } else {
+            viewModel.amount -= 1
+            cashInLabel.text = "\(viewModel.amount)"
             
-        }else {
-            amount -= 1
-            cashInLabel.text = "\(amount)"
+            if viewModel.amount <= viewModel.amonutOld {
+                deleteBT.isEnabled = false
+                deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
+            }
         }
         
     }
     
     @IBAction func moreAction(_ sender: Any) {
-        amount += 1
-        cashInLabel.text = "\(amount)"
+        viewModel.amount += 1
+        cashInLabel.text = "\(viewModel.amount)"
+        
+        if viewModel.amount > viewModel.amonutOld {
+            deleteBT.isEnabled = true
+            deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
+        }
     }
     
     @IBAction func backAction(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        viewModel.backClick(from: self)
     }
     @IBAction func updateNameAction(_ sender: Any) {
-        renamePlayer()
+        viewModel.showRenameAlert(from: self)
+        viewModel.reloadDataHandler = { [weak self] name in
+            self?.nameLabel.text = name
+        }
     }
 }
 
 extension PlayerViewController {
     
     func configuration() {
-        nameLabel.text = name
-        viewModel.fetchPlayerStatus(gameID: idGame, playerID: idPlayer)
-        amount = viewModel.player.sumCashIn / cashIn
-        amonutOld = viewModel.player.sumCashIn / cashIn
-        cashInLabel.text = "\(amount)"
+        nameLabel.text = viewModel.name
+        viewModel.fetchPlayerStatus()
+        viewModel.amount = viewModel.player.sumCashIn / viewModel.cashIn
+        viewModel.amonutOld = viewModel.player.sumCashIn / viewModel.cashIn
+        cashInLabel.text = "\(viewModel.amount)"
+        
+        deleteBT.isEnabled = viewModel.amonutOld > viewModel.amount
+        deleteBT.backgroundColor = viewModel.amonutOld > viewModel.amount ? UIColor.hexStringToUIColor(hex: "D83842") : UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
         registerObserver()
+    }
+    
+    private func unregisterObserver() {
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIResponder.keyboardWillHideNotification, object: nil)
     }
     
     private func registerObserver() {
@@ -120,26 +115,5 @@ extension PlayerViewController {
             self.okButton.transform = .identity
         }
     }
-    
-    func renamePlayer() {
-        let alertController = UIAlertController(title: "Thay đổi tên", message: nil, preferredStyle: .alert)
-        
-        alertController.addTextField { textField in
-            textField.placeholder = self.name
-        }
-        
-        let cancelAction = UIAlertAction(title: "Hủy bỏ", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
-            if let name = alertController.textFields?.first?.text {
-                self?.viewModel.updateName(playerID: self?.idPlayer ?? 0, name: name)
-                self?.nameLabel.text = name
-                self?.view.makeToast("Thay đổi tên thành công")
-            }
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
-        
-    }
 }
+

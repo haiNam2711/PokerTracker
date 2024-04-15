@@ -29,9 +29,9 @@ extension GeneralService {
         return try PlayerTable.findAll()
     }
     
-    static func createNewPlayer(player: Player) throws {
-        try PlayerTable.insert(item: player)
-    }
+//    static func createNewPlayer(player: Player) throws {
+//        try PlayerTable.insert(item: player)
+//    }
     
     static func addPlayerToAGame(playerID: Int, gameID: Int) throws {
         try GPlayerStatusTable.insert(item: GPlayerStatus(playerID: playerID, gameID: gameID, playerActive: false, sumCashIn: 0, sumCashOut: 0, sumChip: 0, sumCashAfterFee: 0))

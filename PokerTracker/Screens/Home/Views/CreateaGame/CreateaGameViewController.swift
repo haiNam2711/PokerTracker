@@ -10,7 +10,7 @@ import Toast
 import MBRadioButton
 
 class CreateaGameViewController: UIViewController {
-
+    
     @IBOutlet weak var cashInTF: UITextField!
     @IBOutlet weak var cashOutTF: UITextField!
     @IBOutlet weak var feeTF: UITextField!
@@ -20,9 +20,8 @@ class CreateaGameViewController: UIViewController {
     @IBOutlet weak var kBT: RadioButton!
     @IBOutlet weak var feeLabel: UILabel!
     
-    private var viewModel = HomeViewModel()
     var groupContainer = RadioButtonContainer()
-    var selectFee = true
+    private var viewModel = CreateGameViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,62 +29,37 @@ class CreateaGameViewController: UIViewController {
     }
     
     @IBAction func startGameOnClick(_ sender: Any) {
-        
-        guard let cashIn = cashInTF.text, let cashOut = cashOutTF.text, let fee = feeTF.text, !cashIn.isEmpty, !cashOut.isEmpty, !fee.isEmpty else { return }
-        let newGame = Game(time: Date(), standardCashIn: Int(cashIn) ?? 0, standardChipOut: Int(cashOut) ?? 0, feeTypeInValue: selectFee, fee: Int(fee) ?? 0)
-        UserDefaults.standard.setValue(cashIn, forKey: "cashin")
-        UserDefaults.standard.setValue(cashOut, forKey: "cashout")
-        UserDefaults.standard.setValue(fee, forKey: "fee")
-        do {
-            if let createGame = try viewModel.createAGame(game: newGame) {
-                self.view.makeToast("Tạo phòng thành công")
-                let vc = GameViewController()
-                vc.gameID = createGame.id ?? 0
-                vc.titleGame = "Poker: " + Date().toString()
-                vc.cashin = Int(cashIn) ?? 0
-                vc.cashOut = Int(cashOut) ?? 0
-                vc.fee = Int(fee) ?? 0
-                vc.feeBool = selectFee
-                navigationController?.pushViewController(vc, animated: true)
-            }else {
-                self.view.makeToast("Tạo phòng thất bại")
-            }
-        } catch {
-            self.view.makeToast("Lỗi tạo phòng")
-        }
+        viewModel.createGame(from: self, cashIn: cashInTF.text, cashOut: cashOutTF.text, fee: feeTF.text, feeType: viewModel.feeType)
     }
     
     @IBAction func backButton(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        viewModel.backClick(from: self)
     }
 }
 
 extension CreateaGameViewController {
     
     func configuration() {
-        cashInTF.layer.borderColor = UIColor.borderColorTF()
-        cashOutTF.layer.borderColor = UIColor.borderColorTF()
-        feeTF.layer.borderColor = UIColor.borderColorTF()
-        startButton.backgroundColor = UIColor.backAlphaColorBT()
-        cashInTF.text = UserDefaults.standard.string(forKey: "cashin")
-        cashOutTF.text = UserDefaults.standard.string(forKey: "cashout")
-        feeTF.text = UserDefaults.standard.string(forKey: "fee")
         cashInTF.layer.borderColor = UIColor.colorTF()
         cashOutTF.layer.borderColor = UIColor.colorTF()
         feeTF.layer.borderColor = UIColor.colorTF()
+        startButton.backgroundColor = UIColor.backAlphaColorBT()
         cashInTF.becomeFirstResponder()
         cashInTF.delegate = self
         cashOutTF.delegate = self
         feeTF.delegate = self
         groupContainer.addButtons([ptBT, kBT])
         groupContainer.delegate = self
-        if UserDefaults.standard.bool(forKey: "feetype") {
-            groupContainer.selectedButton = ptBT
-            feeLabel.text = "%"
-        }else {
-            groupContainer.selectedButton = kBT
-            feeLabel.text = "K"
-        }
+        configurationVM()
+    }
+    
+    func configurationVM() {
+        viewModel.loadUserDefaults()
+        cashInTF.text = viewModel.cashIn
+        cashOutTF.text = viewModel.cashOut
+        feeTF.text = viewModel.fee
+        groupContainer.selectedButton = viewModel.feeType ? kBT : ptBT
+        feeLabel.text = viewModel.feeType ? "K" : "%"
     }
 }
 
@@ -93,30 +67,23 @@ extension CreateaGameViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
         textField.layer.borderColor =  UIColor(red: 0.17, green: 0.53, blue: 0.40, alpha: 1.00).cgColor
     }
-
+    
     func textFieldDidChangeSelection(_ textField: UITextField) {
-        let cashIn = (cashInTF.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-        let cashOut = (cashOutTF.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
-        let fee = (feeTF.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        let cashInEmpty = (cashInTF.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        let cashOutEmpty = (cashOutTF.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        let feeEmpty = (feeTF.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        let cashInZero = (cashInTF.text ?? "0").trimmingCharacters(in: .whitespacesAndNewlines) == "0"
+        let cashOutZero = (cashOutTF.text ?? "0").trimmingCharacters(in: .whitespacesAndNewlines) == "0"
         
-        if !cashIn && !cashOut && !fee {
-            startButton.backgroundColor = UIColor.backColorBT()
-        }else {
-            startButton.backgroundColor = UIColor.backAlphaColorBT()
-        }
+        startButton.backgroundColor = cashInEmpty || cashOutEmpty || feeEmpty || cashInZero || cashOutZero ? UIColor.backAlphaColorBT() : UIColor.backColorBT()
+        
     }
 }
 
 extension CreateaGameViewController: RadioButtonDelegate {
     func radioButtonDidSelect(_ button: MBRadioButton.RadioButton) {
-        if button == ptBT {
-            selectFee = false
-            feeLabel.text = "%"
-        }else {
-            selectFee = true
-            feeLabel.text = "K"
-        }
-        UserDefaults.standard.setValue(selectFee, forKey: "feetype")
+        viewModel.feeType = button == kBT
+        feeLabel.text = viewModel.feeType ? "K" : "%"
     }
     
     func radioButtonDidDeselect(_ button: MBRadioButton.RadioButton) {

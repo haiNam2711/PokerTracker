@@ -25,15 +25,18 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OLI-TH-uvi">
                     <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                     <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="7Mv-OJ-0eq">
+                            <rect key="frame" x="0.0" y="136" width="393" height="623"/>
+                        </imageView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2O3-eq-8f2">
                             <rect key="frame" x="16" y="0.0" width="36" height="36"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="9uh-0a-Kab"/>
                                 <constraint firstAttribute="width" constant="36" id="r2r-fS-tcw"/>
                             </constraints>
-                            <color key="tintColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.88235294119999996" green="0.3803921569" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" image="chevron.backward.circle" catalog="system">
+                            <state key="normal" image="chevron.backward" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                             </state>
                             <connections>
@@ -46,7 +49,7 @@
                                 <constraint firstAttribute="width" constant="36" id="7du-fm-1O5"/>
                                 <constraint firstAttribute="height" constant="36" id="imG-ZA-7Wb"/>
                             </constraints>
-                            <color key="tintColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.88235294119999996" green="0.3803921569" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="clock" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
@@ -106,7 +109,7 @@
                                 <constraint firstAttribute="height" constant="48" id="7NR-Fc-hNJ"/>
                                 <constraint firstAttribute="width" constant="48" id="laN-9r-sRX"/>
                             </constraints>
-                            <color key="tintColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.88235294119999996" green="0.3803921569" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="plus.circle" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
@@ -129,11 +132,15 @@
                         <constraint firstItem="JfS-Nq-Sjb" firstAttribute="height" secondItem="2O3-eq-8f2" secondAttribute="height" id="X9M-xK-T2R"/>
                         <constraint firstItem="JfS-Nq-Sjb" firstAttribute="leading" secondItem="2O3-eq-8f2" secondAttribute="trailing" constant="8" id="XoV-mn-2f1"/>
                         <constraint firstItem="7SH-Ec-Sji" firstAttribute="leading" secondItem="JfS-Nq-Sjb" secondAttribute="trailing" constant="8" id="a4B-dA-n2z"/>
+                        <constraint firstAttribute="trailing" secondItem="7Mv-OJ-0eq" secondAttribute="trailing" id="d5h-Sv-ehy"/>
+                        <constraint firstAttribute="bottom" secondItem="7Mv-OJ-0eq" secondAttribute="bottom" id="d8y-3f-Hcc"/>
                         <constraint firstItem="7SH-Ec-Sji" firstAttribute="centerY" secondItem="JfS-Nq-Sjb" secondAttribute="centerY" id="f8e-hH-cEx"/>
                         <constraint firstItem="JfS-Nq-Sjb" firstAttribute="centerY" secondItem="2O3-eq-8f2" secondAttribute="centerY" id="gsA-IW-chJ"/>
                         <constraint firstItem="2O3-eq-8f2" firstAttribute="top" secondItem="OLI-TH-uvi" secondAttribute="top" id="lDE-Qy-xLQ"/>
                         <constraint firstItem="8Cz-et-lhj" firstAttribute="leading" secondItem="OLI-TH-uvi" secondAttribute="leading" id="mus-xe-6y9"/>
                         <constraint firstAttribute="bottom" secondItem="8Cz-et-lhj" secondAttribute="bottom" constant="16" id="o8j-eg-trC"/>
+                        <constraint firstItem="7Mv-OJ-0eq" firstAttribute="top" secondItem="qUV-CN-tuX" secondAttribute="bottom" id="r7h-aO-QdK"/>
+                        <constraint firstItem="7Mv-OJ-0eq" firstAttribute="leading" secondItem="OLI-TH-uvi" secondAttribute="leading" id="xLr-yN-Dqn"/>
                         <constraint firstItem="khl-W7-JW8" firstAttribute="leading" secondItem="qUV-CN-tuX" secondAttribute="trailing" constant="16" id="xZ0-Rq-gVR"/>
                     </constraints>
                 </view>
@@ -150,7 +157,7 @@
         </view>
     </objects>
     <resources>
-        <image name="chevron.backward.circle" catalog="system" width="128" height="123"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <image name="clock" catalog="system" width="128" height="123"/>
         <image name="plus.circle" catalog="system" width="128" height="123"/>
         <systemColor name="systemBackgroundColor">

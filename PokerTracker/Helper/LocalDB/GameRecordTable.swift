@@ -28,7 +28,7 @@ class GameRecordTable {
         }
     }
     
-    #warning("Can bug")
+//    #warning("Can bug")
     static func update(item: GameRecord) throws {
         let DB = LocalDB.shared.getDB()
         let id = item.id ?? 0

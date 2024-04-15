@@ -9,20 +9,12 @@ import UIKit
 import Toast
 
 class GameViewController: UIViewController {
-
-    var titleGame: String = ""
-    var cashin: Int = 0
-    var cashOut: Int = 0
-    var fee: Int = 0
-    var feeBool = true
-    var playerID = 0
-    var gameID = 0
-        
+    
     @IBOutlet weak var nameGameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var infoTV: UITextView!
     
-    private var viewModel = GameViewModel()
+    var viewModel = GameViewModel(gameID: 0, titleGame: "", cashin: 0, cashOut: 0, fee: 0, feeBool: true)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,47 +25,42 @@ class GameViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        do {
-            viewModel.fetchPlayer()
-            viewModel.sortPlayersByCashIn(gameID: gameID)
-            self.collectionView.reloadData()
-        } catch {
-            print(error.localizedDescription)
-        }
+        viewModel.fetchPlayer()
+        viewModel.sortPlayersByCashIn(gameID: viewModel.gameID)
+        self.collectionView.reloadData()
     }
-
+    
     @IBAction func backOnClick(_ sender: Any) {
-        if let homeVC = navigationController?.viewControllers.first(where: { $0 is HomeViewController }) {
-            navigationController?.popToViewController(homeVC, animated: true)
-        }
+        viewModel.goBackToHome(from: self)
     }
+    
     @IBAction func addPlayerOnClick(_ sender: Any) {
-        showNameAlert()
+        viewModel.showNameAlert(from: self)
+        viewModel.reloadDataHandler = { [weak self] in
+            self?.collectionView.reloadData()
+        }
     }
     
     @IBAction func historyGameOnClick(_ sender: Any) {
-        let historyVC = HistoryViewController()
-        historyVC.gameID = gameID
-        navigationController?.pushViewController(historyVC, animated: true)
+        viewModel.showHistoryScreen(from: self)
     }
 }
 
 extension GameViewController {
     
     func configuration() {
-        nameGameLabel.text = titleGame
-        if feeBool {
+        nameGameLabel.text = viewModel.titleGame
+        if viewModel.feeBool {
             infoTV.text = """
-                Cashin: \(cashin) k
-                Chipout: \(cashOut) chip
-                Fee: \(fee) k
+                Cashin: \(viewModel.cashin) k
+                Chipout: \(viewModel.cashOut) chip
+                Fee: \(viewModel.fee) k
             """
         } else {
             infoTV.text = """
-                Cashin: \(cashin) k
-                Chipout: \(cashOut) chip
-                Fee: \(fee) %
+                Cashin: \(viewModel.cashin) k
+                Chipout: \(viewModel.cashOut) chip
+                Fee: \(viewModel.fee) %
             """
         }
         collectionView.register(UINib(nibName: "PlayerCell", bundle: nil), forCellWithReuseIdentifier: "PlayerCell")
@@ -85,45 +72,19 @@ extension GameViewController {
     func initViewModel() {
         viewModel.fetchPlayer()
     }
-        
-    func showNameAlert() {
-        let alertController = UIAlertController(title: "Thêm người chơi mới", message: nil, preferredStyle: .alert)
-        
-        alertController.addTextField { textField in
-            textField.placeholder = "Tên của bạn"
-        }
-        
-        let cancelAction = UIAlertAction(title: "Hủy bỏ", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
-            if let name = alertController.textFields?.first?.text {
-                let player = Player(name: name)
-                self?.viewModel.createNewPlayer(player: player)
-                if self?.viewModel.success == true {
-                    self?.view.makeToast("Thêm người chơi thành công")
-                }else {
-                    self?.view.makeToast("Người chơi đã tồn tại hoặc có lỗi đã xảy ra")
-                }
-                self?.collectionView.reloadData()
-            }
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
-    }
 }
 
 extension GameViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.players.count
+        return viewModel.numberOfPlayers
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "PlayerCell", for: indexPath) as! PlayerCell
-        let player = viewModel.players[indexPath.row]
+        let player = viewModel.player(at: indexPath.row)
         
-        if let playerStatus = viewModel.fetchPlayerStatus(gameID: gameID, playerID: player.id ?? 0) {
+        if let playerStatus = viewModel.fetchPlayerStatus(gameID: viewModel.gameID, playerID: player.id ?? 0) {
             cell.player = player
             cell.playerStatus = playerStatus
         } else {
@@ -132,20 +93,12 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
         }
         
         return cell
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let namePlayer = viewModel.players[indexPath.row].name
-        let idPlayer = viewModel.players[indexPath.row].id
-        let vc = PlayerViewController()
-        navigationController?.pushViewController(vc, animated: true)
-        vc.name = namePlayer
-        vc.idGame = gameID
-        vc.idPlayer = idPlayer ?? 0
-        vc.cashIn = Int(cashin)
-        vc.cashOut1 = cashOut
+        viewModel.showPlayerDetailsScreen(at: indexPath.row, navigationController: navigationController)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

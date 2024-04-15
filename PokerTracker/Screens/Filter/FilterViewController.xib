@@ -22,23 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lL2-pc-OoI">
-                    <rect key="frame" x="16" y="59" width="36" height="36"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="36" id="718-lg-873"/>
-                        <constraint firstAttribute="height" constant="36" id="DF2-EK-12t"/>
-                    </constraints>
-                    <color key="tintColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" image="chevron.backward.circle" catalog="system">
-                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
-                    </state>
-                    <connections>
-                        <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="BcC-0A-fQp"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46p-Yb-gKa">
-                    <rect key="frame" x="68" y="59" width="43" height="36"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="46p-Yb-gKa">
+                    <rect key="frame" x="68" y="59" width="273" height="36"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                     <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -49,6 +34,12 @@
                         <constraint firstAttribute="width" constant="310" id="U9B-ci-Vel"/>
                         <constraint firstAttribute="height" constant="46" id="qLK-z3-zjX"/>
                     </constraints>
+                    <date key="minimumDate" timeIntervalSinceReferenceDate="-978336000">
+                        <!--1969-12-31 16:00:00 +0000-->
+                    </date>
+                    <date key="maximumDate" timeIntervalSinceReferenceDate="1167584399">
+                        <!--2037-12-31 16:59:59 +0000-->
+                    </date>
                 </datePicker>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="From" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sSW-bk-jOk">
                     <rect key="frame" x="16" y="111" width="43" height="46"/>
@@ -62,6 +53,12 @@
                         <constraint firstAttribute="height" constant="46" id="W71-SJ-rwS"/>
                         <constraint firstAttribute="width" constant="310" id="bYe-fW-sF0"/>
                     </constraints>
+                    <date key="minimumDate" timeIntervalSinceReferenceDate="-978336000">
+                        <!--1969-12-31 16:00:00 +0000-->
+                    </date>
+                    <date key="maximumDate" timeIntervalSinceReferenceDate="1167584399">
+                        <!--2037-12-31 16:59:59 +0000-->
+                    </date>
                 </datePicker>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkf-Z8-daC">
                     <rect key="frame" x="16" y="173" width="43" height="46"/>
@@ -70,26 +67,51 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="176-pM-9Lf">
-                    <rect key="frame" x="168" y="235" width="57" height="34"/>
+                    <rect key="frame" x="16" y="235" width="361" height="48"/>
+                    <color key="backgroundColor" red="0.84705882349999995" green="0.21960784310000001" blue="0.25882352939999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="QN8-nu-yqU"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" title="Search">
                         <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="8"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                     <connections>
                         <action selector="searchButtonTapped:" destination="-1" eventType="touchUpInside" id="Qii-iy-lHG"/>
                     </connections>
                 </button>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="zbW-Ow-xOP">
-                    <rect key="frame" x="0.0" y="285" width="393" height="533"/>
+                    <rect key="frame" x="0.0" y="299" width="393" height="519"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lL2-pc-OoI">
+                    <rect key="frame" x="16" y="59" width="36" height="36"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="36" id="718-lg-873"/>
+                        <constraint firstAttribute="height" constant="36" id="DF2-EK-12t"/>
+                    </constraints>
+                    <color key="tintColor" red="0.88235294119999996" green="0.3803921569" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                    <state key="normal" image="chevron.backward" catalog="system">
+                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
+                    </state>
+                    <connections>
+                        <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="BcC-0A-fQp"/>
+                    </connections>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="176-pM-9Lf" firstAttribute="top" secondItem="jSu-jP-uB2" secondAttribute="bottom" constant="16" id="2IS-ah-35e"/>
-                <constraint firstItem="176-pM-9Lf" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Cpo-IL-LL2"/>
+                <constraint firstItem="176-pM-9Lf" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="4QJ-03-9ps"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="46p-Yb-gKa" secondAttribute="trailing" constant="52" id="9XS-mY-dx4"/>
                 <constraint firstItem="zbW-Ow-xOP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DlC-pr-3YR"/>
                 <constraint firstItem="lL2-pc-OoI" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="DmL-iS-X3k"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="jSu-jP-uB2" secondAttribute="trailing" constant="16" id="IxQ-mh-HYl"/>
@@ -111,12 +133,13 @@
                 <constraint firstItem="Mdj-Km-eCT" firstAttribute="leading" secondItem="sSW-bk-jOk" secondAttribute="trailing" constant="8" id="vG9-mi-TXP"/>
                 <constraint firstItem="sSW-bk-jOk" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="vr4-NO-aEw"/>
                 <constraint firstItem="jSu-jP-uB2" firstAttribute="top" secondItem="Mdj-Km-eCT" secondAttribute="bottom" constant="16" id="yg5-sF-wr5"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="176-pM-9Lf" secondAttribute="trailing" constant="16" id="zav-Lx-aXa"/>
             </constraints>
             <point key="canvasLocation" x="-315.26717557251908" y="-113.38028169014085"/>
         </view>
     </objects>
     <resources>
-        <image name="chevron.backward.circle" catalog="system" width="128" height="123"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
