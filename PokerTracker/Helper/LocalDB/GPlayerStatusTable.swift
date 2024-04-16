@@ -72,18 +72,17 @@ class GPlayerStatusTable {
         let active = record.cashIn > 0 ? true : false
         guard let game = try GameTable.find(gameID: record.gameID) else {return}
         var addSumCashAfterFee: Int = 0
+        let cashInF = Float(record.cashIn)
+        let feeF = Float(game.fee)
         if record.cashIn > 0 {
             if game.feeTypeInValue == true {
-//                addSumCashAfterFee = record.cashIn + game.fee
                 addSumCashAfterFee = record.cashIn + ((record.cashIn)/game.standardCashIn)*game.fee
             } else {
-//                addSumCashAfterFee = record.cashIn * (1 + game.fee)
-                addSumCashAfterFee = Int(Float(record.cashIn)*(Float(1) + Float(game.fee)/Float(100)))
+                addSumCashAfterFee = Int(cashInF + cashInF*(feeF/(100.0)))
 
             }
         }
-        let update = playerInGame.filter(gameID == record.gameID && playerID == record.playerID).update(playerActive <- active, sumCashIn += record.cashIn, sumCashOut += record.cashOut, sumCashAfterFee += addSumCashAfterFee)
-//        let update = playerInGame.filter(gameID == record.gameID && playerID == record.playerID).update(playerActive <- active, sumCashIn += record.cashIn, sumCashOut += record.cashOut, sumCashAfterFee += addSumCashAfterFee)
+        let update = playerInGame.filter(gameID == record.gameID && playerID == record.playerID).update(playerActive <- active, sumCashIn += record.cashIn, sumCashOut <- record.cashOut, sumCashAfterFee += addSumCashAfterFee)
         let rowId = try DB.run(update)
         if rowId <= 0 {
             print("error here2")

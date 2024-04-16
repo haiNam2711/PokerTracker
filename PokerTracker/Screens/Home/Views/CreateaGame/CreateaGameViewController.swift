@@ -40,10 +40,10 @@ class CreateaGameViewController: UIViewController {
 extension CreateaGameViewController {
     
     func configuration() {
-        cashInTF.layer.borderColor = UIColor.colorTF()
-        cashOutTF.layer.borderColor = UIColor.colorTF()
-        feeTF.layer.borderColor = UIColor.colorTF()
-        startButton.backgroundColor = UIColor.backAlphaColorBT()
+        cashInTF.layer.borderColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3).cgColor
+        cashOutTF.layer.borderColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3).cgColor
+        feeTF.layer.borderColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3).cgColor
+        startButton.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
         cashInTF.becomeFirstResponder()
         cashInTF.delegate = self
         cashOutTF.delegate = self
@@ -65,7 +65,11 @@ extension CreateaGameViewController {
 
 extension CreateaGameViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        textField.layer.borderColor =  UIColor(red: 0.17, green: 0.53, blue: 0.40, alpha: 1.00).cgColor
+        textField.layer.borderColor =  UIColor.hexStringToUIColor(hex: "D83842").cgColor
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderColor =  UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3).cgColor
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
@@ -75,7 +79,7 @@ extension CreateaGameViewController: UITextFieldDelegate {
         let cashInZero = (cashInTF.text ?? "0").trimmingCharacters(in: .whitespacesAndNewlines) == "0"
         let cashOutZero = (cashOutTF.text ?? "0").trimmingCharacters(in: .whitespacesAndNewlines) == "0"
         
-        startButton.backgroundColor = cashInEmpty || cashOutEmpty || feeEmpty || cashInZero || cashOutZero ? UIColor.backAlphaColorBT() : UIColor.backColorBT()
+        startButton.backgroundColor = cashInEmpty || cashOutEmpty || feeEmpty || cashInZero || cashOutZero ? UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3) : UIColor.hexStringToUIColor(hex: "D83842")
         
     }
 }

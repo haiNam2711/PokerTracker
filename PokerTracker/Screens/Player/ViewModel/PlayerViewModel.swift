@@ -21,6 +21,8 @@ class PlayerViewModel {
     var sum = 0
     var amonutOld = 0
     
+    var isNameNew = false
+    var okAction: UIAlertAction!
     var reloadDataHandler: ((String) -> Void)?
     
     init(name: String, gameID: Int, playerID: Int, cashIn: Int, cashOut: Int) {
@@ -51,11 +53,17 @@ class PlayerViewModel {
         }
     }
     
-    func updateName(playerID: Int, name: String) {
+    func updateName(playerID: Int, name: String) -> Bool {
         do {
+            let checkNameNew = try PlayerTable.getPlayerByName(name)
+            guard checkNameNew == nil || checkNameNew?.id == playerID else {
+                return false
+            }
             try PlayerTable.updateName(idPlayer: playerID, newName: name)
+            return true
         }catch {
             print(error.localizedDescription)
+            return false
         }
     }
     
@@ -64,20 +72,39 @@ class PlayerViewModel {
         
         alertController.addTextField { textField in
             textField.placeholder = self.name
+            textField.autocapitalizationType = .sentences
+            textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         }
         
         let cancelAction = UIAlertAction(title: "Hủy bỏ", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
-            if let name = alertController.textFields?.first?.text {
-                self?.updateName(playerID: self?.playerID ?? 0, name: name)
-                self?.reloadDataHandler?(name)
-                viewController.view.makeToast("Thay đổi tên thành công")
+        okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
+            if self?.isNameNew == true {
+                if let name = alertController.textFields?.first?.text, !name.isEmpty {
+                    if self?.updateName(playerID: self?.playerID ?? 0, name: name) == true {
+                        self?.reloadDataHandler?(name)
+                        viewController.view.makeToast("Thay đổi tên thành công")
+                    }else {
+                        viewController.view.makeToast("Tên người chơi đã tồn tại hoặc có lỗi xảy ra")
+                    }
+                }
+            } else {
+                viewController.view.makeToast("Bạn chưa nhập tên")
             }
         }
+        okAction.isEnabled = false
         
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         viewController.present(alertController, animated: true)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if let text = textField.text, !text.isEmpty {
+            isNameNew = true
+        } else {
+            isNameNew = false
+        }
+        okAction.isEnabled = isNameNew
     }
     
     func handleOKButton(from viewController: UIViewController, chipOutText: String?) {
@@ -92,9 +119,13 @@ class PlayerViewModel {
         guard let chipOut = Int(chipOut) else {
             return
         }
-        let price = Int((Float(chipOut) / Float(cashOut))*Float(cashIn))
+        let chipOutF = Double(chipOut)
+        let cashOutF = Double(cashOut)
+        let cashInF = Double(cashIn)
+        let cashOutK = chipOutF/cashOutF
+        let price = cashOutK*cashInF
         sum = cashIn*amount
-        cashInOrCashOut(gameRecord: GameRecord(gameID: gameID, time: Date(), playerID: playerID, cashIn: sum-player.sumCashIn, cashOut: price))
+        cashInOrCashOut(gameRecord: GameRecord(gameID: gameID, time: Date(), playerID: playerID, cashIn: sum-player.sumCashIn, cashOut: Int(price)))
         viewController.navigationController?.popViewController(animated: true)
     }
     

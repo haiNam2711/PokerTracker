@@ -13,6 +13,19 @@ extension Date {
         dateFormatter.dateFormat = "yy MM dd"
         return dateFormatter.string(from: self)
     }
+    
+    func toDateTimeString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yy MM dd hh:mm"
+        return dateFormatter.string(from: self)
+    }
+    
+    func toTimeString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm"
+        return dateFormatter.string(from: self)
+    }
+    
     func get(_ components: Calendar.Component..., calendar: Calendar = Calendar.current) -> DateComponents {
         return calendar.dateComponents(Set(components), from: self)
     }

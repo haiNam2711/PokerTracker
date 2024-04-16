@@ -81,7 +81,15 @@ extension PlayerViewController {
         
         deleteBT.isEnabled = viewModel.amonutOld > viewModel.amount
         deleteBT.backgroundColor = viewModel.amonutOld > viewModel.amount ? UIColor.hexStringToUIColor(hex: "D83842") : UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
+        cashOutTF.layer.borderColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3).cgColor
+        cashOutTF.delegate = self
+        let cashOutOld = Int((Float(viewModel.player.sumCashOut)/Float(viewModel.cashIn))*Float(viewModel.cashOut))
+        if cashOutOld != 0 {
+            cashOutTF.text = "\(cashOutOld)"
+        }
         registerObserver()
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
+        view.addGestureRecognizer(tapGesture)
     }
     
     private func unregisterObserver() {
@@ -115,5 +123,25 @@ extension PlayerViewController {
             self.okButton.transform = .identity
         }
     }
+    
+    @objc func hideKeyboard() {
+        view.endEditing(true)
+    }
 }
 
+extension PlayerViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.layer.borderColor =  UIColor.hexStringToUIColor(hex: "D83842").cgColor
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        textField.layer.borderColor =  UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3).cgColor
+    }
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        if viewModel.amount == 0 {
+            return false
+        }
+        return true
+    }
+}

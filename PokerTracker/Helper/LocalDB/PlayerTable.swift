@@ -60,4 +60,15 @@ class PlayerTable {
         }
         return retArray
     }
+    
+    static func getPlayerByName(_ name: String) throws -> Player? {
+        let DB = LocalDB.shared.getDB()
+        let query = players.filter(self.name == name)
+        let player = try DB.prepare(query)
+            .map { row in
+                return Player(id: row[id], name: row[self.name])
+            }
+            .first
+        return player
+    }
 }

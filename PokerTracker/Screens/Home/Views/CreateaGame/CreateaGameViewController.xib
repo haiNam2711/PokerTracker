@@ -36,7 +36,7 @@
                                 <constraint firstAttribute="width" constant="36" id="5LN-N5-PAQ"/>
                                 <constraint firstAttribute="height" constant="36" id="Bru-VC-Rzb"/>
                             </constraints>
-                            <color key="tintColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.88235294119999996" green="0.3803921569" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                             <state key="normal" image="chevron.backward" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
@@ -157,7 +157,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Giá tiền" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc8-MZ-rhi">
-                            <rect key="frame" x="68" y="0.0" width="309" height="36"/>
+                            <rect key="frame" x="68" y="0.0" width="257" height="36"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                             <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
@@ -236,7 +236,7 @@
                         <constraint firstAttribute="trailing" secondItem="vP0-c7-mcw" secondAttribute="trailing" constant="16" id="mYB-Hf-jzL"/>
                         <constraint firstItem="LkP-iM-DXW" firstAttribute="centerY" secondItem="u0n-6f-wnr" secondAttribute="centerY" id="muf-rn-woA"/>
                         <constraint firstItem="5Rs-GR-72m" firstAttribute="height" secondItem="ul9-hU-JwB" secondAttribute="height" id="noc-3i-MBU"/>
-                        <constraint firstAttribute="trailing" secondItem="Zc8-MZ-rhi" secondAttribute="trailing" constant="16" id="oWX-fl-Bex"/>
+                        <constraint firstAttribute="trailing" secondItem="Zc8-MZ-rhi" secondAttribute="trailing" constant="68" id="oWX-fl-Bex"/>
                         <constraint firstItem="fzR-Ye-4ZD" firstAttribute="top" secondItem="LkP-iM-DXW" secondAttribute="bottom" constant="24" id="p4u-lH-IIp"/>
                         <constraint firstItem="iAP-nZ-OVa" firstAttribute="leading" secondItem="LkP-iM-DXW" secondAttribute="trailing" constant="8" id="pbl-9f-BzO"/>
                         <constraint firstItem="u0n-6f-wnr" firstAttribute="top" secondItem="5Rs-GR-72m" secondAttribute="bottom" constant="16" id="qM0-ti-ibP"/>

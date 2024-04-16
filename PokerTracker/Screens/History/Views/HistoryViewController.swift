@@ -50,7 +50,7 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = historyTableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath)
         let record = records[indexPath.row]
         let text = record.cashIn > 0 ? "đã nạp \(record.cashIn/game.standardCashIn) chén" : "đã rút \(record.cashOut)K"
-        cell.textLabel?.text = "\(record.time.toString()):  \(record.playerName) \(text)"
+        cell.textLabel?.text = "\(record.time.toTimeString()):  \(record.playerName) \(text)"
         cell.textLabel?.numberOfLines = 0
         return cell
     }

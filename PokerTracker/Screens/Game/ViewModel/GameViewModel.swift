@@ -21,6 +21,8 @@ final class GameViewModel {
     var gameID: Int = 0
     var success = false
     
+    var isNameNew = false
+    var okAction: UIAlertAction!
     var reloadDataHandler: (() -> Void)?
     
     init(gameID: Int, titleGame: String, cashin: Int, cashOut: Int, fee: Int, feeBool: Bool) {
@@ -81,25 +83,41 @@ final class GameViewModel {
         
         alertController.addTextField { textField in
             textField.placeholder = "Tên của bạn"
+            textField.autocapitalizationType = .sentences
+            textField.addTarget(self, action: #selector(self.textFieldDidChange(_:)), for: .editingChanged)
         }
         
         let cancelAction = UIAlertAction(title: "Hủy bỏ", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
-            if let name = alertController.textFields?.first?.text {
-                let player = Player(name: name)
-                self?.createNewPlayer(player: player)
-                if self?.success == true {
-                    viewController.view.makeToast("Thêm người chơi thành công")
-                    self?.reloadDataHandler?()
-                }else {
-                    viewController.view.makeToast("Người chơi đã tồn tại hoặc có lỗi đã xảy ra")
+        okAction = UIAlertAction(title: "OK", style: .default) { [weak self] action in
+            if self?.isNameNew == true {
+                if let name = alertController.textFields?.first?.text, !name.isEmpty {
+                    let player = Player(name: name)
+                    self?.createNewPlayer(player: player)
+                    if self?.success == true {
+                        viewController.view.makeToast("Thêm người chơi thành công")
+                        self?.reloadDataHandler?()
+                    }else {
+                        viewController.view.makeToast("Người chơi đã tồn tại hoặc có lỗi đã xảy ra")
+                    }
                 }
+            }else {
+                viewController.view.makeToast("Bạn chưa nhập tên")
             }
         }
+        okAction.isEnabled = false
         
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         viewController.present(alertController, animated: true)
+    }
+    
+    @objc func textFieldDidChange(_ textField: UITextField) {
+        if let text = textField.text, !text.isEmpty {
+            isNameNew = true
+        } else {
+            isNameNew = false
+        }
+        okAction.isEnabled = isNameNew
     }
     
     func fetchPlayer() {
