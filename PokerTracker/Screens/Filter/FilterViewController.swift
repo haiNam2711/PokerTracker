@@ -8,22 +8,55 @@
 import UIKit
 
 class FilterViewController: UIViewController {
-
-    @IBOutlet weak var startDatePicker: UIDatePicker!
-    @IBOutlet weak var endDatePicker: UIDatePicker!
+    
+    @IBOutlet weak var fromDateLabel: UILabel!
+    @IBOutlet weak var toDateLabel: UILabel!
     @IBOutlet weak var resultTableView: UITableView!
     var items = [PlayerProfitOrLoss]()
+    var fromDate: Date = Date()
+    var toDate: Date = Date()
+    var datePickerView: DatePickerView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         resultTableView.delegate = self
         resultTableView.dataSource = self
         resultTableView.register(UITableViewCell.self, forCellReuseIdentifier: "filterResultCell")
+        setUpDatePickerView()
+        fromDateLabel.text = Date().toDMY()
+        toDateLabel.text = Date().toDMY()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap(_:)))
+        view.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        datePickerView.removeFromSuperview()
+    }
+    
+    func setUpDatePickerView() {
+        if let customView = Bundle.main.loadNibNamed("DatePickerView", owner: nil, options: nil)?.first as? DatePickerView {
+            let screenHeight = UIScreen.main.bounds.height
+            let customViewHeight = screenHeight / 3
+            let customViewY = screenHeight - customViewHeight
+            customView.frame = CGRect(x: 0, y: customViewY, width: view.bounds.width, height: customViewHeight)
+            datePickerView = customView
+        }
+    }
+    
+    @IBAction func fromDateTapped(_ sender: UIButton) {
+        showDatePicker(label: fromDateLabel)
+    }
+    
+    @IBAction func toDateTapped(_ sender: UIButton) {
+        showDatePicker(label: toDateLabel)
     }
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
+        datePickerView.removeFromSuperview()
         do {
-            var start = startDatePicker.date.get(.day, .month, .year)
-            var end = endDatePicker.date.get(.day, .month, .year)
+            var start = fromDate.get(.day, .month, .year)
+            var end = toDate.get(.day, .month, .year)
             print(start, end)
             start.hour = 0
             end.hour = 24
@@ -37,6 +70,20 @@ class FilterViewController: UIViewController {
     
     @IBAction func backButtonTapped(_ sender: UIButton) {
         navigationController?.popViewController(animated: true)
+    }
+    
+    func showDatePicker(label: UILabel) {
+        view.addSubview(datePickerView)
+        datePickerView.doneButtonAction = { [weak self] in
+            self?.datePickerView.removeFromSuperview()
+            let date = self?.datePickerView.datePickerView.date
+            label.text = date!.toDMY()
+            if label == self?.fromDateLabel {
+                self?.fromDate = date!
+            } else {
+                self?.toDate = date!
+            }
+        }
     }
     
 }

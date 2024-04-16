@@ -10,6 +10,8 @@
 		260503BB2BC82E06003DDA61 /* GetGameRecordResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260503BA2BC82E06003DDA61 /* GetGameRecordResult.swift */; };
 		260503BF2BC848DE003DDA61 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260503BE2BC848DE003DDA61 /* FilterViewController.xib */; };
 		260503C02BC848DE003DDA61 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260503BD2BC848DE003DDA61 /* FilterViewController.swift */; };
+		265C9B062BCE634B0031B7C7 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265C9B052BCE634B0031B7C7 /* DatePickerView.swift */; };
+		265C9B082BCE635B0031B7C7 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265C9B072BCE635B0031B7C7 /* DatePickerView.xib */; };
 		26BAFFAC2BC4E44B009241A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFAB2BC4E44B009241A9 /* AppDelegate.swift */; };
 		26BAFFAE2BC4E44B009241A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFAD2BC4E44B009241A9 /* SceneDelegate.swift */; };
 		26BAFFB52BC4E44C009241A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BAFFB42BC4E44C009241A9 /* Assets.xcassets */; };
@@ -56,6 +58,8 @@
 		260503BA2BC82E06003DDA61 /* GetGameRecordResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGameRecordResult.swift; sourceTree = "<group>"; };
 		260503BD2BC848DE003DDA61 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
 		260503BE2BC848DE003DDA61 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		265C9B052BCE634B0031B7C7 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		265C9B072BCE635B0031B7C7 /* DatePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		26BAFFA82BC4E44B009241A9 /* PokerTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BAFFAB2BC4E44B009241A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26BAFFAD2BC4E44B009241A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -125,10 +129,20 @@
 		260503BC2BC84841003DDA61 /* Filter */ = {
 			isa = PBXGroup;
 			children = (
+				265C9B042BCE631D0031B7C7 /* View */,
 				260503BD2BC848DE003DDA61 /* FilterViewController.swift */,
 				260503BE2BC848DE003DDA61 /* FilterViewController.xib */,
 			);
 			path = Filter;
+			sourceTree = "<group>";
+		};
+		265C9B042BCE631D0031B7C7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				265C9B052BCE634B0031B7C7 /* DatePickerView.swift */,
+				265C9B072BCE635B0031B7C7 /* DatePickerView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		26BAFF9F2BC4E44B009241A9 = {
@@ -482,6 +496,7 @@
 				B31411882BC4E80900CAE99B /* PlayerCell.xib in Resources */,
 				B351529A2BC52DFE00F4F82B /* CreateaGameViewController.xib in Resources */,
 				B314118D2BC4E80900CAE99B /* HistoryViewController.xib in Resources */,
+				265C9B082BCE635B0031B7C7 /* DatePickerView.xib in Resources */,
 				B31411962BC4E80900CAE99B /* PlayerViewController.xib in Resources */,
 				B31411932BC4E80900CAE99B /* HomeViewController.xib in Resources */,
 				26BAFFB82BC4E44C009241A9 /* Base in Resources */,
@@ -543,6 +558,7 @@
 				B314118B2BC4E80900CAE99B /* GameRecord.swift in Sources */,
 				B314118E2BC4E80900CAE99B /* Game.swift in Sources */,
 				26BAFFCD2BC4EBF1009241A9 /* PlayerTable.swift in Sources */,
+				265C9B062BCE634B0031B7C7 /* DatePickerView.swift in Sources */,
 				260503BB2BC82E06003DDA61 /* GetGameRecordResult.swift in Sources */,
 				B30DFD7A2BCE5D740067786B /* TextField + Extension.swift in Sources */,
 				B31411862BC4E80900CAE99B /* GameViewModel.swift in Sources */,
