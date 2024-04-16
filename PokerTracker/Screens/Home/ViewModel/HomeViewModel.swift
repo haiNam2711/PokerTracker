@@ -54,5 +54,13 @@ class HomeViewModel {
         gameDetailsVC.viewModel = gameVM
         navigationController.pushViewController(gameDetailsVC, animated: true)
     }
+    
+    func sortGame() {
+        games.sort { (game1, game2) in
+            let time1 = game1.time.timeIntervalSince1970
+            let time2 = game2.time.timeIntervalSince1970
+            return time1 > time2
+        }
+    }
 }
 

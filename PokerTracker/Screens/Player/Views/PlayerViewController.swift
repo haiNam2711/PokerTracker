@@ -87,6 +87,7 @@ extension PlayerViewController {
         if cashOutOld != 0 {
             cashOutTF.text = "\(cashOutOld)"
         }
+        cashOutTF.addPadding(.left(8))
         registerObserver()
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         view.addGestureRecognizer(tapGesture)

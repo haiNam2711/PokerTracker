@@ -25,6 +25,7 @@
 		26C8CF0A2BCC13DB00ACB5BB /* GPlayerStatusDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CF092BCC13DB00ACB5BB /* GPlayerStatusDate.swift */; };
 		359245E7BE50D6CC0C2E2944 /* Pods_PokerTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */; };
 		903964892BC9A1E000C9DB4E /* ViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */; };
+		B30DFD7A2BCE5D740067786B /* TextField + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DFD792BCE5D740067786B /* TextField + Extension.swift */; };
 		B31411852BC4E80900CAE99B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411602BC4E80900CAE99B /* Player.swift */; };
 		B31411862BC4E80900CAE99B /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411622BC4E80900CAE99B /* GameViewModel.swift */; };
 		B31411872BC4E80900CAE99B /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411642BC4E80900CAE99B /* PlayerCell.swift */; };
@@ -74,6 +75,7 @@
 		713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokerTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + Extension.swift"; sourceTree = "<group>"; };
 		9852524EF93548091731D962 /* Pods-PokerTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokerTracker.debug.xcconfig"; path = "Target Support Files/Pods-PokerTracker/Pods-PokerTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		B30DFD792BCE5D740067786B /* TextField + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField + Extension.swift"; sourceTree = "<group>"; };
 		B31411602BC4E80900CAE99B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B31411622BC4E80900CAE99B /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
 		B31411642BC4E80900CAE99B /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
@@ -382,6 +384,7 @@
 			children = (
 				B35152932BC5271000F4F82B /* Date + String Extension.swift */,
 				903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */,
+				B30DFD792BCE5D740067786B /* TextField + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -541,6 +544,7 @@
 				B314118E2BC4E80900CAE99B /* Game.swift in Sources */,
 				26BAFFCD2BC4EBF1009241A9 /* PlayerTable.swift in Sources */,
 				260503BB2BC82E06003DDA61 /* GetGameRecordResult.swift in Sources */,
+				B30DFD7A2BCE5D740067786B /* TextField + Extension.swift in Sources */,
 				B31411862BC4E80900CAE99B /* GameViewModel.swift in Sources */,
 				B31411952BC4E80900CAE99B /* PlayerViewController.swift in Sources */,
 				B35152942BC5271000F4F82B /* Date + String Extension.swift in Sources */,

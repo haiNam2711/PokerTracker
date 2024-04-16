@@ -48,6 +48,9 @@ extension CreateaGameViewController {
         cashInTF.delegate = self
         cashOutTF.delegate = self
         feeTF.delegate = self
+        cashInTF.addPadding(.left(8))
+        cashOutTF.addPadding(.left(8))
+        feeTF.addPadding(.left(8))
         groupContainer.addButtons([ptBT, kBT])
         groupContainer.delegate = self
         configurationVM()

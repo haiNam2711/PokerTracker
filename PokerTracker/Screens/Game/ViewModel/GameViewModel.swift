@@ -11,6 +11,7 @@ final class GameViewModel {
     
     var players: [Player] = []
     var player: GPlayerStatus
+    var playerInGame: [GetActivePlayerResult] = []
     
     var titleGame: String = ""
     var cashin: Int = 0
@@ -20,6 +21,8 @@ final class GameViewModel {
     var playerID = 0
     var gameID: Int = 0
     var success = false
+    var totalCashin: Int = 0
+    var totalCashOut: Int = 0
     
     var isNameNew = false
     var okAction: UIAlertAction!
@@ -161,6 +164,21 @@ final class GameViewModel {
             let cashIn1 = status1.sumCashIn
             let cashIn2 = status2.sumCashIn
             return cashIn1 > cashIn2
+        }
+    }
+    
+    func getAllPlayerToGame(gameID: Int) {
+        do {
+            totalCashin = 0
+            totalCashOut = 0
+            let allPlayer = try GPlayerStatusTable.getAllPlayer(gameID: gameID)
+            self.playerInGame = allPlayer
+            for player in allPlayer {
+                totalCashin += player.sumCashIn
+                totalCashOut += player.sumCashOut
+            }
+        } catch {
+            print(error.localizedDescription)
         }
     }
 }

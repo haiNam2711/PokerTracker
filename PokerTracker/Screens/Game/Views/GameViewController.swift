@@ -13,6 +13,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var nameGameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var infoTV: UITextView!
+    @IBOutlet weak var sumTV: UITextView!
     
     var viewModel = GameViewModel(gameID: 0, titleGame: "", cashin: 0, cashOut: 0, fee: 0, feeBool: true)
     
@@ -27,6 +28,12 @@ class GameViewController: UIViewController {
         super.viewWillAppear(animated)
         viewModel.fetchPlayer()
         viewModel.sortPlayersByCashIn(gameID: viewModel.gameID)
+        viewModel.getAllPlayerToGame(gameID: viewModel.gameID)
+        sumTV.text = """
+            Sum buy: \(viewModel.totalCashin) k
+        
+            Sum out: \(viewModel.totalCashOut) k
+        """
         self.collectionView.reloadData()
     }
     
@@ -71,6 +78,7 @@ extension GameViewController {
     
     func initViewModel() {
         viewModel.fetchPlayer()
+        viewModel.getAllPlayerToGame(gameID: viewModel.gameID)
     }
 }
 

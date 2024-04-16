@@ -25,6 +25,6 @@ class HomeCell: UICollectionViewCell {
     
     func gameDetailConfiguration() {
         guard let games = games else { return }
-        nameGameLabel.text = "Poker: " + games.time.toDateTimeString()
+        nameGameLabel.text = "Poker: " + games.time.toString()
     }
 }
