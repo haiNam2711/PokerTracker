@@ -34,6 +34,17 @@ class GameViewController: UIViewController {
         let cashInD = Double(viewModel.cashin)
         let totalOutD = Double(viewModel.totalCashOut)
         let sumChip = (totalOutD/cashInD)*cashOutD
+        if sumChen == 0 {
+            sumTV.text = """
+                
+            """
+        }else {
+            sumTV.text = """
+                Sum buy: \(sumChen) chén
+            
+                Sum out: \(Int(sumChip)) chip
+            """
+        }
         sumTV.text = """
             Sum buy: \(sumChen) chén
         
