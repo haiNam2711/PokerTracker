@@ -98,23 +98,4 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
         present(alertController, animated: true)
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let action = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
-            let record = self.records[indexPath.row]
-            do {
-                try GameRecordTable.delete(byID: record.id!)
-                try GPlayerStatusTable.deleteARecord(gameRecord: record)
-                self.records.remove(at: indexPath.row)
-                self.historyTableView.deleteRows(at: [indexPath], with: .fade)
-                self.historyTableView.reloadData()
-                completion(true)
-            } catch {
-                print(error.localizedDescription)
-                completion(false)
-            }
-        }
-        action.image = UIImage(systemName: "trash")
-        return UISwipeActionsConfiguration(actions: [action])
-    }
-    
 }

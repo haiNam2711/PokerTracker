@@ -13,6 +13,11 @@ extension Date {
         dateFormatter.dateFormat = "yy MM dd"
         return dateFormatter.string(from: self)
     }
+    func toDMY() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd/MM/yy"
+        return dateFormatter.string(from: self)
+    }
     
     func toDateTimeString() -> String {
         let dateFormatter = DateFormatter()
