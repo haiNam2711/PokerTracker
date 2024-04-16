@@ -29,10 +29,15 @@ class GameViewController: UIViewController {
         viewModel.fetchPlayer()
         viewModel.sortPlayersByCashIn(gameID: viewModel.gameID)
         viewModel.getAllPlayerToGame(gameID: viewModel.gameID)
+        let sumChen = viewModel.totalCashin / viewModel.cashin
+        let cashOutD = Double(viewModel.cashOut)
+        let cashInD = Double(viewModel.cashin)
+        let totalOutD = Double(viewModel.totalCashOut)
+        let sumChip = (totalOutD/cashInD)*cashOutD
         sumTV.text = """
-            Sum buy: \(viewModel.totalCashin) k
+            Sum buy: \(sumChen) chén
         
-            Sum out: \(viewModel.totalCashOut) k
+            Sum out: \(Int(sumChip)) chip
         """
         self.collectionView.reloadData()
     }
