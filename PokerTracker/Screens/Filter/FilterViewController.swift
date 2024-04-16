@@ -60,9 +60,15 @@ class FilterViewController: UIViewController {
             print(start, end)
             start.hour = 0
             end.hour = 24
-            items = try PlayerTable.getPlayersProfitOrLoss(from: Calendar.current.date(from: start)!, to: Calendar.current.date(from: end)!)
-            print("items: \(items.count)")
-            resultTableView.reloadData()
+            if fromDate > toDate {
+                let alert = UIAlertController(title: "Error", message: "From date is after To date", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(alert, animated: true, completion: nil)
+            } else {
+                items = try PlayerTable.getPlayersProfitOrLoss(from: Calendar.current.date(from: start)!, to: Calendar.current.date(from: end)!)
+                print("items: \(items.count)")
+                resultTableView.reloadData()
+            }
         } catch {
             print(error.localizedDescription)
         }
