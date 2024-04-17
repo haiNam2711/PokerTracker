@@ -46,7 +46,7 @@
                             </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash in" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bEo-cR-gYR">
-                            <rect key="frame" x="16" y="52" width="56" height="28"/>
+                            <rect key="frame" x="16" y="69" width="56" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="28" id="sbC-oy-vrz"/>
                                 <constraint firstAttribute="width" constant="56" id="ux4-1g-ICm"/>
@@ -56,13 +56,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cash out" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ul9-hU-JwB">
-                            <rect key="frame" x="16" y="92" width="56" height="28"/>
+                            <rect key="frame" x="16" y="109" width="56" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập số tiền mua vào" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Tjd-Ab-kTT">
-                            <rect key="frame" x="80" y="52" width="225" height="28"/>
+                            <rect key="frame" x="80" y="69" width="225" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <userDefinedRuntimeAttributes>
@@ -75,7 +75,7 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="K" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rpe-pf-1HL">
-                            <rect key="frame" x="313" y="52" width="64" height="28"/>
+                            <rect key="frame" x="313" y="69" width="64" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="64" id="dHf-M7-v7B"/>
                             </constraints>
@@ -84,7 +84,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Wc-qj-rdJ">
-                            <rect key="frame" x="313" y="92" width="64" height="28"/>
+                            <rect key="frame" x="313" y="109" width="64" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="64" id="KXF-na-KmO"/>
                             </constraints>
@@ -93,13 +93,13 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fee Type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Rs-GR-72m">
-                            <rect key="frame" x="16" y="132" width="56" height="28"/>
+                            <rect key="frame" x="16" y="149" width="56" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Lượng chip nhận được" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uKA-A3-cEL">
-                            <rect key="frame" x="80" y="92" width="225" height="28"/>
+                            <rect key="frame" x="80" y="109" width="225" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <userDefinedRuntimeAttributes>
@@ -112,13 +112,13 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fee" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0n-6f-wnr">
-                            <rect key="frame" x="16" y="172" width="56" height="28"/>
+                            <rect key="frame" x="16" y="189" width="56" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Nhập phí mua" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="LkP-iM-DXW">
-                            <rect key="frame" x="80" y="172" width="225" height="28"/>
+                            <rect key="frame" x="80" y="189" width="225" height="28"/>
                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                             <userDefinedRuntimeAttributes>
@@ -131,7 +131,7 @@
                             </userDefinedRuntimeAttributes>
                         </textField>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iAP-nZ-OVa">
-                            <rect key="frame" x="313" y="172" width="64" height="28"/>
+                            <rect key="frame" x="313" y="189" width="64" height="28"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="64" id="4qi-Mm-GS0"/>
                             </constraints>
@@ -140,7 +140,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fzR-Ye-4ZD">
-                            <rect key="frame" x="16" y="224" width="361" height="48"/>
+                            <rect key="frame" x="16" y="241" width="361" height="48"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="48" id="FkU-7a-uu7"/>
                             </constraints>
@@ -163,7 +163,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vP0-c7-mcw">
-                            <rect key="frame" x="80" y="132" width="297" height="28"/>
+                            <rect key="frame" x="80" y="149" width="297" height="28"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="egg-Ia-4dL" customClass="RadioButton" customModule="MBRadioButton">
                                     <rect key="frame" x="0.0" y="0.0" width="140.66666666666666" height="28"/>
@@ -193,6 +193,13 @@
                                 <constraint firstAttribute="trailing" secondItem="NFL-nH-b1z" secondAttribute="trailing" id="zUk-DU-3NB"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rQY-lQ-aOa">
+                            <rect key="frame" x="0.0" y="52" width="393" height="1"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="mnQ-eb-WPj"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
@@ -202,11 +209,14 @@
                         <constraint firstAttribute="trailing" secondItem="fzR-Ye-4ZD" secondAttribute="trailing" constant="16" id="4lz-J2-hld"/>
                         <constraint firstItem="5Rs-GR-72m" firstAttribute="trailing" secondItem="ul9-hU-JwB" secondAttribute="trailing" id="5nd-Hs-MAl"/>
                         <constraint firstItem="fzR-Ye-4ZD" firstAttribute="leading" secondItem="068-k5-HnZ" secondAttribute="leading" constant="16" id="6rK-ln-wpl"/>
+                        <constraint firstItem="rQY-lQ-aOa" firstAttribute="leading" secondItem="068-k5-HnZ" secondAttribute="leading" id="74C-Lr-RSV"/>
                         <constraint firstItem="u0n-6f-wnr" firstAttribute="trailing" secondItem="5Rs-GR-72m" secondAttribute="trailing" id="8Ry-TN-fnI"/>
                         <constraint firstAttribute="trailing" secondItem="4Wc-qj-rdJ" secondAttribute="trailing" constant="16" id="AYb-eD-MMU"/>
                         <constraint firstItem="bEo-cR-gYR" firstAttribute="leading" secondItem="068-k5-HnZ" secondAttribute="leading" constant="16" id="B47-QZ-ALl"/>
-                        <constraint firstItem="bEo-cR-gYR" firstAttribute="top" secondItem="FIz-1I-DPK" secondAttribute="bottom" constant="16" id="Egw-Ew-6gs"/>
+                        <constraint firstAttribute="trailing" secondItem="rQY-lQ-aOa" secondAttribute="trailing" id="GiW-JD-KCr"/>
+                        <constraint firstItem="bEo-cR-gYR" firstAttribute="top" secondItem="rQY-lQ-aOa" secondAttribute="bottom" constant="16" id="GmO-4y-Pg2"/>
                         <constraint firstItem="4Wc-qj-rdJ" firstAttribute="height" secondItem="uKA-A3-cEL" secondAttribute="height" id="Hu4-3f-UXv"/>
+                        <constraint firstItem="rQY-lQ-aOa" firstAttribute="top" secondItem="FIz-1I-DPK" secondAttribute="bottom" constant="16" id="IUz-5A-Wdr"/>
                         <constraint firstItem="ul9-hU-JwB" firstAttribute="trailing" secondItem="bEo-cR-gYR" secondAttribute="trailing" id="JJX-6E-kM4"/>
                         <constraint firstItem="ul9-hU-JwB" firstAttribute="top" secondItem="bEo-cR-gYR" secondAttribute="bottom" constant="12" id="KSD-rZ-cQe"/>
                         <constraint firstItem="LkP-iM-DXW" firstAttribute="leading" secondItem="u0n-6f-wnr" secondAttribute="trailing" constant="8" id="Ka7-mX-C1D"/>

@@ -117,15 +117,17 @@ class GPlayerStatusTable {
         // Create new sumcash
         guard let game = try GameTable.find(gameID: gameRecord.gameID) else {return}
         var addSumCashAfterFee = 0
+        let cashInF = Float(gameRecord.cashIn)
+        let feeF = Float(game.fee)
         if gameRecord.cashIn > 0 {
             if game.feeTypeInValue == true {
                 addSumCashAfterFee = gameRecord.cashIn + ((gameRecord.cashIn)/game.standardCashIn)*game.fee
             } else {
-                addSumCashAfterFee = Int(Float(gameRecord.cashIn)*(Float(1) + Float(game.fee)/Float(100)))
+                addSumCashAfterFee = Int(cashInF + cashInF*(feeF/(100.0)))
             }
         }
         // delete record
-        let update = playerInGame.filter(gameID == gameRecord.gameID && playerID == gameRecord.playerID).update(playerActive <- active, sumCashIn -= gameRecord.cashIn, sumCashOut -= gameRecord.cashOut, sumCashAfterFee -= addSumCashAfterFee)
+        let update = playerInGame.filter(gameID == gameRecord.gameID && playerID == gameRecord.playerID).update(playerActive <- active, sumCashIn -= gameRecord.cashIn, sumCashOut <- gameRecord.cashOut, sumCashAfterFee -= addSumCashAfterFee)
         _ = try DB.run(update)
     }
     
@@ -146,5 +148,4 @@ class GPlayerStatusTable {
 
         return GPlayerStatus(playerID: idPlayer, gameID: idGame, playerActive: active, sumCashIn: cashIn, sumCashOut: cashOut, sumChip: chipOut, sumCashAfterFee: cashFee)
     }
-    
 }

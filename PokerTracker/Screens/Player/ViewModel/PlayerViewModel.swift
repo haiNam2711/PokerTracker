@@ -92,7 +92,13 @@ class PlayerViewModel {
             }
         }
         okAction.isEnabled = false
-        
+//        let boldFont = UIFont.boldSystemFont(ofSize: 16)
+//        let attributedText = NSMutableAttributedString(string: "OK", attributes: [NSAttributedString.Key.font: boldFont])
+//        okAction.setValue(attributedText, forKey: "attributedTitle")
+//        let font = UIFont.systemFont(ofSize: 16)
+//        let attributed = NSMutableAttributedString(string: "Cancel", attributes: [NSAttributedString.Key.font: font])
+//        cancelAction.setValue(attributed, forKey: "attributedTitle")
+        cancelAction.setValue(UIColor.hexStringToUIColor(hex: "#EB442C"), forKey: "titleTextColor")
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         viewController.present(alertController, animated: true)
@@ -109,10 +115,18 @@ class PlayerViewModel {
     
     func handleOKButton(from viewController: UIViewController, chipOutText: String?) {
         guard let chipOut = chipOutText, !chipOut.isEmpty else {
-            sum = cashIn*amount
-            if sum != 0 {
-                cashInOrCashOut(gameRecord: GameRecord(gameID: gameID, time: Date(), playerID: playerID, cashIn: sum-player.sumCashIn, cashOut: 0))
-                viewController.navigationController?.popViewController(animated: true)
+            if amount < amonutOld {
+                showAlertCheck(from: viewController) { [weak self] succes in
+                    let amonutD = (self?.amonutOld ?? 0) - (self?.amount ?? 0)
+                    self?.deleteRecord(gameRecord: GameRecord(gameID: self?.gameID ?? 0, time: Date(), playerID: self?.playerID ?? 0, cashIn: amonutD*(self?.cashIn ?? 0), cashOut: 0))
+                        viewController.navigationController?.popViewController(animated: true)
+                }
+            }else {
+                sum = cashIn*amount
+                if sum != 0 {
+                    cashInOrCashOut(gameRecord: GameRecord(gameID: gameID, time: Date(), playerID: playerID, cashIn: sum-player.sumCashIn, cashOut: 0))
+                    viewController.navigationController?.popViewController(animated: true)
+                }
             }
             return
         }
@@ -122,11 +136,54 @@ class PlayerViewModel {
         let chipOutF = Double(chipOut)
         let cashOutF = Double(cashOut)
         let cashInF = Double(cashIn)
-        let cashOutK = chipOutF/cashOutF
-        let price = cashOutK*cashInF
-        sum = cashIn*amount
-        cashInOrCashOut(gameRecord: GameRecord(gameID: gameID, time: Date(), playerID: playerID, cashIn: sum-player.sumCashIn, cashOut: Int(price)))
-        viewController.navigationController?.popViewController(animated: true)
+        var cashOutK: Double = 0
+        var price: Double = 0
+        let cashOutOld = Double((Float(player.sumCashOut)/Float(cashIn))*Float(cashOut))
+        if cashOutOld != chipOutF && cashOutOld != 0.0 {
+            showAlertCheck(from: viewController) { [weak self] succes in
+                if succes {
+                    cashOutK = chipOutF/cashOutF
+                    price = cashOutK*cashInF
+                    self?.sum = (self?.cashIn ?? 0)*(self?.amount ?? 0)
+                    self?.cashInOrCashOut(gameRecord: GameRecord(gameID: self?.gameID ?? 0, time: Date(), playerID: self?.playerID ?? 0, cashIn: (self?.sum ?? 0)-(self?.player.sumCashIn ?? 0), cashOut: Int(price)))
+                    viewController.navigationController?.popViewController(animated: true)
+                }else {
+                    viewController.navigationController?.popViewController(animated: true)
+                }
+                
+            }
+        }else {
+            cashOutK = chipOutF/cashOutF
+            price = cashOutK*cashInF
+            sum = cashIn*amount
+            cashInOrCashOut(gameRecord: GameRecord(gameID: gameID, time: Date(), playerID: playerID, cashIn: sum-player.sumCashIn, cashOut: Int(price)))
+            viewController.navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
+    func showAlertCheck(from viewController: UIViewController, completion: @escaping (Bool) -> Void) {
+        let alertController = UIAlertController(title: "Xác nhận thay đổi", message: nil, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Hủy bỏ", style: .cancel) { _ in
+            completion(false)
+        }
+        okAction = UIAlertAction(title: "OK", style: .default) { _ in
+            completion(true)
+        }
+        cancelAction.setValue(UIColor.hexStringToUIColor(hex: "#EB442C"), forKey: "titleTextColor")
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        viewController.present(alertController, animated: true)
+    }
+    
+    func deleteRecord(gameRecord: GameRecord) {
+        do {
+            try GPlayerStatusTable.deleteARecord(gameRecord: gameRecord)
+            try GameRecordTable.delete(byID: gameRecord.id ?? 0)
+        }catch {
+            print(error.localizedDescription)
+        }
     }
     
     func backClick(from viewController: UIViewController) {

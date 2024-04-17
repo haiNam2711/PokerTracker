@@ -75,15 +75,15 @@ extension GameViewController {
         nameGameLabel.text = viewModel.titleGame
         if viewModel.feeBool {
             infoTV.text = """
-                Cashin: \(viewModel.cashin) k
-                Chipout: \(viewModel.cashOut) chip
-                Fee: \(viewModel.fee) k
+            Cashin: \(viewModel.cashin) k
+            Chipout: \(viewModel.cashOut) chip
+            Fee: \(viewModel.fee) k
             """
         } else {
             infoTV.text = """
-                Cashin: \(viewModel.cashin) k
-                Chipout: \(viewModel.cashOut) chip
-                Fee: \(viewModel.fee) %
+            Cashin: \(viewModel.cashin) k
+            Chipout: \(viewModel.cashOut) chip
+            Fee: \(viewModel.fee) %
             """
         }
         collectionView.register(UINib(nibName: "PlayerCell", bundle: nil), forCellWithReuseIdentifier: "PlayerCell")
@@ -126,6 +126,6 @@ extension GameViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 58)
+        return CGSize(width: collectionView.bounds.width, height: 69)
     }
 }

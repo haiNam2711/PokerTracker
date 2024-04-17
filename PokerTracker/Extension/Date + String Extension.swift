@@ -21,13 +21,13 @@ extension Date {
     
     func toDateTimeString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yy MM dd hh:mm"
+        dateFormatter.dateFormat = "yy MM dd  hh:mm:ss"
         return dateFormatter.string(from: self)
     }
     
     func toTimeString() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "hh:mm"
+        dateFormatter.dateFormat = "hh:mm:ss"
         return dateFormatter.string(from: self)
     }
     

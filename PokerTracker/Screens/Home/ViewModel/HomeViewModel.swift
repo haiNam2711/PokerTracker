@@ -49,7 +49,7 @@ class HomeViewModel {
     func showGameDetailsScreen(at index: Int, navigationController: UINavigationController?) {
         guard let navigationController = navigationController else { return }
         let game = games[index]
-        let gameVM = GameViewModel(gameID: game.id ?? 0, titleGame: "Poker: " + (game.time.toString()), cashin: game.standardCashIn, cashOut: game.standardChipOut, fee: game.fee, feeBool: game.feeTypeInValue)
+        let gameVM = GameViewModel(gameID: game.id ?? 0, titleGame: "Poker: " + (game.time.toDateTimeString()), cashin: game.standardCashIn, cashOut: game.standardChipOut, fee: game.fee, feeBool: game.feeTypeInValue)
         let gameDetailsVC = GameViewController()
         gameDetailsVC.viewModel = gameVM
         navigationController.pushViewController(gameDetailsVC, animated: true)

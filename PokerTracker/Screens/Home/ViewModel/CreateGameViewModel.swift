@@ -34,7 +34,7 @@ class CreateGameViewModel {
         do {
             if let createdGame = try GameTable.insert(item: newGame) {
                 let gameID = createdGame.id ?? 0
-                let gameVM = GameViewModel(gameID: gameID,titleGame: "Poker: " + (Date().toString()), cashin: Int(cashIn) ?? 0, cashOut: Int(cashOut) ?? 0, fee: Int(fee) ?? 0, feeBool: feeType)
+                let gameVM = GameViewModel(gameID: gameID,titleGame: "Poker: " + (Date().toDateTimeString()), cashin: Int(cashIn) ?? 0, cashOut: Int(cashOut) ?? 0, fee: Int(fee) ?? 0, feeBool: feeType)
                 let vc = GameViewController()
                 viewController.navigationController?.pushViewController(vc, animated: true)
                 vc.viewModel = gameVM

@@ -108,7 +108,7 @@ final class GameViewModel {
             }
         }
         okAction.isEnabled = false
-        
+        cancelAction.setValue(UIColor.hexStringToUIColor(hex: "#EB442C"), forKey: "titleTextColor")
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
         viewController.present(alertController, animated: true)

@@ -49,13 +49,13 @@ class PlayerCell: UICollectionViewCell {
         if let sumCashOut = playerStatus?.sumCashOut {
             let sum = sumCashOut - (playerStatus?.sumCashAfterFee ?? 0)
             if sum == 0 {
-                sumLabel.text = "Bạn đã hòa vốn"
+                sumLabel.text = "Hòa vốn"
                 colorYellow()
             }else if sum > 0 {
-                sumLabel.text = "Bạn đã lãi \(sum) k"
+                sumLabel.text = "Lãi \(sum) k"
                 colorGreen()
             }else {
-                sumLabel.text = "Bạn đã lỗ \(sum) k"
+                sumLabel.text = "Lỗ \(sum) k"
                 colorRed()
             }
             cashOutLabel.text = "\(sumCashOut) k"
@@ -81,7 +81,7 @@ class PlayerCell: UICollectionViewCell {
     func colorYellow() {
         playerButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#F2E318")
         view.backgroundColor = UIColor.hexStringToUIColor(hex: "#F2E318")
-        lineView.backgroundColor = UIColor.hexStringToUIColor(hex: "#F2E318")
+        lineView.backgroundColor = .black.withAlphaComponent(0.3)
         nameLabel.textColor = .black
         buyibLB.textColor = .black
         chipOutLB.textColor = .black
@@ -94,7 +94,7 @@ class PlayerCell: UICollectionViewCell {
     func colorRed() {
         playerButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#EB442C")
         view.backgroundColor = UIColor.hexStringToUIColor(hex: "#EB442C")
-        lineView.backgroundColor = UIColor.hexStringToUIColor(hex: "#EB442C")
+        lineView.backgroundColor = .black.withAlphaComponent(0.3)
         nameLabel.textColor = .white
         buyibLB.textColor = .white
         chipOutLB.textColor = .white
@@ -107,7 +107,7 @@ class PlayerCell: UICollectionViewCell {
     func colorGreen() {
         playerButton.backgroundColor = UIColor.hexStringToUIColor(hex: "#74C69D")
         view.backgroundColor = UIColor.hexStringToUIColor(hex: "#74C69D")
-        lineView.backgroundColor = UIColor.hexStringToUIColor(hex: "#74C69D")
+        lineView.backgroundColor = .black.withAlphaComponent(0.3)
         nameLabel.textColor = .white
         buyibLB.textColor = .white
         chipOutLB.textColor = .white
@@ -118,9 +118,9 @@ class PlayerCell: UICollectionViewCell {
     }
     
     func colorDefault() {
-        playerButton.backgroundColor = .lightGray
+        playerButton.backgroundColor = .white
         view.backgroundColor = .white
-        lineView.backgroundColor = .lightGray
+        lineView.backgroundColor = .black.withAlphaComponent(0.3)
         nameLabel.textColor = .black
         buyibLB.textColor = .black
         chipOutLB.textColor = .black

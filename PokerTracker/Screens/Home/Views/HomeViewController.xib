@@ -59,8 +59,8 @@
                                 <action selector="newGameOnClick:" destination="-1" eventType="touchUpInside" id="hXf-al-iEh"/>
                             </connections>
                         </button>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Dh1-aI-eG8">
-                            <rect key="frame" x="0.0" y="69" width="414" height="729"/>
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Dh1-aI-eG8">
+                            <rect key="frame" x="0.0" y="53" width="414" height="745"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="74q-gA-AEP">
                                 <size key="itemSize" width="128" height="128"/>
@@ -71,7 +71,7 @@
                         </collectionView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9Mw-J4-Gay">
                             <rect key="frame" x="0.0" y="52" width="414" height="1"/>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="1" id="ETD-qF-HHq"/>
                             </constraints>
@@ -93,7 +93,7 @@
                         <constraint firstAttribute="trailing" secondItem="Dh1-aI-eG8" secondAttribute="trailing" id="dV1-j1-dlP"/>
                         <constraint firstItem="9Mw-J4-Gay" firstAttribute="top" secondItem="deG-SI-gpM" secondAttribute="bottom" constant="16" id="gLg-LT-6Cm"/>
                         <constraint firstItem="Dh1-aI-eG8" firstAttribute="leading" secondItem="2aH-3c-mNL" secondAttribute="leading" id="nCs-Gl-Le1"/>
-                        <constraint firstItem="Dh1-aI-eG8" firstAttribute="top" secondItem="9Mw-J4-Gay" secondAttribute="bottom" constant="16" id="qRj-L5-kdU"/>
+                        <constraint firstItem="Dh1-aI-eG8" firstAttribute="top" secondItem="9Mw-J4-Gay" secondAttribute="bottom" id="qRj-L5-kdU"/>
                     </constraints>
                 </view>
             </subviews>
