@@ -116,10 +116,13 @@ class PlayerViewModel {
     func handleOKButton(from viewController: UIViewController, chipOutText: String?) {
         guard let chipOut = chipOutText, !chipOut.isEmpty else {
             if amount < amonutOld {
-                showAlertCheck(from: viewController) { [weak self] succes in
-                    let amonutD = (self?.amonutOld ?? 0) - (self?.amount ?? 0)
-                    self?.deleteRecord(gameRecord: GameRecord(gameID: self?.gameID ?? 0, time: Date(), playerID: self?.playerID ?? 0, cashIn: amonutD*(self?.cashIn ?? 0), cashOut: 0))
-                        viewController.navigationController?.popViewController(animated: true)
+                showAlertCheck(from: viewController) { [weak self] successPicked in
+                    if successPicked {
+                        let amonutD = (self?.amonutOld ?? 0) - (self?.amount ?? 0)
+                        let tmpGameRecord = GameRecord(gameID: self?.gameID ?? 0, time: Date(), playerID: self?.playerID ?? 0, cashIn: amonutD*(self?.cashIn ?? 0), cashOut: 0)
+                        self?.deleteRecord(gameRecord: tmpGameRecord)
+                    }
+                    viewController.navigationController?.popViewController(animated: true)
                 }
             }else {
                 sum = cashIn*amount
@@ -141,16 +144,19 @@ class PlayerViewModel {
         let cashOutOld = Double((Float(player.sumCashOut)/Float(cashIn))*Float(cashOut))
         if cashOutOld != chipOutF && cashOutOld != 0.0 {
             showAlertCheck(from: viewController) { [weak self] succes in
+                guard let self else { return }
                 if succes {
                     cashOutK = chipOutF/cashOutF
                     price = cashOutK*cashInF
-                    self?.sum = (self?.cashIn ?? 0)*(self?.amount ?? 0)
-                    self?.cashInOrCashOut(gameRecord: GameRecord(gameID: self?.gameID ?? 0, time: Date(), playerID: self?.playerID ?? 0, cashIn: (self?.sum ?? 0)-(self?.player.sumCashIn ?? 0), cashOut: Int(price)))
-                    viewController.navigationController?.popViewController(animated: true)
-                }else {
-                    viewController.navigationController?.popViewController(animated: true)
+                    self.sum = (self.cashIn)*(self.amount)
+                    do {
+                        try GameRecordTable.deleteCashOutRecord(byGameId: self.player.gameID, playerId: self.playerID)
+                    } catch {
+                        print(error.localizedDescription)
+                    }
+                    self.cashInOrCashOut(gameRecord: GameRecord(gameID: self.gameID, time: Date(), playerID: self.playerID, cashIn: (self.sum)-(self.player.sumCashIn), cashOut: Int(price)))
                 }
-                
+                viewController.navigationController?.popViewController(animated: true)
             }
         }else {
             cashOutK = chipOutF/cashOutF
@@ -180,7 +186,7 @@ class PlayerViewModel {
     func deleteRecord(gameRecord: GameRecord) {
         do {
             try GPlayerStatusTable.deleteARecord(gameRecord: gameRecord)
-            try GameRecordTable.delete(byID: gameRecord.id ?? 0)
+            try GameRecordTable.insert(item: GameRecord(gameID: gameRecord.gameID, time: gameRecord.time, playerID: gameRecord.playerID, cashIn: -gameRecord.cashIn, cashOut: gameRecord.cashOut))
         }catch {
             print(error.localizedDescription)
         }

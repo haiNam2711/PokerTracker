@@ -19,6 +19,7 @@ class HistoryViewController: UIViewController {
         super.viewDidLoad()
         do {
             records = try GeneralService.getRecordHistory(byGameID: gameID)
+            records.reverse()
             game = try GameTable.find(gameID: gameID)
         } catch {
             print(error.localizedDescription)
@@ -49,53 +50,55 @@ extension HistoryViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = historyTableView.dequeueReusableCell(withIdentifier: "HistoryCell", for: indexPath)
         let record = records[indexPath.row]
-        let text = record.cashIn > 0 ? "đã nạp \(record.cashIn/game.standardCashIn) chén" : "đã rút \(record.cashOut)K"
+        let text = record.cashIn != 0 ? (record.cashIn > 0 ?
+                                         "đã nạp \(record.cashIn/game.standardCashIn) chén" : "đã sửa giảm đi \(-record.cashIn/game.standardCashIn) chén")
+        : "đã rút \(record.cashOut)K"
         cell.textLabel?.text = "\(record.time.toTimeString()):  \(record.playerName) \(text)"
         cell.textLabel?.numberOfLines = 0
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let record = records[indexPath.row]
-//            try GameRecordTable.update(item: gameRecord)
-//            try GPlayerStatusTable.deleteARecord(gameRecord: gameRecord)
-//            try GPlayerStatusTable.update(withNewMoneyRecord: gameRecord)
-        let alertController = UIAlertController(title: "Chỉnh sửa một giao dịch", message: nil, preferredStyle: .alert)
-        
-        alertController.addTextField { textField in
-            textField.placeholder = "Buy in nhiêu chén"
-            textField.keyboardType = .numberPad
-        }
-        alertController.addTextField { textField in
-            textField.placeholder = "Cash out"
-            textField.keyboardType = .numberPad
-        }
-        
-        let cancelAction = UIAlertAction(title: "Hủy bỏ", style: .cancel, handler: nil)
-        let okAction = UIAlertAction(title: "OK", style: .default) { action in
-            guard let buyInTxt = alertController.textFields?[0].text, let cashOutTxt = alertController.textFields?[1].text else { return }
-            do {
-                let buyInNum = Int(buyInTxt) ?? 0
-                let cashOutNum = Int(cashOutTxt) ?? 0
-                if (buyInNum > 0 && cashOutNum > 0) {
-                    print("can not fix 2 numbers in a time")
-                    return
-                }
-                try GPlayerStatusTable.deleteARecord(gameRecord: record)
-                record.cashIn = buyInNum * self.game.standardCashIn
-                record.cashOut = cashOutNum
-                try GameRecordTable.update(item: record)
-                try GPlayerStatusTable.update(withNewMoneyRecord: record)
-                self.historyTableView.reloadData()
-            } catch {
-                print(error.localizedDescription)
-            }
-        }
-        
-        alertController.addAction(cancelAction)
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
-    }
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        let record = records[indexPath.row]
+////            try GameRecordTable.update(item: gameRecord)
+////            try GPlayerStatusTable.deleteARecord(gameRecord: gameRecord)
+////            try GPlayerStatusTable.update(withNewMoneyRecord: gameRecord)
+//        let alertController = UIAlertController(title: "Chỉnh sửa một giao dịch", message: nil, preferredStyle: .alert)
+//        
+//        alertController.addTextField { textField in
+//            textField.placeholder = "Buy in nhiêu chén"
+//            textField.keyboardType = .numberPad
+//        }
+//        alertController.addTextField { textField in
+//            textField.placeholder = "Cash out"
+//            textField.keyboardType = .numberPad
+//        }
+//        
+//        let cancelAction = UIAlertAction(title: "Hủy bỏ", style: .cancel, handler: nil)
+//        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+//            guard let buyInTxt = alertController.textFields?[0].text, let cashOutTxt = alertController.textFields?[1].text else { return }
+//            do {
+//                let buyInNum = Int(buyInTxt) ?? 0
+//                let cashOutNum = Int(cashOutTxt) ?? 0
+//                if (buyInNum > 0 && cashOutNum > 0) {
+//                    print("can not fix 2 numbers in a time")
+//                    return
+//                }
+//                try GPlayerStatusTable.deleteARecord(gameRecord: record)
+//                record.cashIn = buyInNum * self.game.standardCashIn
+//                record.cashOut = cashOutNum
+//                try GameRecordTable.update(item: record)
+//                try GPlayerStatusTable.update(withNewMoneyRecord: record)
+//                self.historyTableView.reloadData()
+//            } catch {
+//                print(error.localizedDescription)
+//            }
+//        }
+//        
+//        alertController.addAction(cancelAction)
+//        alertController.addAction(okAction)
+//        present(alertController, animated: true)
+//    }
     
 }

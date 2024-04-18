@@ -63,12 +63,14 @@ class FilterViewController: UIViewController {
             print(start, end)
             start.hour = 0
             end.hour = 24
-            if fromDate > toDate {
+            let queryStart = Calendar.current.date(from: start)!
+            let queryEnd = Calendar.current.date(from: end)!
+            if queryStart > queryEnd {
                 let alert = UIAlertController(title: "Error", message: "From date is after To date", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
                 self.present(alert, animated: true, completion: nil)
             } else {
-                items = try PlayerTable.getPlayersProfitOrLoss(from: Calendar.current.date(from: start)!, to: Calendar.current.date(from: end)!)
+                items = try PlayerTable.getPlayersProfitOrLoss(from: queryStart, to: queryEnd)
                 print("items: \(items.count)")
                 resultTableView.reloadData()
             }
@@ -83,6 +85,11 @@ class FilterViewController: UIViewController {
     
     func showDatePicker(label: UILabel) {
         view.addSubview(datePickerView)
+        if label == fromDateLabel {
+            datePickerView.datePickerView.date = fromDate
+        } else {
+            datePickerView.datePickerView.date = toDate
+        }
         datePickerView.doneButtonAction = { [weak self] in
             self?.datePickerView.removeFromSuperview()
             let date = self?.datePickerView.datePickerView.date
