@@ -30,16 +30,19 @@ class FilterViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        let screenHeight = UIScreen.main.bounds.height
+        let customViewHeight = screenHeight / 3
+        let customViewY = screenHeight - customViewHeight
+        datePickerView.frame = CGRect(x: 0, y: customViewY, width: view.bounds.width, height: customViewHeight)
+    }
+    
     @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
         datePickerView.removeFromSuperview()
     }
     
     func setUpDatePickerView() {
         if let customView = Bundle.main.loadNibNamed("DatePickerView", owner: nil, options: nil)?.first as? DatePickerView {
-            let screenHeight = UIScreen.main.bounds.height
-            let customViewHeight = screenHeight / 3
-            let customViewY = screenHeight - customViewHeight
-            customView.frame = CGRect(x: 0, y: customViewY, width: view.bounds.width, height: customViewHeight)
             datePickerView = customView
         }
     }

@@ -74,6 +74,7 @@
                                 </textView>
                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" editable="NO" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DIx-IA-sUX">
                                     <rect key="frame" x="0.0" y="0.0" width="123.66666666666667" height="72"/>
+
                                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                     <string key="text">Buy in: 200 chén
 Cash out: 400000 chip</string>
