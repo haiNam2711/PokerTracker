@@ -61,9 +61,9 @@ class GPlayerStatusTable {
     }
     
     static func update(withNewMoneyRecord record: GameRecord) throws {
-        if record.cashIn > 0 && record.cashOut > 0 {
-            throw DBError(message: "Cash in and cash out in the same time!!!!")
-        }
+//        if record.cashIn > 0 && record.cashOut > 0 {
+//            throw DBError(message: "Cash in and cash out in the same time!!!!")
+//        }
         let DB = LocalDB.shared.getDB()
         let query = playerInGame.filter(self.gameID == record.gameID && self.playerID == record.playerID)
         if try DB.pluck(query) == nil {

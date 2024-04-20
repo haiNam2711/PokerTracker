@@ -447,6 +447,8 @@
 			dependencies = (
 			);
 			name = PokerTracker;
+			packageProductDependencies = (
+			);
 			productName = PokerTracker;
 			productReference = 26BAFFA82BC4E44B009241A9 /* PokerTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -475,6 +477,8 @@
 				Base,
 			);
 			mainGroup = 26BAFF9F2BC4E44B009241A9;
+			packageReferences = (
+			);
 			productRefGroup = 26BAFFA92BC4E44B009241A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -729,7 +733,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9G9YD8GX8D;
+				DEVELOPMENT_TEAM = L986574MQT;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokerTracker/Info.plist;
@@ -742,7 +746,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker.vn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -758,7 +762,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9G9YD8GX8D;
+				DEVELOPMENT_TEAM = L986574MQT;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokerTracker/Info.plist;
@@ -771,7 +775,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker.vn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

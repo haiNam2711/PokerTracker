@@ -92,12 +92,12 @@ class PlayerViewModel {
             }
         }
         okAction.isEnabled = false
-//        let boldFont = UIFont.boldSystemFont(ofSize: 16)
-//        let attributedText = NSMutableAttributedString(string: "OK", attributes: [NSAttributedString.Key.font: boldFont])
-//        okAction.setValue(attributedText, forKey: "attributedTitle")
-//        let font = UIFont.systemFont(ofSize: 16)
-//        let attributed = NSMutableAttributedString(string: "Cancel", attributes: [NSAttributedString.Key.font: font])
-//        cancelAction.setValue(attributed, forKey: "attributedTitle")
+        //        let boldFont = UIFont.boldSystemFont(ofSize: 16)
+        //        let attributedText = NSMutableAttributedString(string: "OK", attributes: [NSAttributedString.Key.font: boldFont])
+        //        okAction.setValue(attributedText, forKey: "attributedTitle")
+        //        let font = UIFont.systemFont(ofSize: 16)
+        //        let attributed = NSMutableAttributedString(string: "Cancel", attributes: [NSAttributedString.Key.font: font])
+        //        cancelAction.setValue(attributed, forKey: "attributedTitle")
         cancelAction.setValue(UIColor.hexStringToUIColor(hex: "#EB442C"), forKey: "titleTextColor")
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
@@ -121,8 +121,10 @@ class PlayerViewModel {
                         let amonutD = (self?.amonutOld ?? 0) - (self?.amount ?? 0)
                         let tmpGameRecord = GameRecord(gameID: self?.gameID ?? 0, time: Date(), playerID: self?.playerID ?? 0, cashIn: amonutD*(self?.cashIn ?? 0), cashOut: 0)
                         self?.deleteRecord(gameRecord: tmpGameRecord)
+                        viewController.navigationController?.popViewController(animated: true)
+                    }else {
+                        
                     }
-                    viewController.navigationController?.popViewController(animated: true)
                 }
             }else {
                 sum = cashIn*amount
@@ -155,17 +157,46 @@ class PlayerViewModel {
                         print(error.localizedDescription)
                     }
                     self.cashInOrCashOut(gameRecord: GameRecord(gameID: self.gameID, time: Date(), playerID: self.playerID, cashIn: (self.sum)-(self.player.sumCashIn), cashOut: Int(price)))
+                    viewController.navigationController?.popViewController(animated: true)
+                }else {
+                    
                 }
-                viewController.navigationController?.popViewController(animated: true)
             }
+            //            }
         }else {
-            cashOutK = chipOutF/cashOutF
-            price = cashOutK*cashInF
-            sum = cashIn*amount
-            cashInOrCashOut(gameRecord: GameRecord(gameID: gameID, time: Date(), playerID: playerID, cashIn: sum-player.sumCashIn, cashOut: Int(price)))
-            viewController.navigationController?.popViewController(animated: true)
+            if amount == amonutOld {
+                cashOutK = chipOutF/cashOutF
+                price = cashOutK*cashInF
+                sum = cashIn*amount
+                cashInOrCashOut(gameRecord: GameRecord(gameID: gameID, time: Date(), playerID: playerID, cashIn: sum-player.sumCashIn, cashOut: Int(price)))
+                viewController.navigationController?.popViewController(animated: true)
+            }else {
+                showAlertCheck(from: viewController) { [weak self] succes in
+                    guard let self else { return }
+                    if succes {
+                        if amount > amonutOld {
+                            cashOutK = chipOutF/cashOutF
+                            price = cashOutK*cashInF
+                            let amonutD = (self.amount) - (self.amonutOld)
+                            let tmpGameRecord = GameRecord(gameID: self.gameID, time: Date(), playerID: self.playerID, cashIn: amonutD*(self.cashIn), cashOut: Int(price))
+                            self.updateRecord(gameRecord: tmpGameRecord)
+                            viewController.navigationController?.popViewController(animated: true)
+                        }else {
+                            cashOutK = chipOutF/cashOutF
+                            price = cashOutK*cashInF
+                            let amonutD = (self.amonutOld) - (self.amount)
+                            let tmpGameRecord = GameRecord(gameID: self.gameID, time: Date(), playerID: self.playerID, cashIn: amonutD*(self.cashIn), cashOut: Int(price))
+                            self.deleteRecord(gameRecord: tmpGameRecord)
+                            viewController.navigationController?.popViewController(animated: true)
+                        }
+                        
+                    }
+                    else {
+                        
+                    }
+                }
+            }
         }
-        
     }
     
     func showAlertCheck(from viewController: UIViewController, completion: @escaping (Bool) -> Void) {
@@ -186,6 +217,15 @@ class PlayerViewModel {
     func deleteRecord(gameRecord: GameRecord) {
         do {
             try GPlayerStatusTable.deleteARecord(gameRecord: gameRecord)
+            try GameRecordTable.insert(item: GameRecord(gameID: gameRecord.gameID, time: gameRecord.time, playerID: gameRecord.playerID, cashIn: gameRecord.cashIn, cashOut: gameRecord.cashOut))
+        }catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func updateRecord(gameRecord: GameRecord) {
+        do {
+            try GPlayerStatusTable.update(withNewMoneyRecord: gameRecord)
             try GameRecordTable.insert(item: GameRecord(gameID: gameRecord.gameID, time: gameRecord.time, playerID: gameRecord.playerID, cashIn: -gameRecord.cashIn, cashOut: gameRecord.cashOut))
         }catch {
             print(error.localizedDescription)
