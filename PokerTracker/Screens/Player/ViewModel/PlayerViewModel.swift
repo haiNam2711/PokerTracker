@@ -92,12 +92,6 @@ class PlayerViewModel {
             }
         }
         okAction.isEnabled = false
-        //        let boldFont = UIFont.boldSystemFont(ofSize: 16)
-        //        let attributedText = NSMutableAttributedString(string: "OK", attributes: [NSAttributedString.Key.font: boldFont])
-        //        okAction.setValue(attributedText, forKey: "attributedTitle")
-        //        let font = UIFont.systemFont(ofSize: 16)
-        //        let attributed = NSMutableAttributedString(string: "Cancel", attributes: [NSAttributedString.Key.font: font])
-        //        cancelAction.setValue(attributed, forKey: "attributedTitle")
         cancelAction.setValue(UIColor.hexStringToUIColor(hex: "#EB442C"), forKey: "titleTextColor")
         alertController.addAction(cancelAction)
         alertController.addAction(okAction)
@@ -162,7 +156,6 @@ class PlayerViewModel {
                     
                 }
             }
-            //            }
         }else {
             if amount == amonutOld {
                 cashOutK = chipOutF/cashOutF

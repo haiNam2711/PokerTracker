@@ -35,7 +35,6 @@ class PlayerViewController: UIViewController {
     
     @IBAction func deleteAction(_ sender: Any) {
         let cashOutOld = Int((Float(viewModel.player.sumCashOut)/Float(viewModel.cashIn))*Float(viewModel.cashOut))
-        //        if cashOutOld < 0 {
         if cashOutOld == 0 {
             if viewModel.amount > 0 {
                 viewModel.amount -= 1
@@ -54,93 +53,24 @@ class PlayerViewController: UIViewController {
             deleteBT.isEnabled = true
             deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
         }
-//        print("a \(viewModel.amount)")
-//        print(cashOutOld)
         if viewModel.amount == viewModel.amonutOld {
             cashOutTF.isEnabled = true
             
         }else {
             cashOutTF.isEnabled = false
-//            if cashOutTF.text != "" {
-//                cashOutTF.isEnabled = false
-//            }else {
-//                cashOutTF.isEnabled = true
-//            }
-            
         }
-        
-        //        }else {
-        //            deleteBT.isEnabled = true
-        //            deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
-        //        }
-        //        if cashOutOld == 0 {
-        //            viewModel.amount -= 1
-        //        }
-        //        if cashOutOld <= 0 {
-        //            if viewModel.amount > 1 {
-        //                viewModel.amount -= 1
-        //                cashInLabel.text = "\(viewModel.amount)"
-        //                deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
-        //            }else {
-        ////                deleteBT.isEnabled = true
-        //                UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
-        //            }
-        //        }else {
-        //            deleteBT.isEnabled = true
-        //            UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
-        //        }
-        //        if viewModel.amount <= viewModel.amonutOld {
-        //            viewModel.amount -= 1
-        ////            viewModel.checkFix = false
-        ////            deleteBT.isEnabled = false
-        ////            viewModel.showAlertCheck(from: self)
-        //            cashInLabel.text = "\(viewModel.amount)"
-        //            deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
-        //        } else {
-        //            viewModel.amount -= 1
-        //            cashInLabel.text = "\(viewModel.amount)"
-        ////            viewModel.checkFix = true
-        //            if viewModel.amount <= viewModel.amonutOld {
-        //                viewModel.amount -= 1
-        ////                viewModel.checkFix = false
-        ////                deleteBT.isEnabled = false
-        ////                viewModel.showAlertCheck(from: self)
-        //                cashInLabel.text = "\(viewModel.amount)"
-        //                deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
-        //            }
-        //        }
-        
     }
     
     @IBAction func moreAction(_ sender: Any) {
-        let cashOutOld = Int((Float(viewModel.player.sumCashOut)/Float(viewModel.cashIn))*Float(viewModel.cashOut))
         viewModel.amount += 1
         cashInLabel.text = "\(viewModel.amount)"
-//        deleteBT.isEnabled = true
         deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
-//        if viewModel.amount != cashOutOld && cashOutTF.text != "" {
-//            cashOutTF.isEnabled = false
-//        }else {
-//            print("=")
-//            cashOutTF.isEnabled = true
-//        }
         if viewModel.amount == viewModel.amonutOld {
             cashOutTF.isEnabled = true
             
         }else {
             cashOutTF.isEnabled = false
         }
-        //        if cashOutOld != 0 {
-        //            moreBT.isEnabled = true
-        //            moreBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
-        //        }else {
-        //            viewModel.amount += 1
-        //            cashInLabel.text = "\(viewModel.amount)"
-        //            if viewModel.amount > viewModel.amonutOld {
-        //                //            deleteBT.isEnabled = true
-        //                deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
-        //            }
-        //        }
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -164,17 +94,11 @@ extension PlayerViewController {
         cashInLabel.text = "\(viewModel.amount)"
         cashOutTF.layer.borderColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3).cgColor
         cashOutTF.delegate = self
-        //        deleteBT.isEnabled = viewModel.amonutOld > viewModel.amount
-        //        deleteBT.isEnabled = viewModel.amount > 0
         deleteBT.backgroundColor = viewModel.amount > 0 ? UIColor.hexStringToUIColor(hex: "D83842") : UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
-        //        deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
-        
         
         let cashOutOld = Int((Float(viewModel.player.sumCashOut)/Float(viewModel.cashIn))*Float(viewModel.cashOut))
         if cashOutOld != 0 {
             cashOutTF.text = "\(cashOutOld)"
-            //            deleteBT.isEnabled = true
-            //            moreBT.isEnabled = true
             deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
             moreBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
         }
