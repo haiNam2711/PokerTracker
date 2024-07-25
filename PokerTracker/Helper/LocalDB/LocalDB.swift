@@ -75,6 +75,7 @@ class LocalDB {
     
     func createGameRecordTable() {
         let gameRecords = Table("GameRecord")
+        let id = Expression<Int>("GameRecordID")
         let gameID = Expression<Int>("GameID")
         let playerID = Expression<Int>("PlayerID")
         let time = Expression<Date>("Time")
@@ -85,6 +86,7 @@ class LocalDB {
             let gameTable = Table("Game")
             let playerTable = Table("Player")
             try db.run(gameRecords.create(ifNotExists: true) { table in
+                table.column(id, primaryKey: .autoincrement)
                 table.column(gameID)
                 table.column(playerID)
                 table.column(time)
@@ -107,6 +109,8 @@ class LocalDB {
         let playerActive = Expression<Bool>("PlayerActive")
         let sumCashIn = Expression<Int>("SumCashIn")
         let sumCashOut = Expression<Int>("SumCashOut")
+        let sumCashAfterFee = Expression<Int>("SumCashAfterFee")
+        let sumChip = Expression<Int>("SumChip")
         
         do {
             let gameTable = Table("Game")
@@ -117,6 +121,8 @@ class LocalDB {
                 table.column(playerActive)
                 table.column(sumCashIn)
                 table.column(sumCashOut)
+                table.column(sumCashAfterFee)
+                table.column(sumChip)
                 table.primaryKey(gameID, playerID)
                 table.foreignKey(gameID, references: gameTable, gameID)
                 table.foreignKey(playerID, references: playerTable, playerID)

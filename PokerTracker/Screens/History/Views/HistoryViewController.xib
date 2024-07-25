@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HistoryViewController" customModule="PokerTracker" customModuleProvider="target">
             <connections>
+                <outlet property="historyTableView" destination="D2b-Dy-UD9" id="5Gj-3m-oay"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,26 +29,47 @@
                                 <constraint firstAttribute="height" constant="36" id="QZH-pv-x40"/>
                                 <constraint firstAttribute="width" constant="36" id="ajL-4k-Gbi"/>
                             </constraints>
-                            <color key="tintColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="tintColor" red="0.88235294119999996" green="0.3803921569" blue="0.41176470590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                            <state key="normal" image="chevron.backward.circle" catalog="system">
+                            <state key="normal" image="chevron.backward" catalog="system">
                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large" weight="semibold"/>
                             </state>
+                            <connections>
+                                <action selector="backButtonTapped:" destination="-1" eventType="touchUpInside" id="Zgs-tF-eBs"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="History" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zgY-wV-R3L">
-                            <rect key="frame" x="68" y="0.0" width="309" height="36"/>
+                            <rect key="frame" x="68" y="0.0" width="257" height="36"/>
                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
                             <color key="textColor" red="0.086274509799999996" green="0.086274509799999996" blue="0.086274509799999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="D2b-Dy-UD9">
+                            <rect key="frame" x="0.0" y="53" width="393" height="706"/>
+                            <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </tableView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3ox-bh-vI0">
+                            <rect key="frame" x="0.0" y="52" width="393" height="1"/>
+                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="1" id="B9m-Ui-xNK"/>
+                            </constraints>
+                        </view>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <constraints>
                         <constraint firstItem="LVa-e5-jss" firstAttribute="leading" secondItem="5cq-0q-7Eu" secondAttribute="leading" constant="16" id="0Kg-cq-82d"/>
+                        <constraint firstAttribute="bottom" secondItem="D2b-Dy-UD9" secondAttribute="bottom" id="1Fr-LP-V77"/>
+                        <constraint firstAttribute="trailing" secondItem="3ox-bh-vI0" secondAttribute="trailing" id="2Pq-4g-Udd"/>
+                        <constraint firstAttribute="trailing" secondItem="D2b-Dy-UD9" secondAttribute="trailing" id="3LN-8z-6Rd"/>
+                        <constraint firstItem="3ox-bh-vI0" firstAttribute="leading" secondItem="5cq-0q-7Eu" secondAttribute="leading" id="4K0-mW-9Hd"/>
                         <constraint firstItem="zgY-wV-R3L" firstAttribute="centerY" secondItem="LVa-e5-jss" secondAttribute="centerY" id="LAE-CF-XMe"/>
                         <constraint firstItem="zgY-wV-R3L" firstAttribute="leading" secondItem="LVa-e5-jss" secondAttribute="trailing" constant="16" id="VNa-ng-GsQ"/>
                         <constraint firstItem="LVa-e5-jss" firstAttribute="top" secondItem="5cq-0q-7Eu" secondAttribute="top" id="lPO-9n-Gn7"/>
-                        <constraint firstAttribute="trailing" secondItem="zgY-wV-R3L" secondAttribute="trailing" constant="16" id="q9W-3r-H2s"/>
+                        <constraint firstAttribute="trailing" secondItem="zgY-wV-R3L" secondAttribute="trailing" constant="68" id="q9W-3r-H2s"/>
+                        <constraint firstItem="3ox-bh-vI0" firstAttribute="top" secondItem="zgY-wV-R3L" secondAttribute="bottom" constant="16" id="rgb-Gw-qAR"/>
+                        <constraint firstItem="D2b-Dy-UD9" firstAttribute="leading" secondItem="5cq-0q-7Eu" secondAttribute="leading" id="tAJ-lE-oG6"/>
+                        <constraint firstItem="D2b-Dy-UD9" firstAttribute="top" secondItem="3ox-bh-vI0" secondAttribute="bottom" id="w89-sW-aaA"/>
                         <constraint firstItem="zgY-wV-R3L" firstAttribute="height" secondItem="LVa-e5-jss" secondAttribute="height" id="zx0-AG-2R6"/>
                     </constraints>
                 </view>
@@ -64,7 +86,7 @@
         </view>
     </objects>
     <resources>
-        <image name="chevron.backward.circle" catalog="system" width="128" height="123"/>
+        <image name="chevron.backward" catalog="system" width="97" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

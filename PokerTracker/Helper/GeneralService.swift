@@ -29,12 +29,12 @@ extension GeneralService {
         return try PlayerTable.findAll()
     }
     
-    static func createNewPlayer(player: Player) throws {
-        try PlayerTable.insert(item: player)
-    }
+//    static func createNewPlayer(player: Player) throws {
+//        try PlayerTable.insert(item: player)
+//    }
     
     static func addPlayerToAGame(playerID: Int, gameID: Int) throws {
-        try GPlayerStatusTable.insert(item: GPlayerStatus(playerID: playerID, gameID: gameID, playerActive: false, sumCashIn: 0, sumCashOut: 0))
+        try GPlayerStatusTable.insert(item: GPlayerStatus(playerID: playerID, gameID: gameID, playerActive: false, sumCashIn: 0, sumCashOut: 0, sumChip: 0, sumCashAfterFee: 0))
     }
     
 }
@@ -47,7 +47,7 @@ extension GeneralService {
         try GPlayerStatusTable.update(withNewMoneyRecord: gameRecord)
     }
     
-    static func getPlayers(byGameID gameID: Int) throws -> [GetActivePlayerResult]? {
+    static func getPlayers(byGameID gameID: Int) throws -> [GetActivePlayerResult] {
         return try GPlayerStatusTable.getAllPlayer(gameID: gameID)
     }
     
@@ -56,8 +56,19 @@ extension GeneralService {
 //MARK: - History Screen
 extension GeneralService {
     
-    static func getRecordHistory(byGameID gameID: Int) throws -> [GameRecord]? {
+    static func getRecordHistory(byGameID gameID: Int) throws -> [GetGameRecordResult] {
         return try GameRecordTable.findAll(byGameID: gameID)
     }
+    
+    static func updateARecord(gameRecord: GameRecord) throws {
+        try GameRecordTable.update(item: gameRecord)
+        try GPlayerStatusTable.deleteARecord(gameRecord: gameRecord)
+        try GPlayerStatusTable.update(withNewMoneyRecord: gameRecord)
+    }
+    
+}
+
+//MARK: - Filter Screen
+extension GeneralService {
     
 }

@@ -12,8 +12,8 @@ class GameTable {
     static let games = Table("Game")
     static let id = Expression<Int>("GameID")
     static let time = Expression<Date>("Time")
-    static let cashIn = Expression<Int>("CashIn")
-    static let chipOut = Expression<Int>("ChipOut")
+    static let cashIn = Expression<Int>("CashIn") //k
+    static let chipOut = Expression<Int>("ChipOut") // chip
     static let feeTypeInValue = Expression<Bool>("FeeTypeInValue")
     static let fee = Expression<Int>("Fee")
     
@@ -35,4 +35,16 @@ class GameTable {
         return retArray
     }
     
+    static func find(gameID: Int) throws -> Game? {
+        let DB = LocalDB.shared.getDB()
+        let query = games.filter(id == gameID)
+//        let items = try DB.prepare(games)
+//        for item in items {
+//            return Game(id:item[id], time: item[time], standardCashIn: item[cashIn], standardChipOut: item[chipOut], feeTypeInValue: item[feeTypeInValue], fee: item[fee])
+
+        if let game = try DB.pluck(query) {
+            return Game(id: game[id], time: game[time], standardCashIn: game[cashIn], standardChipOut: game[chipOut], feeTypeInValue: game[feeTypeInValue], fee: game[fee])
+        }
+        return nil
+    }
 }

@@ -21,6 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         nav.viewControllers = [vc]
         nav.navigationBar.isHidden = true
         window.rootViewController = nav
+        window.overrideUserInterfaceStyle = .light
         window.makeKeyAndVisible()
     }
 

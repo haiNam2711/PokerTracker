@@ -7,44 +7,60 @@
 
 import SQLite
 
-final class HomeViewModel {
+class HomeViewModel {
     
-    var games: [Game] = [] {
-        didSet {
-            eventHandler?(.dataUpdate)
-        }
-    }
-    var eventHandler: ((_ event: Event) -> Void)?
-     
-    func createAGame(game: Game) throws -> Game? {
-        return try GameTable.insert(item: game)
+    var games: [Game] = []
+    
+    var numberOfGames: Int {
+        return games.count
     }
     
-//    func getAllGames() throws {
-//        guard let games = try GameTable.findAll() else {
-//            throw NSError(domain: "HomeViewModel", code: 500, userInfo: [NSLocalizedDescriptionKey: "Faild to fetch games"])
-//        }
-//        self.games = games
-//        eventHandler?(.dataLoader)
-//    }
+    func game(at index: Int) -> Game {
+        return games[index]
+    }
     
     func fetchGames() {
         do {
             if let fetchGames = try GameTable.findAll() {
                 self.games = fetchGames
-            }else {
+            } else {
                 self.games = []
             }
         } catch {
-            self.games = []
             print("Error Fetch Games: \(error)")
+        }
+    }
+    
+    func createAGame(game: Game) throws -> Game? {
+        return try GameTable.insert(item: game)
+    }
+    
+    
+    func showFilterScreen(from viewController: UIViewController) {
+        let vc = FilterViewController()
+        viewController.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func showCreateGameScreen(from viewController: UIViewController) {
+        let vc = CreateaGameViewController()
+        viewController.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func showGameDetailsScreen(at index: Int, navigationController: UINavigationController?) {
+        guard let navigationController = navigationController else { return }
+        let game = games[index]
+        let gameVM = GameViewModel(gameID: game.id ?? 0, titleGame: "Poker: " + (game.time.toDateTimeString()), cashin: game.standardCashIn, cashOut: game.standardChipOut, fee: game.fee, feeBool: game.feeTypeInValue)
+        let gameDetailsVC = GameViewController()
+        gameDetailsVC.viewModel = gameVM
+        navigationController.pushViewController(gameDetailsVC, animated: true)
+    }
+    
+    func sortGame() {
+        games.sort { (game1, game2) in
+            let time1 = game1.time.timeIntervalSince1970
+            let time2 = game2.time.timeIntervalSince1970
+            return time1 > time2
         }
     }
 }
 
-extension HomeViewModel {
-    
-    enum Event {
-        case dataUpdate
-    }
-}

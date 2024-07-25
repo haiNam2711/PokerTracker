@@ -1,18 +1,26 @@
 PODS:
+  - MBRadioButton (1.4)
   - SQLite.swift (0.14.1):
     - SQLite.swift/standard (= 0.14.1)
   - SQLite.swift/standard (0.14.1)
+  - Toast (4.1.1)
 
 DEPENDENCIES:
+  - MBRadioButton
   - SQLite.swift
+  - Toast
 
 SPEC REPOS:
   trunk:
+    - MBRadioButton
     - SQLite.swift
+    - Toast
 
 SPEC CHECKSUMS:
+  MBRadioButton: dcf111c9bb633d4cf6e83200d804af6e025033c8
   SQLite.swift: 2992550ebf3c5b268bf4352603e3df87d2a4ed72
+  Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
 
-PODFILE CHECKSUM: 4c2be57fa1e74caaa902bf69cd9bb1056d6d9644
+PODFILE CHECKSUM: df6b97a17d9415ee73b48a9672dc48f205c047aa
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.14.3

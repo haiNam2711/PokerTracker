@@ -8,7 +8,7 @@
 import UIKit
 
 class HomeViewController: UIViewController {
-
+    
     @IBOutlet weak var collectionView: UICollectionView!
     private var viewModel = HomeViewModel()
     
@@ -17,14 +17,18 @@ class HomeViewController: UIViewController {
         configuration()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.fetchGames()
+        viewModel.sortGame()
+        self.collectionView.reloadData()
+    }
+    
     @IBAction func searchOnClick(_ sender: Any) {
-        
+        viewModel.showFilterScreen(from: self)
     }
     @IBAction func newGameOnClick(_ sender: Any) {
-        let createGameVC = CreateaGameViewController()
-        let nav = UINavigationController(rootViewController: createGameVC)
-        nav.modalPresentationStyle = .popover
-        present(nav, animated: true)
+        viewModel.showCreateGameScreen(from: self)
     }
 }
 
@@ -35,14 +39,6 @@ extension HomeViewController {
         initViewModel()
         collectionView.delegate = self
         collectionView.dataSource = self
-        viewModel.eventHandler = { [weak self] event in
-            DispatchQueue.main.async {
-                switch event {
-                case .dataUpdate:
-                    self?.collectionView.reloadData()
-                }
-            }
-        }
     }
     
     func initViewModel() {
@@ -52,20 +48,19 @@ extension HomeViewController {
 
 extension HomeViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel.games.count
+        return viewModel.numberOfGames
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "HomeCell", for: indexPath) as! HomeCell
-        let games = viewModel.games[indexPath.row]
-        cell.games = games
+        let game = viewModel.game(at: indexPath.row)
+        cell.games = game
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        let gameVC = GameViewController()
-        navigationController?.pushViewController(gameVC, animated: true)
+        viewModel.showGameDetailsScreen(at: indexPath.row, navigationController: navigationController)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

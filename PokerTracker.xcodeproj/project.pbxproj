@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		260503BB2BC82E06003DDA61 /* GetGameRecordResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260503BA2BC82E06003DDA61 /* GetGameRecordResult.swift */; };
+		260503BF2BC848DE003DDA61 /* FilterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 260503BE2BC848DE003DDA61 /* FilterViewController.xib */; };
+		260503C02BC848DE003DDA61 /* FilterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 260503BD2BC848DE003DDA61 /* FilterViewController.swift */; };
+		265C9B062BCE634B0031B7C7 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 265C9B052BCE634B0031B7C7 /* DatePickerView.swift */; };
+		265C9B082BCE635B0031B7C7 /* DatePickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 265C9B072BCE635B0031B7C7 /* DatePickerView.xib */; };
 		26BAFFAC2BC4E44B009241A9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFAB2BC4E44B009241A9 /* AppDelegate.swift */; };
 		26BAFFAE2BC4E44B009241A9 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFAD2BC4E44B009241A9 /* SceneDelegate.swift */; };
 		26BAFFB52BC4E44C009241A9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 26BAFFB42BC4E44C009241A9 /* Assets.xcassets */; };
@@ -18,11 +23,15 @@
 		26BAFFCD2BC4EBF1009241A9 /* PlayerTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */; };
 		26BAFFD42BC522BB009241A9 /* GameRecordTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFD32BC522BB009241A9 /* GameRecordTable.swift */; };
 		26BAFFD62BC52BEC009241A9 /* GetActivePlayerResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */; };
+		26C8CF082BCC0EFB00ACB5BB /* PlayerProfitOrLoss.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CF072BCC0EFB00ACB5BB /* PlayerProfitOrLoss.swift */; };
+		26C8CF0A2BCC13DB00ACB5BB /* GPlayerStatusDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 26C8CF092BCC13DB00ACB5BB /* GPlayerStatusDate.swift */; };
 		359245E7BE50D6CC0C2E2944 /* Pods_PokerTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */; };
+		903964892BC9A1E000C9DB4E /* ViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */; };
+		B30DFD7A2BCE5D740067786B /* TextField + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30DFD792BCE5D740067786B /* TextField + Extension.swift */; };
 		B31411852BC4E80900CAE99B /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411602BC4E80900CAE99B /* Player.swift */; };
 		B31411862BC4E80900CAE99B /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411622BC4E80900CAE99B /* GameViewModel.swift */; };
-		B31411872BC4E80900CAE99B /* MemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411642BC4E80900CAE99B /* MemberCollectionViewCell.swift */; };
-		B31411882BC4E80900CAE99B /* MemberCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31411652BC4E80900CAE99B /* MemberCollectionViewCell.xib */; };
+		B31411872BC4E80900CAE99B /* PlayerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411642BC4E80900CAE99B /* PlayerCell.swift */; };
+		B31411882BC4E80900CAE99B /* PlayerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31411652BC4E80900CAE99B /* PlayerCell.xib */; };
 		B31411892BC4E80900CAE99B /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411672BC4E80900CAE99B /* GameViewController.swift */; };
 		B314118A2BC4E80900CAE99B /* GameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31411682BC4E80900CAE99B /* GameViewController.xib */; };
 		B314118B2BC4E80900CAE99B /* GameRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = B314116B2BC4E80900CAE99B /* GameRecord.swift */; };
@@ -37,12 +46,20 @@
 		B31411942BC4E80900CAE99B /* GPlayerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = B314117D2BC4E80900CAE99B /* GPlayerStatus.swift */; };
 		B31411952BC4E80900CAE99B /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31411802BC4E80900CAE99B /* PlayerViewController.swift */; };
 		B31411962BC4E80900CAE99B /* PlayerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B31411812BC4E80900CAE99B /* PlayerViewController.xib */; };
+		B338EAD82BC7E84B005F917E /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338EAD72BC7E84B005F917E /* PlayerViewModel.swift */; };
+		B338EADA2BCCB804005F917E /* CreateGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B338EAD92BCCB804005F917E /* CreateGameViewModel.swift */; };
 		B35152942BC5271000F4F82B /* Date + String Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35152932BC5271000F4F82B /* Date + String Extension.swift */; };
 		B351529A2BC52DFE00F4F82B /* CreateaGameViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = B35152992BC52DFE00F4F82B /* CreateaGameViewController.xib */; };
 		B351529B2BC52DFE00F4F82B /* CreateaGameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35152982BC52DFE00F4F82B /* CreateaGameViewController.swift */; };
+		B35152A02BC62F1200F4F82B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B351529F2BC62F1200F4F82B /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		260503BA2BC82E06003DDA61 /* GetGameRecordResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetGameRecordResult.swift; sourceTree = "<group>"; };
+		260503BD2BC848DE003DDA61 /* FilterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterViewController.swift; sourceTree = "<group>"; };
+		260503BE2BC848DE003DDA61 /* FilterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterViewController.xib; sourceTree = "<group>"; };
+		265C9B052BCE634B0031B7C7 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		265C9B072BCE635B0031B7C7 /* DatePickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DatePickerView.xib; sourceTree = "<group>"; };
 		26BAFFA82BC4E44B009241A9 /* PokerTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PokerTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		26BAFFAB2BC4E44B009241A9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		26BAFFAD2BC4E44B009241A9 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,13 +73,17 @@
 		26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerTable.swift; sourceTree = "<group>"; };
 		26BAFFD32BC522BB009241A9 /* GameRecordTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRecordTable.swift; sourceTree = "<group>"; };
 		26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetActivePlayerResult.swift; sourceTree = "<group>"; };
+		26C8CF072BCC0EFB00ACB5BB /* PlayerProfitOrLoss.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerProfitOrLoss.swift; sourceTree = "<group>"; };
+		26C8CF092BCC13DB00ACB5BB /* GPlayerStatusDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPlayerStatusDate.swift; sourceTree = "<group>"; };
 		455601E72079F477011C0B34 /* Pods-PokerTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokerTracker.release.xcconfig"; path = "Target Support Files/Pods-PokerTracker/Pods-PokerTracker.release.xcconfig"; sourceTree = "<group>"; };
 		713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PokerTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController + Extension.swift"; sourceTree = "<group>"; };
 		9852524EF93548091731D962 /* Pods-PokerTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokerTracker.debug.xcconfig"; path = "Target Support Files/Pods-PokerTracker/Pods-PokerTracker.debug.xcconfig"; sourceTree = "<group>"; };
+		B30DFD792BCE5D740067786B /* TextField + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextField + Extension.swift"; sourceTree = "<group>"; };
 		B31411602BC4E80900CAE99B /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		B31411622BC4E80900CAE99B /* GameViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
-		B31411642BC4E80900CAE99B /* MemberCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MemberCollectionViewCell.swift; sourceTree = "<group>"; };
-		B31411652BC4E80900CAE99B /* MemberCollectionViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MemberCollectionViewCell.xib; sourceTree = "<group>"; };
+		B31411642BC4E80900CAE99B /* PlayerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerCell.swift; sourceTree = "<group>"; };
+		B31411652BC4E80900CAE99B /* PlayerCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerCell.xib; sourceTree = "<group>"; };
 		B31411672BC4E80900CAE99B /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		B31411682BC4E80900CAE99B /* GameViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameViewController.xib; sourceTree = "<group>"; };
 		B314116B2BC4E80900CAE99B /* GameRecord.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameRecord.swift; sourceTree = "<group>"; };
@@ -77,9 +98,12 @@
 		B314117D2BC4E80900CAE99B /* GPlayerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GPlayerStatus.swift; sourceTree = "<group>"; };
 		B31411802BC4E80900CAE99B /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		B31411812BC4E80900CAE99B /* PlayerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PlayerViewController.xib; sourceTree = "<group>"; };
+		B338EAD72BC7E84B005F917E /* PlayerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
+		B338EAD92BCCB804005F917E /* CreateGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewModel.swift; sourceTree = "<group>"; };
 		B35152932BC5271000F4F82B /* Date + String Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date + String Extension.swift"; sourceTree = "<group>"; };
 		B35152982BC52DFE00F4F82B /* CreateaGameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateaGameViewController.swift; sourceTree = "<group>"; };
 		B35152992BC52DFE00F4F82B /* CreateaGameViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateaGameViewController.xib; sourceTree = "<group>"; };
+		B351529F2BC62F1200F4F82B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +124,25 @@
 				713E358D89A6EDA38597AB7D /* Pods_PokerTracker.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		260503BC2BC84841003DDA61 /* Filter */ = {
+			isa = PBXGroup;
+			children = (
+				265C9B042BCE631D0031B7C7 /* View */,
+				260503BD2BC848DE003DDA61 /* FilterViewController.swift */,
+				260503BE2BC848DE003DDA61 /* FilterViewController.xib */,
+			);
+			path = Filter;
+			sourceTree = "<group>";
+		};
+		265C9B042BCE631D0031B7C7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				265C9B052BCE634B0031B7C7 /* DatePickerView.swift */,
+				265C9B072BCE635B0031B7C7 /* DatePickerView.xib */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		26BAFF9F2BC4E44B009241A9 = {
@@ -123,6 +166,7 @@
 		26BAFFAA2BC4E44B009241A9 /* PokerTracker */ = {
 			isa = PBXGroup;
 			children = (
+				B351529E2BC62EDC00F4F82B /* Constant */,
 				B314115F2BC4E7DE00CAE99B /* Application */,
 				B314115E2BC4E7C800CAE99B /* Rescurces */,
 				26BAFFC22BC4EB41009241A9 /* Helper */,
@@ -149,8 +193,8 @@
 				26BAFFC82BC4EBC2009241A9 /* LocalDB.swift */,
 				26BAFFC62BC4EBA7009241A9 /* GameTable.swift */,
 				26BAFFCC2BC4EBF1009241A9 /* PlayerTable.swift */,
-				26BAFFCA2BC4EBD8009241A9 /* GPlayerStatusTable.swift */,
 				26BAFFD32BC522BB009241A9 /* GameRecordTable.swift */,
+				26BAFFCA2BC4EBD8009241A9 /* GPlayerStatusTable.swift */,
 			);
 			path = LocalDB;
 			sourceTree = "<group>";
@@ -159,6 +203,9 @@
 			isa = PBXGroup;
 			children = (
 				26BAFFD52BC52BEC009241A9 /* GetActivePlayerResult.swift */,
+				260503BA2BC82E06003DDA61 /* GetGameRecordResult.swift */,
+				26C8CF072BCC0EFB00ACB5BB /* PlayerProfitOrLoss.swift */,
+				26C8CF092BCC13DB00ACB5BB /* GPlayerStatusDate.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -200,8 +247,8 @@
 		B31411662BC4E80900CAE99B /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				B31411642BC4E80900CAE99B /* MemberCollectionViewCell.swift */,
-				B31411652BC4E80900CAE99B /* MemberCollectionViewCell.xib */,
+				B31411642BC4E80900CAE99B /* PlayerCell.swift */,
+				B31411652BC4E80900CAE99B /* PlayerCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -264,6 +311,7 @@
 			isa = PBXGroup;
 			children = (
 				B31411742BC4E80900CAE99B /* HomeViewModel.swift */,
+				B338EAD92BCCB804005F917E /* CreateGameViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -318,6 +366,7 @@
 		B31411832BC4E80900CAE99B /* Player */ = {
 			isa = PBXGroup;
 			children = (
+				B338EAD62BC7E82A005F917E /* ViewModel */,
 				B314117E2BC4E80900CAE99B /* Model */,
 				B31411822BC4E80900CAE99B /* Views */,
 			);
@@ -327,18 +376,29 @@
 		B31411842BC4E80900CAE99B /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				B314116A2BC4E80900CAE99B /* Game */,
-				B31411712BC4E80900CAE99B /* History */,
 				B314117C2BC4E80900CAE99B /* Home */,
+				B314116A2BC4E80900CAE99B /* Game */,
 				B31411832BC4E80900CAE99B /* Player */,
+				B31411712BC4E80900CAE99B /* History */,
+				260503BC2BC84841003DDA61 /* Filter */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		B338EAD62BC7E82A005F917E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B338EAD72BC7E84B005F917E /* PlayerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		B35152922BC526E900F4F82B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
 				B35152932BC5271000F4F82B /* Date + String Extension.swift */,
+				903964882BC9A1E000C9DB4E /* ViewController + Extension.swift */,
+				B30DFD792BCE5D740067786B /* TextField + Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -350,6 +410,14 @@
 				B35152992BC52DFE00F4F82B /* CreateaGameViewController.xib */,
 			);
 			path = CreateaGame;
+			sourceTree = "<group>";
+		};
+		B351529E2BC62EDC00F4F82B /* Constant */ = {
+			isa = PBXGroup;
+			children = (
+				B351529F2BC62F1200F4F82B /* Constants.swift */,
+			);
+			path = Constant;
 			sourceTree = "<group>";
 		};
 		E43ED687AB5014B76E4C9567 /* Pods */ = {
@@ -379,6 +447,8 @@
 			dependencies = (
 			);
 			name = PokerTracker;
+			packageProductDependencies = (
+			);
 			productName = PokerTracker;
 			productReference = 26BAFFA82BC4E44B009241A9 /* PokerTracker.app */;
 			productType = "com.apple.product-type.application";
@@ -407,6 +477,8 @@
 				Base,
 			);
 			mainGroup = 26BAFF9F2BC4E44B009241A9;
+			packageReferences = (
+			);
 			productRefGroup = 26BAFFA92BC4E44B009241A9 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -421,12 +493,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				260503BF2BC848DE003DDA61 /* FilterViewController.xib in Resources */,
 				B314118A2BC4E80900CAE99B /* GameViewController.xib in Resources */,
 				B31411912BC4E80900CAE99B /* HomeCell.xib in Resources */,
 				26BAFFB52BC4E44C009241A9 /* Assets.xcassets in Resources */,
-				B31411882BC4E80900CAE99B /* MemberCollectionViewCell.xib in Resources */,
+				B31411882BC4E80900CAE99B /* PlayerCell.xib in Resources */,
 				B351529A2BC52DFE00F4F82B /* CreateaGameViewController.xib in Resources */,
 				B314118D2BC4E80900CAE99B /* HistoryViewController.xib in Resources */,
+				265C9B082BCE635B0031B7C7 /* DatePickerView.xib in Resources */,
 				B31411962BC4E80900CAE99B /* PlayerViewController.xib in Resources */,
 				B31411932BC4E80900CAE99B /* HomeViewController.xib in Resources */,
 				26BAFFB82BC4E44C009241A9 /* Base in Resources */,
@@ -482,29 +556,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26C8CF0A2BCC13DB00ACB5BB /* GPlayerStatusDate.swift in Sources */,
 				26BAFFD42BC522BB009241A9 /* GameRecordTable.swift in Sources */,
+				B338EAD82BC7E84B005F917E /* PlayerViewModel.swift in Sources */,
 				B314118B2BC4E80900CAE99B /* GameRecord.swift in Sources */,
 				B314118E2BC4E80900CAE99B /* Game.swift in Sources */,
 				26BAFFCD2BC4EBF1009241A9 /* PlayerTable.swift in Sources */,
+				265C9B062BCE634B0031B7C7 /* DatePickerView.swift in Sources */,
+				260503BB2BC82E06003DDA61 /* GetGameRecordResult.swift in Sources */,
+				B30DFD7A2BCE5D740067786B /* TextField + Extension.swift in Sources */,
 				B31411862BC4E80900CAE99B /* GameViewModel.swift in Sources */,
 				B31411952BC4E80900CAE99B /* PlayerViewController.swift in Sources */,
 				B35152942BC5271000F4F82B /* Date + String Extension.swift in Sources */,
 				B314118F2BC4E80900CAE99B /* HomeViewModel.swift in Sources */,
 				26BAFFCB2BC4EBD8009241A9 /* GPlayerStatusTable.swift in Sources */,
 				26BAFFC92BC4EBC2009241A9 /* LocalDB.swift in Sources */,
-				B31411872BC4E80900CAE99B /* MemberCollectionViewCell.swift in Sources */,
+				B31411872BC4E80900CAE99B /* PlayerCell.swift in Sources */,
+				B338EADA2BCCB804005F917E /* CreateGameViewModel.swift in Sources */,
 				26BAFFAC2BC4E44B009241A9 /* AppDelegate.swift in Sources */,
 				B31411902BC4E80900CAE99B /* HomeCell.swift in Sources */,
 				B31411852BC4E80900CAE99B /* Player.swift in Sources */,
+				903964892BC9A1E000C9DB4E /* ViewController + Extension.swift in Sources */,
 				26BAFFD62BC52BEC009241A9 /* GetActivePlayerResult.swift in Sources */,
 				B31411892BC4E80900CAE99B /* GameViewController.swift in Sources */,
 				B31411942BC4E80900CAE99B /* GPlayerStatus.swift in Sources */,
 				26BAFFAE2BC4E44B009241A9 /* SceneDelegate.swift in Sources */,
 				26BAFFC72BC4EBA7009241A9 /* GameTable.swift in Sources */,
+				260503C02BC848DE003DDA61 /* FilterViewController.swift in Sources */,
 				B314118C2BC4E80900CAE99B /* HistoryViewController.swift in Sources */,
+				26C8CF082BCC0EFB00ACB5BB /* PlayerProfitOrLoss.swift in Sources */,
 				26BAFFC52BC4EB6F009241A9 /* GeneralService.swift in Sources */,
 				B351529B2BC52DFE00F4F82B /* CreateaGameViewController.swift in Sources */,
 				B31411922BC4E80900CAE99B /* HomeViewController.swift in Sources */,
+				B35152A02BC62F1200F4F82B /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -649,7 +733,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9G9YD8GX8D;
+				DEVELOPMENT_TEAM = L986574MQT;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokerTracker/Info.plist;
@@ -662,7 +746,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker.vn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -678,7 +762,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 9G9YD8GX8D;
+				DEVELOPMENT_TEAM = L986574MQT;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PokerTracker/Info.plist;
@@ -691,7 +775,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hnam.PokerTracker.vn;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

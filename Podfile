@@ -8,4 +8,6 @@ target 'PokerTracker' do
   # Pods for PokerTracker
   
 pod 'SQLite.swift'
+pod 'Toast'
+pod 'MBRadioButton'
 end
