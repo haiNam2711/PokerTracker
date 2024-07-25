@@ -11,7 +11,6 @@ class PlayerViewModel {
     
     var player: GPlayerStatus
     var gameRecord: GameRecord
-    
     var name: String
     var gameID: Int
     var playerID: Int
@@ -20,7 +19,6 @@ class PlayerViewModel {
     var cashOut: Int
     var sum = 0
     var amonutOld = 0
-    
     var isNameNew = false
     var okAction: UIAlertAction!
     var reloadDataHandler: ((String) -> Void)?
@@ -182,7 +180,6 @@ class PlayerViewModel {
                             self.deleteRecord(gameRecord: tmpGameRecord)
                             viewController.navigationController?.popViewController(animated: true)
                         }
-                        
                     }
                     else {
                         

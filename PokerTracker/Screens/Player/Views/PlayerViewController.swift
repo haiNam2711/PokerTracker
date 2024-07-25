@@ -20,14 +20,11 @@ class PlayerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configuration()
     }
-    
     deinit {
         unregisterObserver()
     }
-    
     
     @IBAction func okOnclick(_ sender: Any) {
         viewModel.handleOKButton(from: self, chipOutText: cashOutTF.text)
@@ -53,24 +50,16 @@ class PlayerViewController: UIViewController {
             deleteBT.isEnabled = true
             deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
         }
-        if viewModel.amount == viewModel.amonutOld {
-            cashOutTF.isEnabled = true
-            
-        }else {
-            cashOutTF.isEnabled = false
-        }
+        let stageEnabled = viewModel.amount == viewModel.amonutOld
+        cashOutTF.isEnabled = stageEnabled
     }
     
     @IBAction func moreAction(_ sender: Any) {
         viewModel.amount += 1
         cashInLabel.text = "\(viewModel.amount)"
         deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
-        if viewModel.amount == viewModel.amonutOld {
-            cashOutTF.isEnabled = true
-            
-        }else {
-            cashOutTF.isEnabled = false
-        }
+        let stageEnabled = viewModel.amount == viewModel.amonutOld
+        cashOutTF.isEnabled = stageEnabled
     }
     
     @IBAction func backAction(_ sender: Any) {
@@ -95,7 +84,6 @@ extension PlayerViewController {
         cashOutTF.layer.borderColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3).cgColor
         cashOutTF.delegate = self
         deleteBT.backgroundColor = viewModel.amount > 0 ? UIColor.hexStringToUIColor(hex: "D83842") : UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
-        
         let cashOutOld = Int((Float(viewModel.player.sumCashOut)/Float(viewModel.cashIn))*Float(viewModel.cashOut))
         if cashOutOld != 0 {
             cashOutTF.text = "\(cashOutOld)"
@@ -119,23 +107,18 @@ extension PlayerViewController {
     }
     
     @objc private func keyboardWillShow(notification: NSNotification) {
-        
         let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue ?? .zero
         let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double) ?? 0
-        
         UIView.animate(withDuration: duration) {[weak self] in
             guard let self = self else { return}
-            
             self.okButton.transform = CGAffineTransform(translationX: 0, y: -keyboardSize.height + self.safeAreaInsets.bottom)
         }
     }
     
     @objc private func keyboardWillHide(notification: NSNotification) {
         let duration = (notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double) ?? 0
-        
         UIView.animate(withDuration: duration) {[weak self] in
             guard let self = self else { return}
-            
             self.okButton.transform = .identity
         }
     }
@@ -155,26 +138,17 @@ extension PlayerViewController: UITextFieldDelegate {
     }
     
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        if viewModel.amount == 0 {
-            return false
-        }
-        return true
+        return !(viewModel.amount == 0)
     }
     
     func textFieldDidChangeSelection(_ textField: UITextField) {
         let cashOutOld = Int((Float(viewModel.player.sumCashOut)/Float(viewModel.cashIn))*Float(viewModel.cashOut))
         let text = cashOutTF.text
         let cashOutString = String(cashOutOld)
-        if cashOutString == "0" || text == cashOutString {
-            deleteBT.isEnabled = true
-            moreBT.isEnabled = true
-            deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
-            moreBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842")
-        }else {
-            deleteBT.isEnabled = false
-            moreBT.isEnabled = false
-            deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
-            moreBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(0.3)
-        }
+        let stageHighLine = cashOutString == "0" || text == cashOutString
+        deleteBT.isEnabled = stageHighLine
+        moreBT.isEnabled = stageHighLine
+        deleteBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(stageHighLine ? 1.0 : 0.3)
+        moreBT.backgroundColor = UIColor.hexStringToUIColor(hex: "D83842").withAlphaComponent(stageHighLine ? 1.0 : 0.3)
     }
 }
